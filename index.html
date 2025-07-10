@@ -8,67 +8,93 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fdfdfd;
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #fff;
       text-align: center;
     }
+
     header {
-      padding: 40px 20px 20px;
-      font-size: 32px;
+      padding: 40px 20px 10px;
+      font-size: 36px;
       font-weight: bold;
-      color: #222;
+      color: #ffffff;
     }
+
     .logo-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 50px;
+      gap: 40px;
       flex-wrap: wrap;
-      margin: 40px 0;
+      margin: 30px 0;
     }
-    .logo {
+
+    .logo-box {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 10px;
       width: 250px;
       height: 150px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .logo:hover {
+
+    .logo-box:hover {
       transform: scale(1.05);
     }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
     .contact {
-      margin-top: 40px;
-      color: #555;
+      margin-top: 30px;
+      color: #ccc;
+      font-size: 14px;
     }
+
     .contact p {
-      margin: 5px;
+      margin: 4px;
     }
+
     .whatsapp {
       position: fixed;
       bottom: 20px;
       right: 20px;
       width: 50px;
       height: 50px;
+      z-index: 10;
+    }
+
+    a {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <header>Grupo Infopoços</header>
+
   <div class="logo-container">
-    <a href="https://infopocos.ti" target="_blank">
-      <img src="Logoti.png" alt="Infopoços.ti" class="logo">
+    <a href="https://infopocos.ti" target="_blank" class="logo-box">
+      <img src="Logoti.png" alt="Infopoços.ti">
     </a>
-    <a href="https://infopocos.game" target="_blank">
-      <img src="Logogames.png" alt="Infopoços.game" class="logo">
+    <a href="https://infopocos.game" target="_blank" class="logo-box">
+      <img src="Logogames.png" alt="Infopoços.game">
     </a>
   </div>
+
   <div class="contact">
     <p>contato@infopocos.ti</p>
     <p>suporte@infopocos.games</p>
   </div>
+
   <a href="https://wa.me/SEUNUMEROAQUI" target="_blank">
     <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="whatsapp">
   </a>
 </body>
 </html>
-
