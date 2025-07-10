@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grupo Infopoços</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fdfdfd;
+      text-align: center;
+    }
+    header {
+      padding: 40px 20px 20px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #222;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    .logo {
+      width: 250px;
+      height: 150px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    .contact {
+      margin-top: 40px;
+      color: #555;
+    }
+    .contact p {
+      margin: 5px;
+    }
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>Grupo Infopoços</header>
+  <div class="logo-container">
+    <a href="https://infopocos.ti" target="_blank">
+      <img src="Logoti.png" alt="Infopoços.ti" class="logo">
+    </a>
+    <a href="https://infopocos.game" target="_blank">
+      <img src="Logogames.png" alt="Infopoços.game" class="logo">
+    </a>
+  </div>
+  <div class="contact">
+    <p>contato@infopocos.ti</p>
+    <p>suporte@infopocos.games</p>
+  </div>
+  <a href="https://wa.me/SEUNUMEROAQUI" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="whatsapp">
+  </a>
+</body>
+</html>
 
