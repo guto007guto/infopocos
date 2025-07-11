@@ -59,7 +59,7 @@
     .arrow {
       font-size: 18px;
       margin-top: 5px;
-      color: #ffff66; /* amarelo claro para destaque */
+      color: #ffff66;
       font-weight: bold;
       animation: bounce 1.5s infinite;
       text-shadow: 1px 1px 2px #000;
@@ -78,27 +78,49 @@
       margin-top: auto;
     }
 
-    .whatsapp-float {
+    /* Balão flutuante do WhatsApp com texto */
+    .whatsapp-container {
       position: fixed;
-      width: 60px;
-      height: 60px;
       bottom: 20px;
       right: 20px;
-      background-color: #25d366;
-      color: #fff;
-      border-radius: 50%;
       text-align: center;
-      font-size: 30px;
-      box-shadow: 2px 2px 3px #999;
       z-index: 100;
     }
 
+    .whatsapp-label {
+      background-color: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .whatsapp-float {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 28px;
+      box-shadow: 2px 2px 3px #999;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+    }
+
     .whatsapp-float i {
-      margin-top: 15px;
+      pointer-events: none;
     }
   </style>
 
-  <!-- Font Awesome (para o ícone do WhatsApp) -->
+  <!-- Font Awesome (ícone do WhatsApp) -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -119,9 +141,12 @@
     <p>Contato: contato@infopocos.ti | games@infopocos.game</p>
   </footer>
 
-  <!-- Botão flutuante do WhatsApp -->
-  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <!-- Botão flutuante do WhatsApp com título "Atendimento" -->
+  <div class="whatsapp-container">
+    <div class="whatsapp-label">Atendimento</div>
+    <a href="https://wa.me/5535992598939" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
 </body>
 </html>
