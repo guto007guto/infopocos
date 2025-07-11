@@ -1,1 +1,156 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infopoços.ti - Soluções em Tecnologia</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #232526, #414345);
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    header {
+      background: #00e6e6;
+      color: #000;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 40px;
+    }
+
+    h2 {
+      color: #00e6e6;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li::before {
+      content: "\2714";
+      margin-right: 8px;
+      color: #00e6e6;
+    }
+
+    .clientes {
+      margin-top: 40px;
+    }
+
+    .clientes h3 {
+      margin-bottom: 10px;
+      color: #00e6e6;
+    }
+
+    .logo-clientes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo-item {
+      text-align: center;
+    }
+
+    .logo-item img {
+      width: 150px;
+      height: auto;
+      background: #fff;
+      padding: 5px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .logo-item span {
+      font-size: 14px;
+      display: block;
+      color: #ddd;
+    }
+
+    .whatsapp-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .whatsapp-label {
+      background-color: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .whatsapp-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 2px 2px 3px #999;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .whatsapp-img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    INFOPOÇOS.TI - Especialistas em Tecnologia da Informação
+  </header>
+
+  <section>
+    <h2>Nossas Especialidades</h2>
+    <ul>
+      <li>Infraestrutura de Redes (cabeada e Wi-Fi)</li>
+      <li>Monitoramento de desempenho, uptime e hosts</li>
+      <li>Suporte e Manutenção de Servidores e Estações</li>
+      <li>Gerenciamento de TI para empresas</li>
+      <li>Desenvolvimento de sistemas sob demanda</li>
+      <li>Parcerias em soluções web e apps</li>
+    </ul>
+
+    <div class="clientes">
+      <h3>Nossos Clientes</h3>
+      <div class="logo-clientes">
+        <div class="logo-item">
+          <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063539362383" alt="Posto Pain 1">
+          <span>Pain 1</span>
+        </div>
+        <div class="logo-item">
+          <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100064095243103" alt="Posto Pain 2">
+          <span>Pain 2</span>
+        </div>
+        <div class="logo-item">
+          <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1314830062235726" alt="Posto Pain 3">
+          <span>Pain 3</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp com imagem personalizada -->
+  <div class="whatsapp-container">
+    <div class="whatsapp-label">Atendimento</div>
+    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
+      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
+    </a>
+  </div>
+</body>
+</html>
