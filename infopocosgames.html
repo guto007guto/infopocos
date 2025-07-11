@@ -18,17 +18,29 @@
       padding: 30px 20px;
     }
 
-    .header h1 {
-      color: #00e6e6;
-      font-size: 32px;
-      text-shadow: 1px 1px 3px #000;
+    .header a {
+      text-decoration: none;
+      color: inherit;
     }
 
     .logo {
       width: 180px;
       height: auto;
       display: block;
-      margin: 20px auto 10px;
+      margin: 0 auto 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .header h1 {
+      color: #00e6e6;
+      font-size: 32px;
+      text-shadow: 1px 1px 3px #000;
+      margin-top: 10px;
     }
 
     .links-section {
@@ -40,13 +52,13 @@
     }
 
     .card {
-      background-color: transparent; /* removido fundo preto */
+      background-color: transparent;
       border-radius: 10px;
       padding: 20px;
       width: 260px;
       text-align: center;
       transition: transform 0.3s ease;
-      border: 2px solid rgba(255,255,255,0.2); /* borda leve e transparente */
+      border: 2px solid rgba(255,255,255,0.2);
     }
 
     .card:hover {
@@ -115,8 +127,10 @@
 </head>
 <body>
   <div class="header">
-    <img src="Logogames.png" alt="Infopoços Games" class="logo">
-    <h1>Infopoços Games</h1>
+    <a href="index.html">
+      <img src="Logogames.png" alt="Infopoços Games" class="logo">
+      <h1>Infopoços Games</h1>
+    </a>
   </div>
 
   <section class="links-section">
