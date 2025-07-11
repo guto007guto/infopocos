@@ -20,19 +20,18 @@
       text-align: center;
       font-size: 32px;
       font-weight: bold;
-      padding: 20px 0 10px;
+      padding: 30px 0 10px;
       color: #00e6e6;
       text-shadow: 1px 1px 3px #000;
     }
 
     .container {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: flex-start;
-      padding: 10px 20px 30px;
-      gap: 30px;
-      flex-wrap: wrap;
+      padding: 30px 80px;
       flex-grow: 1;
+      flex-wrap: wrap;
     }
 
     .logo-link {
@@ -113,6 +112,15 @@
     .whatsapp-img:hover {
       transform: scale(1.1);
     }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -133,7 +141,7 @@
     Contato: infopocosti@gmail.com
   </footer>
 
-  <!-- WhatsApp com imagem personalizada -->
+  <!-- Botão WhatsApp -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
