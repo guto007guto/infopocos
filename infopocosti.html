@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>INFOPOSTAI - Soluções em TI</title>
+  <title>INFOPOÇOS.TI – Soluções em Tecnologia</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #1e1e1e;
-      color: #fff;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
     }
 
     header {
@@ -18,56 +18,58 @@
       text-align: center;
       font-size: 28px;
       font-weight: bold;
-      color: #000;
+      color: #111;
+      text-shadow: 1px 1px 2px #000;
     }
 
-    .section {
+    .content {
       padding: 30px;
     }
 
-    .section h2 {
+    .section-title {
+      font-size: 24px;
       color: #00e6e6;
+      margin-bottom: 10px;
     }
 
     ul {
       list-style-type: none;
-      padding: 0;
-    }
-
-    ul li {
-      padding: 5px 0;
+      padding-left: 0;
     }
 
     ul li::before {
       content: "✔ ";
-      color: #00e6e6;
+      color: #00ff99;
     }
 
     .clients {
       display: flex;
-      justify-content: space-around;
       flex-wrap: wrap;
-      margin-top: 20px;
+      gap: 30px;
+      margin-top: 30px;
     }
 
     .client {
       text-align: center;
-      margin: 15px;
     }
 
     .client img {
       width: 140px;
-      height: auto;
-      border-radius: 8px;
-      background: #fff;
+      border-radius: 12px;
+      box-shadow: 2px 2px 6px #000;
+    }
+
+    .client-name {
+      margin-top: 8px;
     }
 
     footer {
       background: #111;
+      color: #ccc;
       text-align: center;
       padding: 15px;
       font-size: 14px;
-      color: #aaa;
+      margin-top: 40px;
     }
 
     .whatsapp-container {
@@ -103,10 +105,11 @@
   </style>
 </head>
 <body>
-  <header>INFOPOSTAI - Soluções em TI</header>
 
-  <div class="section">
-    <h2>Nossas Especialidades</h2>
+  <header>INFOPOÇOS.TI – Soluções em Tecnologia</header>
+
+  <div class="content">
+    <div class="section-title">Nossas Especialidades</div>
     <ul>
       <li>Infraestrutura de Redes (cabeada e Wi-Fi)</li>
       <li>Monitoramento de desempenho, uptime e hosts</li>
@@ -115,35 +118,43 @@
       <li>Desenvolvimento de sistemas sob demanda</li>
       <li>Parcerias em soluções web e apps</li>
     </ul>
-  </div>
 
-  <div class="section">
-    <h2>Nossos Clientes</h2>
+    <div class="section-title" style="margin-top: 40px;">Nossos Clientes</div>
     <div class="clients">
       <div class="client">
-        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063539362383" alt="Pain 1">
-        <div>Pain 1</div>
+        <img src="pain1img.png" alt="Pain 1">
+        <div class="client-name">Pain 1</div>
       </div>
       <div class="client">
-        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100064095243103" alt="Pain 2">
-        <div>Pain 2</div>
+        <img src="pain2img.png" alt="Pain 2">
+        <div class="client-name">Pain 2</div>
       </div>
       <div class="client">
-        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1314830062235726" alt="Pain 3">
-        <div>Pain 3</div>
+        <img src="pain3img.jpg" alt="Pain 3">
+        <div class="client-name">Pain 3</div>
+      </div>
+      <div class="client">
+        <img src="arcoiris1img.jpeg" alt="Arco-Íris 1">
+        <div class="client-name">Arco-Íris 1</div>
+      </div>
+      <div class="client">
+        <img src="arcoiris2img.jpeg" alt="Arco-Íris 2">
+        <div class="client-name">Arco-Íris 2</div>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>Contato: contato@infopocos.ti</p>
+    Contato: contato@infopocos.ti | suporte@infopocos.ti
   </footer>
 
+  <!-- Botão WhatsApp -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
       <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
     </a>
   </div>
+
 </body>
 </html>
