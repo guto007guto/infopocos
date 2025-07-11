@@ -15,13 +15,31 @@
 
     .header {
       text-align: center;
-      padding: 30px 0;
+      padding: 30px 0 10px;
+    }
+
+    .header a {
+      text-decoration: none;
+      color: inherit;
     }
 
     .header h1 {
       color: #00e6e6;
       font-size: 32px;
       text-shadow: 1px 1px 3px #000;
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      width: 200px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
     }
 
     .especialidades, .clientes {
@@ -71,6 +89,9 @@
       padding: 15px;
       font-size: 14px;
       color: #ccc;
+      position: relative;
+      bottom: 0;
+      width: 100%;
     }
 
     .whatsapp-container {
@@ -107,7 +128,10 @@
 </head>
 <body>
   <div class="header">
-    <h1>Infopoços TI</h1>
+    <a href="index.html">
+      <img src="logoti.png" alt="Infopoços TI" class="logo">
+      <h1>Infopoços TI</h1>
+    </a>
   </div>
 
   <section class="especialidades">
@@ -126,38 +150,19 @@
     <h2>Nossos Clientes</h2>
     <div class="clientes-grid">
       <div class="cliente">
-        <img src="pain1img.png" alt="Pain 1">
-        <p>Pain 1</p>
+        <img src="pain1img.png" alt="Paim 1">
+        <p>Paim 1</p>
       </div>
       <div class="cliente">
-        <img src="pain2img.png" alt="Pain 2">
-        <p>Pain 2</p>
+        <img src="pain2img.png" alt="Paim 2">
+        <p>Paim 2</p>
       </div>
       <div class="cliente">
-        <img src="pain3img.jpg" alt="Pain 3">
-        <p>Pain 3</p>
+        <img src="pain3img.jpg" alt="Paim 3">
+        <p>Paim 3</p>
       </div>
       <div class="cliente">
         <img src="arcoiris1img.jpeg" alt="Arco-Íris 1">
         <p>Arco-Íris 1</p>
       </div>
-      <div class="cliente">
-        <img src="arcoiris2img.jpeg" alt="Arco-Íris 2">
-        <p>Arco-Íris 2</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    Contato: infopocosti@gmail.com
-  </footer>
-
-  <!-- Botão WhatsApp -->
-  <div class="whatsapp-container">
-    <div class="whatsapp-label">Atendimento</div>
-    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
-      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
-    </a>
-  </div>
-</body>
-</html>
+      <
