@@ -20,22 +20,22 @@
       text-align: center;
       font-size: 32px;
       font-weight: bold;
-      padding: 30px 0 10px;
+      padding: 20px 0 10px;
       color: #00e6e6;
       text-shadow: 1px 1px 3px #000;
     }
 
     .container {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 80px;
       align-items: center;
-      padding: 30px 60px 60px;
       flex-grow: 1;
+      padding: 20px 40px;
+      flex-wrap: wrap;
     }
 
     .logo-link {
-      flex: 1;
-      margin: 0 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -43,11 +43,11 @@
       text-decoration: none;
       color: white;
       transition: transform 0.3s ease;
-      border: 2px solid rgba(255,255,255,0.2);
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      max-width: 300px;
+      width: 300px;
     }
 
     .logo-link:hover {
@@ -55,15 +55,15 @@
     }
 
     .logo-img {
-      max-width: 100%;
+      max-width: 240px;
+      width: 100%;
       height: auto;
       background: transparent;
-      margin-bottom: 10px;
     }
 
     .arrow {
       font-size: 18px;
-      margin-top: 5px;
+      margin-top: 10px;
       color: #ffff66;
       font-weight: bold;
       animation: bounce 1.5s infinite;
@@ -80,9 +80,8 @@
       text-align: center;
       padding: 15px;
       font-size: 14px;
-      margin-top: auto;
       color: #ccc;
-      box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
+      margin-top: auto;
     }
 
     .whatsapp-container {
@@ -115,18 +114,6 @@
     .whatsapp-img:hover {
       transform: scale(1.1);
     }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-      }
-
-      .logo-link {
-        margin: 10px 0;
-      }
-    }
   </style>
 </head>
 <body>
@@ -144,10 +131,9 @@
   </div>
 
   <footer>
-    Contato: infopocosti@gmail.com
+    <p>Contato: infopocosti@gmail.com</p>
   </footer>
 
-  <!-- Botão WhatsApp -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
