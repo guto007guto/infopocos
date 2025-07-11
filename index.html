@@ -1,100 +1,69 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grupo Infopoços</title>
+  <title>Grupo INFOPOÇOS</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
-      color: #fff;
-      text-align: center;
-    }
-
-    header {
-      padding: 40px 20px 10px;
-      font-size: 36px;
-      font-weight: bold;
       color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    .logo-container {
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px;
+      flex-grow: 1;
+    }
+
+    .logo-link {
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin: 30px 0;
-    }
-
-    .logo-box {
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 10px;
-      width: 250px;
-      height: 150px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    .logo-box:hover {
+    .logo-link:hover {
       transform: scale(1.05);
     }
 
-    .logo-box img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+    .logo-img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      background: transparent;
     }
 
-    .contact {
-      margin-top: 30px;
-      color: #ccc;
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 15px;
       font-size: 14px;
-    }
-
-    .contact p {
-      margin: 4px;
-    }
-
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      z-index: 10;
-    }
-
-    a {
-      text-decoration: none;
+      margin-top: auto;
     }
   </style>
 </head>
 <body>
-  <header>Grupo Infopoços</header>
-
-  <div class="logo-container">
-    <a href="https://infopocos.ti" target="_blank" class="logo-box">
-      <img src="Logoti.png" alt="Infopoços.ti">
+  <div class="container">
+    <a class="logo-link" href="https://infopocos.ti" target="_blank">
+      <img src="Logoti.png" alt="Infopoços TI" class="logo-img"/>
     </a>
-    <a href="https://infopocos.game" target="_blank" class="logo-box">
-      <img src="Logogames.png" alt="Infopoços.game">
+    <a class="logo-link" href="https://infopocos.game" target="_blank">
+      <img src="Logogames.png" alt="Infopoços Games" class="logo-img"/>
     </a>
   </div>
 
-  <div class="contact">
-    <p>contato@infopocos.ti</p>
-    <p>suporte@infopocos.games</p>
-  </div>
-
-  <a href="https://wa.me/SEUNUMEROAQUI" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="whatsapp">
-  </a>
+  <footer>
+    <p>Contato: contato@infopocos.ti | games@infopocos.game | WhatsApp disponível</p>
+  </footer>
 </body>
 </html>
