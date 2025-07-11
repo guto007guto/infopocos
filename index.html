@@ -16,11 +16,20 @@
       min-height: 100vh;
     }
 
+    .title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      padding: 30px 0 0;
+      color: #00e6e6;
+      text-shadow: 1px 1px 3px #000;
+    }
+
     .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 60px;
+      padding: 30px 60px 60px;
       flex-grow: 1;
     }
 
@@ -48,10 +57,12 @@
     }
 
     .arrow {
-      font-size: 20px;
-      margin-top: 10px;
+      font-size: 18px;
+      margin-top: 5px;
+      color: #ffff66; /* amarelo claro para destaque */
+      font-weight: bold;
       animation: bounce 1.5s infinite;
-      opacity: 0.8;
+      text-shadow: 1px 1px 2px #000;
     }
 
     @keyframes bounce {
@@ -67,7 +78,6 @@
       margin-top: auto;
     }
 
-    /* WhatsApp floating button */
     .whatsapp-float {
       position: fixed;
       width: 60px;
@@ -76,7 +86,7 @@
       right: 20px;
       background-color: #25d366;
       color: #fff;
-      border-radius: 50px;
+      border-radius: 50%;
       text-align: center;
       font-size: 30px;
       box-shadow: 2px 2px 3px #999;
@@ -87,10 +97,13 @@
       margin-top: 15px;
     }
   </style>
-  <!-- Link do ícone do WhatsApp (Font Awesome CDN) -->
+
+  <!-- Font Awesome (para o ícone do WhatsApp) -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div class="title">Grupo INFOPOÇOS – Soluções em TI & Games</div>
+
   <div class="container">
     <a class="logo-link" href="https://infopocos.ti" target="_blank">
       <img src="logoti.png" alt="Infopoços TI" class="logo-img" />
