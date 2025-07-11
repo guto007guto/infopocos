@@ -1,29 +1,153 @@
-<style>
-  ...
-  .card {
-    background-color: transparent; /* Alterado de #1c1c1c */
-    border-radius: 10px;
-    padding: 20px;
-    width: 260px;
-    text-align: center;
-    box-shadow: none; /* Removido sombreamento */
-    transition: transform 0.3s ease;
-    border: 2px solid rgba(255,255,255,0.2); /* borda leve opcional */
-  }
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infopoços Games – Grupo INFOPOÇOS</title>
+  <style>
+    body {
+      margin: 0;
+      padding-bottom: 60px; /* espaço pro rodapé fixo */
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+    }
 
-  .card:hover {
-    transform: scale(1.05);
-  }
+    .header {
+      text-align: center;
+      padding: 30px 20px;
+    }
 
-  footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #111;
-    text-align: center;
-    padding: 12px;
-    font-size: 14px;
-    color: #ccc;
-    box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
-  }
-</style>
+    .header h1 {
+      color: #00e6e6;
+      font-size: 32px;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .logo {
+      width: 180px;
+      height: auto;
+      display: block;
+      margin: 20px auto 10px;
+    }
+
+    .links-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: transparent; /* removido fundo preto */
+      border-radius: 10px;
+      padding: 20px;
+      width: 260px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.2); /* borda leve e transparente */
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #00ffff;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+      color: #00ffff;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #111;
+      text-align: center;
+      padding: 12px;
+      font-size: 14px;
+      color: #ccc;
+      box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
+    }
+
+    .whatsapp-container {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .whatsapp-label {
+      background-color: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .whatsapp-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 2px 2px 3px #999;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .whatsapp-img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="Logogames.png" alt="Infopoços Games" class="logo">
+    <h1>Infopoços Games</h1>
+  </div>
+
+  <section class="links-section">
+    <div class="card">
+      <h3>🏦 Loja Online</h3>
+      <a href="https://infopocos.mercadoshops.com.br/" target="_blank">Visite nossa loja</a>
+    </div>
+    <div class="card">
+      <h3>👥 Grupo WhatsApp</h3>
+      <a href="https://chat.whatsapp.com/GASNa8pYl4JGpOVtiZrrPV" target="_blank">Entrar no grupo</a>
+    </div>
+    <div class="card">
+      <h3>🎥 Canal no YouTube</h3>
+      <a href="https://www.youtube.com/@INFOPOCOSGames" target="_blank">Acessar o canal</a>
+    </div>
+    <div class="card">
+      <h3>🚚 Mercado Livre</h3>
+      <a href="https://www.mercadolivre.com.br/pagina/infopocos" target="_blank">Ver ofertas</a>
+    </div>
+  </section>
+
+  <!-- Botão WhatsApp -->
+  <div class="whatsapp-container">
+    <div class="whatsapp-label">Atendimento</div>
+    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
+      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
+    </a>
+  </div>
+
+  <footer>
+    Contato: infopocosti@gmail.com
+  </footer>
+</body>
+</html>
