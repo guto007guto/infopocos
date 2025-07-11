@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grupo INFOPOÇOS</title>
+  <title>Grupo INFOPOÇOS – Soluções em TI & Games</title>
   <style>
     body {
       margin: 0;
@@ -27,9 +27,13 @@
     .logo-link {
       flex: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-decoration: none;
+      color: white;
       transition: transform 0.3s ease;
+      position: relative;
     }
 
     .logo-link:hover {
@@ -43,6 +47,18 @@
       background: transparent;
     }
 
+    .arrow {
+      font-size: 20px;
+      margin-top: 10px;
+      animation: bounce 1.5s infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
     footer {
       background: #111;
       text-align: center;
@@ -50,20 +66,49 @@
       font-size: 14px;
       margin-top: auto;
     }
+
+    /* WhatsApp floating button */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 3px #999;
+      z-index: 100;
+    }
+
+    .whatsapp-float i {
+      margin-top: 15px;
+    }
   </style>
+  <!-- Link do ícone do WhatsApp (Font Awesome CDN) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="container">
     <a class="logo-link" href="https://infopocos.ti" target="_blank">
       <img src="logoti.png" alt="Infopoços TI" class="logo-img" />
+      <div class="arrow">⬅ Acessar TI</div>
     </a>
     <a class="logo-link" href="https://infopocos.game" target="_blank">
       <img src="Logogames.png" alt="Infopoços Games" class="logo-img" />
+      <div class="arrow">Acessar Games ➞</div>
     </a>
   </div>
 
   <footer>
-    <p>Contato: contato@infopocos.ti | games@infopocos.game | WhatsApp disponível</p>
+    <p>Contato: contato@infopocos.ti | games@infopocos.game</p>
   </footer>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 </body>
 </html>
