@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INFOPOÇOS TI</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>INFOPOSTAI - Soluções em TI</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #222;
+      background-color: #1e1e1e;
       color: #fff;
     }
 
@@ -21,43 +21,55 @@
       color: #000;
     }
 
-    section {
+    .section {
       padding: 30px;
     }
 
-    h2 {
+    .section h2 {
       color: #00e6e6;
-      margin-bottom: 20px;
     }
 
     ul {
-      list-style: none;
-      padding-left: 0;
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li {
+      padding: 5px 0;
     }
 
     ul li::before {
-      content: "\2713\0020";
+      content: "✔ ";
       color: #00e6e6;
     }
 
     .clients {
       display: flex;
-      gap: 30px;
+      justify-content: space-around;
+      flex-wrap: wrap;
       margin-top: 20px;
     }
 
     .client {
       text-align: center;
+      margin: 15px;
     }
 
     .client img {
-      width: 120px;
+      width: 140px;
       height: auto;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      background: #fff;
     }
 
-    /* WhatsApp */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
     .whatsapp-container {
       position: fixed;
       bottom: 20px;
@@ -91,9 +103,9 @@
   </style>
 </head>
 <body>
-  <header>INFOPOÇOS TI</header>
+  <header>INFOPOSTAI - Soluções em TI</header>
 
-  <section>
+  <div class="section">
     <h2>Nossas Especialidades</h2>
     <ul>
       <li>Infraestrutura de Redes (cabeada e Wi-Fi)</li>
@@ -103,27 +115,30 @@
       <li>Desenvolvimento de sistemas sob demanda</li>
       <li>Parcerias em soluções web e apps</li>
     </ul>
-  </section>
+  </div>
 
-  <section>
+  <div class="section">
     <h2>Nossos Clientes</h2>
     <div class="clients">
       <div class="client">
-        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063539362383" alt="Paim 1">
-        <p>Paim 1</p>
+        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063539362383" alt="Pain 1">
+        <div>Pain 1</div>
       </div>
       <div class="client">
-        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100064095243103" alt="Paim 2">
-        <p>Paim 2</p>
+        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100064095243103" alt="Pain 2">
+        <div>Pain 2</div>
       </div>
       <div class="client">
-        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1314830062235726" alt="Paim 3">
-        <p>Paim 3</p>
+        <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1314830062235726" alt="Pain 3">
+        <div>Pain 3</div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- WhatsApp com imagem personalizada -->
+  <footer>
+    <p>Contato: contato@infopocos.ti</p>
+  </footer>
+
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
