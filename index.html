@@ -78,7 +78,7 @@
       margin-top: auto;
     }
 
-    /* Balão flutuante do WhatsApp com texto */
+    /* Botão flutuante com imagem personalizada */
     .whatsapp-container {
       position: fixed;
       bottom: 20px;
@@ -97,31 +97,19 @@
       text-shadow: 1px 1px 2px #000;
     }
 
-    .whatsapp-float {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .whatsapp-img {
       width: 60px;
       height: 60px;
-      background-color: #25d366;
-      color: #fff;
       border-radius: 50%;
-      font-size: 28px;
       box-shadow: 2px 2px 3px #999;
-      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    .whatsapp-float:hover {
-      transform: scale(1.05);
-    }
-
-    .whatsapp-float i {
-      pointer-events: none;
+    .whatsapp-img:hover {
+      transform: scale(1.1);
     }
   </style>
-
-  <!-- Font Awesome (ícone do WhatsApp) -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="title">Grupo INFOPOÇOS – Soluções em TI & Games</div>
@@ -141,11 +129,11 @@
     <p>Contato: contato@infopocos.ti | games@infopocos.game</p>
   </footer>
 
-  <!-- Botão flutuante do WhatsApp com título "Atendimento" -->
+  <!-- WhatsApp com imagem personalizada -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
-    <a href="https://wa.me/5535992598939" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
-      <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
+      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
     </a>
   </div>
 </body>
