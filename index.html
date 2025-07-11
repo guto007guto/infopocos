@@ -20,29 +20,32 @@
       text-align: center;
       font-size: 32px;
       font-weight: bold;
-      padding: 30px 0 0;
+      padding: 20px 0 10px;
       color: #00e6e6;
       text-shadow: 1px 1px 3px #000;
     }
 
     .container {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 30px 60px 60px;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 10px 20px 30px;
+      gap: 30px;
+      flex-wrap: wrap;
       flex-grow: 1;
     }
 
     .logo-link {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      width: 280px;
+      background-color: transparent;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
       text-decoration: none;
       color: white;
       transition: transform 0.3s ease;
-      position: relative;
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
 
     .logo-link:hover {
@@ -50,10 +53,10 @@
     }
 
     .logo-img {
-      max-width: 300px;
-      width: 100%;
+      max-width: 100%;
       height: auto;
       background: transparent;
+      margin-bottom: 10px;
     }
 
     .arrow {
@@ -73,9 +76,11 @@
     footer {
       background: #111;
       text-align: center;
-      padding: 15px;
+      padding: 12px;
       font-size: 14px;
       margin-top: auto;
+      color: #ccc;
+      box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
     }
 
     .whatsapp-container {
@@ -125,9 +130,10 @@
   </div>
 
   <footer>
-    <p>Contato: infopocosti@gmail.com</p>
+    Contato: infopocosti@gmail.com
   </footer>
 
+  <!-- WhatsApp com imagem personalizada -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
