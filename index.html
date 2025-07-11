@@ -28,23 +28,26 @@
     .container {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding: 30px 80px;
+      align-items: center;
+      padding: 30px 60px 60px;
       flex-grow: 1;
-      flex-wrap: wrap;
     }
 
     .logo-link {
-      width: 280px;
-      background-color: transparent;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
+      flex: 1;
+      margin: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-decoration: none;
       color: white;
       transition: transform 0.3s ease;
       border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      max-width: 300px;
     }
 
     .logo-link:hover {
@@ -75,7 +78,7 @@
     footer {
       background: #111;
       text-align: center;
-      padding: 12px;
+      padding: 15px;
       font-size: 14px;
       margin-top: auto;
       color: #ccc;
@@ -116,9 +119,12 @@
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
-        align-items: center;
         gap: 20px;
         padding: 20px;
+      }
+
+      .logo-link {
+        margin: 10px 0;
       }
     }
   </style>
