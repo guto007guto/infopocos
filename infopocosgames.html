@@ -28,14 +28,25 @@
     }
 
     .logo-container {
-      text-align: center;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      width: 260px;
+      margin: 10px auto 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover {
+      transform: scale(1.05);
     }
 
     .logo {
       width: 160px;
       height: auto;
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
     }
 
     .links-section {
@@ -47,7 +58,7 @@
     }
 
     .card {
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.12);
       border-radius: 12px;
       padding: 20px 20px 10px;
       width: 260px;
@@ -133,9 +144,11 @@
     <a href="index.html">Infopoços Games</a>
   </div>
 
-  <div class="logo-container">
-    <img src="Logogames.png" alt="Infopoços Games" class="logo">
-  </div>
+  <a href="index.html">
+    <div class="logo-container">
+      <img src="Logogames.png" alt="Infopoços Games" class="logo">
+    </div>
+  </a>
 
   <section class="links-section">
     <div class="card">
@@ -170,5 +183,6 @@
   <footer>
     Contato: infopocosti@gmail.com
   </footer>
+
 </body>
 </html>
