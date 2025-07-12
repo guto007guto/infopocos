@@ -3,65 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Info3D – Impressão 3D Personalizada</title>
+  <title>Info3D – Impressão 3D | Grupo INFOPOÇOS</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding-bottom: 50px;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       font-family: Arial, sans-serif;
       color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
-    .title {
+    .header {
       text-align: center;
-      font-size: 32px;
-      font-weight: bold;
-      padding: 30px 20px 10px;
+      padding: 20px 10px 5px;
+    }
+
+    .header a {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+    }
+
+    .header h1 {
       color: #00e6e6;
+      font-size: 28px;
       text-shadow: 1px 1px 3px #000;
+      margin-bottom: 8px;
     }
 
     .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 10px;
+      width: 180px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
 
-    .logo-img {
-      max-width: 260px;
-      width: 100%;
+    .logo {
+      width: 130px;
       height: auto;
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    .content {
-      text-align: center;
-      padding: 30px 40px;
-      font-size: 18px;
-      line-height: 1.6;
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .conteudo {
       max-width: 800px;
       margin: 0 auto;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      padding: 20px;
+      text-align: left;
+    }
+
+    .conteudo h2 {
+      color: #00e6e6;
+      margin-top: 0;
+    }
+
+    .conteudo p {
+      line-height: 1.6;
     }
 
     footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
       background: #111;
       text-align: center;
-      padding: 15px;
-      font-size: 14px;
+      padding: 10px;
+      font-size: 13px;
       color: #ccc;
-      margin-top: auto;
+      box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
     }
 
     .whatsapp-container {
       position: fixed;
-      bottom: 20px;
+      bottom: 70px;
       right: 20px;
       text-align: center;
       z-index: 100;
@@ -71,15 +93,15 @@
       background-color: #111;
       color: #fff;
       font-size: 12px;
-      padding: 5px 10px;
+      padding: 4px 8px;
       border-radius: 8px 8px 0 0;
       font-weight: bold;
       text-shadow: 1px 1px 2px #000;
     }
 
     .whatsapp-img {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       box-shadow: 2px 2px 3px #999;
       cursor: pointer;
@@ -92,21 +114,23 @@
   </style>
 </head>
 <body>
-  <div class="title">Info3D – Impressão 3D Personalizada</div>
-
-  <div class="logo-container">
-    <img src="Logoinfo3d.png" alt="Info3D Logo" class="logo-img" />
+  <div class="header">
+    <a href="index.html">
+      <h1>Info3D – Impressão 3D</h1>
+    </a>
   </div>
 
-  <div class="content">
-    <p>Seja bem-vindo à <strong>Info3D</strong>, sua nova solução em impressão 3D profissional e personalizada.</p>
-    <p>Trabalhamos com projetos sob medida, prototipagem, modelagem e produção de peças em diversos materiais. Se você precisa de criatividade aliada à precisão, está no lugar certo.</p>
-    <p>Entre em contato e leve sua ideia para o mundo real.</p>
-  </div>
+  <a href="index.html">
+    <div class="logo-container">
+      <img src="Logoinfo3d.png" alt="Info3D" class="logo">
+    </div>
+  </a>
 
-  <footer>
-    <p>Contato: infopocosti@gmail.com</p>
-  </footer>
+  <section class="conteudo">
+    <h2>Sobre o Projeto Info3D</h2>
+    <p>O Info3D é uma iniciativa do Grupo Infopoços voltada para soluções de impressão 3D sob demanda. Criamos protótipos, peças técnicas, suportes personalizados, brindes, miniaturas e muito mais.</p>
+    <p>Estamos prontos para atender desde pequenos negócios até grandes demandas personalizadas com precisão, inovação e compromisso técnico.</p>
+  </section>
 
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
@@ -114,5 +138,9 @@
       <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
     </a>
   </div>
+
+  <footer>
+    Contato: infopocosti@gmail.com
+  </footer>
 </body>
 </html>
