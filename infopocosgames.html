@@ -90,6 +90,8 @@
       text-decoration: none;
       color: #ffffff;
       font-weight: bold;
+      display: inline-block;
+      margin-top: 5px;
     }
 
     .card a:hover {
@@ -143,39 +145,51 @@
 </head>
 <body>
 
+  <!-- Título como botão -->
   <div class="header">
     <a href="index.html">
       <h1>Infopoços Games</h1>
     </a>
   </div>
 
+  <!-- Logo com borda e botão -->
   <div class="logo-container" onclick="window.location.href='index.html'">
     <img src="Logogames.png" alt="Infopoços Games" class="logo">
   </div>
 
+  <!-- Links principais -->
   <section class="links-section">
     <div class="card">
-      <img src="LogoMercadoshops.png" alt="Loja MercadoShops">
-      <h3>🏬 Loja Online</h3>
-      <a href="https://infopocos.mercadoshops.com.br/" target="_blank">Visite nossa loja</a>
+      <a href="https://infopocos.mercadoshops.com.br/" target="_blank">
+        <img src="LogoMercadoshops.png" alt="Loja MercadoShops">
+        <h3>🏬 Loja Online</h3>
+        <span>Visite nossa loja</span>
+      </a>
     </div>
     <div class="card">
-      <img src="LogoGrupowhats.png" alt="Grupo WhatsApp">
-      <h3>👥 Grupo WhatsApp</h3>
-      <a href="https://chat.whatsapp.com/GASNa8pYl4JGpOVtiZrrPV" target="_blank">Entrar no grupo</a>
+      <a href="https://chat.whatsapp.com/GASNa8pYl4JGpOVtiZrrPV" target="_blank">
+        <img src="LogoGrupowhats.png" alt="Grupo WhatsApp">
+        <h3>👥 Grupo WhatsApp</h3>
+        <span>Entrar no grupo</span>
+      </a>
     </div>
     <div class="card">
-      <img src="LogoYoutube.png" alt="Canal YouTube">
-      <h3>🎥 Canal no YouTube</h3>
-      <a href="https://www.youtube.com/@INFOPOCOSGames" target="_blank">Acessar o canal</a>
+      <a href="https://www.youtube.com/@INFOPOCOSGames" target="_blank">
+        <img src="LogoYoutube.png" alt="Canal YouTube">
+        <h3>🎥 Canal no YouTube</h3>
+        <span>Acessar o canal</span>
+      </a>
     </div>
     <div class="card">
-      <img src="LogoMercadolivre.png" alt="Mercado Livre">
-      <h3>🚚 Mercado Livre</h3>
-      <a href="https://www.mercadolivre.com.br/pagina/infopocos" target="_blank">Ver ofertas</a>
+      <a href="https://www.mercadolivre.com.br/pagina/infopocos" target="_blank">
+        <img src="LogoMercadolivre.png" alt="Mercado Livre">
+        <h3>🚚 Mercado Livre</h3>
+        <span>Ver ofertas</span>
+      </a>
     </div>
   </section>
 
+  <!-- WhatsApp flutuante -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
