@@ -18,23 +18,22 @@
       padding: 30px 20px 10px;
     }
 
-    .header a {
-      text-decoration: none;
-      color: #00ffff;
+    .header h1 {
+      color: #00e6e6;
       font-size: 32px;
-      font-weight: bold;
       text-shadow: 1px 1px 3px #000;
-      display: inline-block;
+      margin-bottom: 10px;
     }
 
     .logo-container {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.12);
       border-radius: 12px;
       padding: 20px;
       width: 260px;
-      margin: 10px auto 20px;
+      margin: 0 auto;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .logo-container:hover {
@@ -42,11 +41,10 @@
     }
 
     .logo {
-      width: 160px;
+      width: 180px;
       height: auto;
       display: block;
       margin: 0 auto;
-      cursor: pointer;
     }
 
     .links-section {
@@ -54,18 +52,17 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
-      padding: 20px;
+      padding: 40px 20px 20px;
     }
 
     .card {
-      background-color: rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
-      padding: 20px 20px 10px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 20px;
       width: 260px;
       text-align: center;
       transition: transform 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.3);
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .card:hover {
@@ -73,7 +70,7 @@
     }
 
     .card img {
-      width: 100px;
+      width: 110px;
       height: auto;
       margin-bottom: 10px;
     }
@@ -139,16 +136,13 @@
   </style>
 </head>
 <body>
-
   <div class="header">
-    <a href="index.html">Infopoços Games</a>
+    <h1>Infopoços Games</h1>
   </div>
 
-  <a href="index.html">
-    <div class="logo-container">
-      <img src="Logogames.png" alt="Infopoços Games" class="logo">
-    </div>
-  </a>
+  <div class="logo-container" onclick="window.location.href='index.html'">
+    <img src="Logogames.png" alt="Infopoços Games" class="logo">
+  </div>
 
   <section class="links-section">
     <div class="card">
@@ -183,6 +177,5 @@
   <footer>
     Contato: infopocosti@gmail.com
   </footer>
-
 </body>
 </html>
