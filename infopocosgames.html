@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Infopoços TI – Grupo INFOPOÇOS</title>
+  <title>Infopoços Games – Grupo INFOPOÇOS</title>
   <style>
     body {
       margin: 0;
@@ -53,50 +53,42 @@
       cursor: pointer;
     }
 
-    .especialidades, .clientes {
-      padding: 10px 20px;
-    }
-
-    .especialidades h2, .clientes h2 {
-      color: #00e6e6;
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 0;
-    }
-
-    li::before {
-      content: "✔ ";
-      color: #00ff88;
-    }
-
-    .clientes-grid {
+    .links-section {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 10px;
       justify-content: center;
+      gap: 30px;
+      padding: 20px;
     }
 
-    .cliente {
-      text-align: center;
-    }
-
-    .cliente img {
-      width: 120px;
-      height: 120px;
+    .card {
+      background-color: transparent;
       border-radius: 10px;
-      object-fit: cover;
+      padding: 20px;
+      width: 260px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.2);
     }
 
-    .cliente p {
-      margin-top: 6px;
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #00ffff;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #ffffff;
       font-weight: bold;
-      font-size: 14px;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+      color: #00ffff;
     }
 
     footer {
@@ -105,8 +97,8 @@
       width: 100%;
       background: #111;
       text-align: center;
-      padding: 10px;
-      font-size: 13px;
+      padding: 12px;
+      font-size: 14px;
       color: #ccc;
       box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
     }
@@ -123,15 +115,15 @@
       background-color: #111;
       color: #fff;
       font-size: 12px;
-      padding: 4px 8px;
+      padding: 5px 10px;
       border-radius: 8px 8px 0 0;
       font-weight: bold;
       text-shadow: 1px 1px 2px #000;
     }
 
     .whatsapp-img {
-      width: 55px;
-      height: 55px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       box-shadow: 2px 2px 3px #999;
       cursor: pointer;
@@ -146,55 +138,35 @@
 <body>
   <div class="header">
     <a href="index.html">
-      <h1>Infopoços TI</h1>
+      <h1>Infopoços Games</h1>
     </a>
   </div>
 
   <a href="index.html">
     <div class="logo-container">
-      <img src="logoti.png" alt="Infopoços TI" class="logo">
+      <img src="Logogames.png" alt="Infopoços Games" class="logo">
     </div>
   </a>
 
-  <section class="especialidades">
-    <h2>Nossas Especialidades</h2>
-    <ul>
-      <li>Infraestrutura de Redes (cabeada e Wi-Fi)</li>
-      <li>Monitoramento de desempenho, uptime e hosts</li>
-      <li>Suporte e Manutenção de Servidores e Estações</li>
-      <li>Gerenciamento de TI para empresas</li>
-      <li>Desenvolvimento de sistemas sob demanda</li>
-      <li>Parcerias em soluções web e apps</li>
-    </ul>
-  </section>
-
-  <section class="clientes">
-    <h2>Nossos Clientes</h2>
-    <div class="clientes-grid">
-      <div class="cliente">
-        <img src="pain1img.png" alt="Pain 1">
-        <p>Pain 1</p>
-      </div>
-      <div class="cliente">
-        <img src="pain2img.png" alt="Pain 2">
-        <p>Pain 2</p>
-      </div>
-      <div class="cliente">
-        <img src="pain3img.jpg" alt="Pain 3">
-        <p>Pain 3</p>
-      </div>
-      <div class="cliente">
-        <img src="arcoiris1img.jpeg" alt="Arco-Íris 1">
-        <p>Arco-Íris 1</p>
-      </div>
-      <div class="cliente">
-        <img src="arcoiris2img.jpeg" alt="Arco-Íris 2">
-        <p>Arco-Íris 2</p>
-      </div>
+  <section class="links-section">
+    <div class="card">
+      <h3>🏦 Loja Online</h3>
+      <a href="https://infopocos.mercadoshops.com.br/" target="_blank">Visite nossa loja</a>
+    </div>
+    <div class="card">
+      <h3>👥 Grupo WhatsApp</h3>
+      <a href="https://chat.whatsapp.com/GASNa8pYl4JGpOVtiZrrPV" target="_blank">Entrar no grupo</a>
+    </div>
+    <div class="card">
+      <h3>🎥 Canal no YouTube</h3>
+      <a href="https://www.youtube.com/@INFOPOCOSGames" target="_blank">Acessar o canal</a>
+    </div>
+    <div class="card">
+      <h3>🚚 Mercado Livre</h3>
+      <a href="https://www.mercadolivre.com.br/pagina/infopocos" target="_blank">Ver ofertas</a>
     </div>
   </section>
 
-  <!-- Botão WhatsApp -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
