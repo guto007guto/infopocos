@@ -20,27 +20,29 @@
 
     .header a {
       text-decoration: none;
-      color: #00e6e6;
-      display: inline-block;
+      color: inherit;
     }
 
     .header h1 {
+      color: #00e6e6;
       font-size: 32px;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 10px;
+      cursor: pointer;
     }
 
     .logo-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      background-color: transparent;
+      padding: 10px;
+      width: 180px;
+      margin: 0 auto 20px;
     }
 
     .logo {
       width: 180px;
       height: auto;
       display: block;
+      margin: 0 auto;
       cursor: pointer;
     }
 
@@ -53,28 +55,21 @@
     }
 
     .card {
-      background-color: rgba(255, 255, 255, 0.08); /* Mais claro */
+      background-color: rgba(255, 255, 255, 0.07); /* mais suave */
       border-radius: 10px;
-      padding: 15px;
+      padding: 20px 20px 10px;
       width: 260px;
       text-align: center;
       transition: transform 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .card:hover {
       transform: scale(1.05);
     }
 
-    .card img {
-      width: 100px;
-      height: auto;
-      margin-bottom: 10px;
-    }
-
     .card h3 {
-      margin-bottom: 10px;
+      margin: 10px 0 5px;
       color: #00ffff;
     }
 
@@ -87,6 +82,12 @@
     .card a:hover {
       text-decoration: underline;
       color: #00ffff;
+    }
+
+    .card img {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
     }
 
     footer {
@@ -148,22 +149,22 @@
 
   <section class="links-section">
     <div class="card">
-      <img src="LogoMercadoshops.png" alt="Logo Mercado Shops">
-      <h3>🏦 Loja Online</h3>
+      <img src="LogoMercadoshops.png" alt="Loja MercadoShops">
+      <h3>🏬 Loja Online</h3>
       <a href="https://infopocos.mercadoshops.com.br/" target="_blank">Visite nossa loja</a>
     </div>
     <div class="card">
-      <img src="LogoGrupowhats.png" alt="Logo WhatsApp">
+      <img src="LogoGrupowhats.png" alt="Grupo WhatsApp">
       <h3>👥 Grupo WhatsApp</h3>
       <a href="https://chat.whatsapp.com/GASNa8pYl4JGpOVtiZrrPV" target="_blank">Entrar no grupo</a>
     </div>
     <div class="card">
-      <img src="LogoYoutube.png" alt="Logo YouTube">
+      <img src="LogoYoutube.png" alt="Canal YouTube">
       <h3>🎥 Canal no YouTube</h3>
       <a href="https://www.youtube.com/@INFOPOCOSGames" target="_blank">Acessar o canal</a>
     </div>
     <div class="card">
-      <img src="LogoMercadolivre.png" alt="Logo Mercado Livre">
+      <img src="LogoMercadolivre.png" alt="Mercado Livre">
       <h3>🚚 Mercado Livre</h3>
       <a href="https://www.mercadolivre.com.br/pagina/infopocos" target="_blank">Ver ofertas</a>
     </div>
