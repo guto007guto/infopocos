@@ -25,17 +25,25 @@
       margin-bottom: 10px;
     }
 
-    .logo-container {
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-link {
       background-color: rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       padding: 20px;
       width: 260px;
-      margin: 0 auto;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .logo-container:hover {
+    .logo-link:hover {
       transform: scale(1.05);
     }
 
@@ -43,8 +51,6 @@
       width: 180px;
       height: auto;
       display: block;
-      margin: 0 auto;
-      cursor: pointer;
     }
 
     .links-section {
@@ -134,11 +140,11 @@
     <h1>Infopoços Games</h1>
   </div>
 
-  <a href="index.html">
-    <div class="logo-container">
+  <div class="logo-wrapper">
+    <a href="index.html" class="logo-link">
       <img src="Logogames.png" alt="Infopoços Games" class="logo">
-    </div>
-  </a>
+    </a>
+  </div>
 
   <section class="links-section">
     <div class="card">
