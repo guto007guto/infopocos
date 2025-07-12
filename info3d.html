@@ -2,102 +2,111 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Info3D – Impressão 3D</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       font-family: Arial, sans-serif;
       color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
-    .title {
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      padding: 20px 10px 10px;
-      color: #00e6e6;
-      text-shadow: 1px 1px 3px #000;
-    }
-
-    .banner {
-      text-align: center;
-      background-color: #ff4444;
+    .aguarde-banner {
+      background-color: rgba(255, 0, 0, 0.95);
+      color: #fff;
+      padding: 16px 20px;
+      border-radius: 12px;
       font-weight: bold;
       font-size: 18px;
-      padding: 15px;
-      color: white;
-      box-shadow: 0 0 10px #000;
+      text-align: center;
+      text-shadow: 1px 1px 4px #000;
+      margin: 20px auto 0;
+      max-width: 280px;
+    }
+
+    .header {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .header h1 {
+      color: #00e6e6;
+      font-size: 24px;
+      text-shadow: 1px 1px 3px #000;
+      margin-bottom: 10px;
     }
 
     .logo-container {
-      display: flex;
-      justify-content: center;
-      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px;
+      width: 160px;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
-    .logo-img {
-      width: 160px;
-      background-color: rgba(255,255,255,0.08);
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    .logo {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     .content {
-      padding: 0 20px 40px;
-      max-width: 960px;
+      padding: 0 16px 40px;
+      max-width: 1024px;
       margin: 0 auto;
     }
 
     h2 {
       color: #00e6e6;
-      margin-top: 30px;
-      margin-bottom: 10px;
+      font-size: 18px;
+      margin-top: 24px;
     }
 
     p {
-      margin-bottom: 20px;
       line-height: 1.6;
+      font-size: 15px;
     }
 
-    .grid {
+    .modelos-grid {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
     }
 
-    .card {
+    .bloco {
       background-color: rgba(255, 255, 255, 0.08);
-      padding: 16px;
       border-radius: 12px;
-      width: 100%;
-      max-width: 260px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      padding: 16px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
     }
 
-    .card h3 {
+    .bloco h3 {
+      margin-top: 0;
+      font-size: 16px;
       color: #ffff66;
-      margin-bottom: 10px;
     }
 
-    .card p {
+    .bloco p {
       font-size: 14px;
+      margin: 0;
     }
 
     footer {
       background: #111;
       text-align: center;
-      padding: 15px;
-      font-size: 14px;
+      padding: 12px;
+      font-size: 13px;
       color: #ccc;
-      margin-top: auto;
+      box-shadow: 0 -1px 4px rgba(0,0,0,0.4);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     .whatsapp-container {
@@ -119,8 +128,8 @@
     }
 
     .whatsapp-img {
-      width: 60px;
-      height: 60px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       box-shadow: 2px 2px 3px #999;
       cursor: pointer;
@@ -130,17 +139,31 @@
     .whatsapp-img:hover {
       transform: scale(1.1);
     }
+
+    @media (min-width: 600px) {
+      .modelos-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .bloco {
+        width: calc(50% - 20px);
+      }
+    }
   </style>
 </head>
 <body>
   <a href="index.html">
-    <div class="banner">🚨 Em breve, aguarde! 🚨</div>
+    <div class="aguarde-banner">🚨 Em breve, aguarde! 🚨</div>
   </a>
 
   <a href="index.html">
-    <div class="title">Info3D – Impressão 3D</div>
+    <div class="header">
+      <h1>Info3D – Impressão 3D</h1>
+    </div>
     <div class="logo-container">
-      <img src="Logoinfo3d.png" alt="Info3D Logo" class="logo-img" />
+      <img src="Logoinfo3d.png" alt="Info3D Logo" class="logo">
     </div>
   </a>
 
@@ -155,22 +178,22 @@
     <h2>Guia de Modelos Impressos</h2>
     <p>Confira algumas ideias de aplicações que estaremos oferecendo:</p>
 
-    <div class="grid">
-      <div class="card">
+    <div class="modelos-grid">
+      <div class="bloco">
         <h3>🛠️ Peças Técnicas</h3>
-        <p>Engrenagens, suportes, conectores e moldes sob medida.</p>
+        <p>Engrenagens, suportes, conectores e moldes.</p>
       </div>
-      <div class="card">
-        <h3>🏱 Brindes & Personalizados</h3>
-        <p>Chaveiros, miniaturas, logotipos 3D e lembranças.</p>
+      <div class="bloco">
+        <h3>🎁 Brindes & Personalizados</h3>
+        <p>Chaveiros, miniaturas, logotipos em 3D e lembranças.</p>
       </div>
-      <div class="card">
+      <div class="bloco">
         <h3>🏠 Utilidades Domésticas</h3>
-        <p>Suportes para celular, organizadores e acessórios úteis.</p>
+        <p>Suportes para celular, organizadores, peças sob medida.</p>
       </div>
-      <div class="card">
+      <div class="bloco">
         <h3>🪴 Decoração & Vasos</h3>
-        <p>Vasos modernos, elementos decorativos e design criativo.</p>
+        <p>Materiais decorativos, vasos de plantas e design para ambientes.</p>
       </div>
     </div>
   </div>
