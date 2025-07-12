@@ -5,64 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Info3D – Impressão 3D</title>
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: white;
-      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    .title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      padding: 20px 10px 10px;
+      color: #00e6e6;
+      text-shadow: 1px 1px 3px #000;
     }
 
     .banner {
-      background-color: #ff4444;
-      color: white;
-      padding: 15px;
       text-align: center;
+      background-color: #ff4444;
       font-weight: bold;
       font-size: 18px;
+      padding: 15px;
+      color: white;
       box-shadow: 0 0 10px #000;
-    }
-
-    .header {
-      text-align: center;
-      padding: 40px 20px 20px;
-    }
-
-    .header h1 {
-      font-size: 28px;
-      color: #00e6e6;
-      text-shadow: 1px 1px 3px black;
     }
 
     .logo-container {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
+      margin: 20px auto;
     }
 
-    .logo-container img {
+    .logo-img {
       width: 160px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255,255,255,0.08);
       padding: 15px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
     .content {
+      padding: 0 20px 40px;
       max-width: 960px;
       margin: 0 auto;
-      padding: 20px;
     }
 
     h2 {
@@ -102,58 +92,55 @@
     }
 
     footer {
-      text-align: center;
       background: #111;
-      color: #ccc;
-      padding: 10px;
+      text-align: center;
+      padding: 15px;
       font-size: 14px;
-      margin-top: 40px;
+      color: #ccc;
+      margin-top: auto;
     }
 
-    .whatsapp-float {
+    .whatsapp-container {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 999;
+      text-align: center;
+      z-index: 100;
     }
 
-    .whatsapp-float img {
+    .whatsapp-label {
+      background-color: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .whatsapp-img {
       width: 60px;
       height: 60px;
+      border-radius: 50%;
+      box-shadow: 2px 2px 3px #999;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    @media (max-width: 600px) {
-      .header h1 {
-        font-size: 22px;
-      }
-
-      .logo-container img {
-        width: 130px;
-      }
-
-      .card {
-        max-width: 100%;
-      }
-
-      .banner {
-        font-size: 16px;
-        padding: 12px;
-      }
+    .whatsapp-img:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
-
   <a href="index.html">
     <div class="banner">🚨 Em breve, aguarde! 🚨</div>
   </a>
 
   <a href="index.html">
-    <div class="header">
-      <h1>Info3D – Impressão 3D</h1>
-      <div class="logo-container">
-        <img src="Logoinfo3d.png" alt="Logo Info3D">
-      </div>
+    <div class="title">Info3D – Impressão 3D</div>
+    <div class="logo-container">
+      <img src="Logoinfo3d.png" alt="Info3D Logo" class="logo-img" />
     </div>
   </a>
 
@@ -174,7 +161,7 @@
         <p>Engrenagens, suportes, conectores e moldes sob medida.</p>
       </div>
       <div class="card">
-        <h3>🎁 Brindes & Personalizados</h3>
+        <h3>🏱 Brindes & Personalizados</h3>
         <p>Chaveiros, miniaturas, logotipos 3D e lembranças.</p>
       </div>
       <div class="card">
@@ -192,9 +179,11 @@
     Contato: infopocosti@gmail.com
   </footer>
 
-  <a class="whatsapp-float" href="https://wa.me/5500000000000" target="_blank">
-    <img src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="WhatsApp">
-  </a>
-
+  <div class="whatsapp-container">
+    <div class="whatsapp-label">Atendimento</div>
+    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
+      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
+    </a>
+  </div>
 </body>
 </html>
