@@ -22,11 +22,10 @@
       padding: 20px 30px;
       border-radius: 12px;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 28px;
       text-shadow: 2px 2px 6px #000;
       z-index: 1000;
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-      text-align: center;
     }
 
     .header {
@@ -36,7 +35,7 @@
 
     .header h1 {
       color: #00e6e6;
-      font-size: 28px;
+      font-size: 30px;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 10px;
     }
@@ -82,28 +81,31 @@
     .modelos-grid {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
       margin-top: 20px;
-      justify-content: center;
     }
 
     .bloco {
       background-color: rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       padding: 16px;
-      flex: 1 1 280px;
+      width: 100%;
       max-width: 300px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      flex: 1 1 100%;
     }
 
-    .bloco h3 {
-      margin-top: 0;
-      font-size: 17px;
-      color: #ffff66;
+    @media (min-width: 600px) {
+      .bloco {
+        flex: 1 1 calc(50% - 20px);
+      }
     }
 
-    .bloco p {
-      font-size: 14px;
+    @media (min-width: 900px) {
+      .bloco {
+        flex: 1 1 calc(25% - 20px);
+      }
     }
 
     footer {
@@ -150,22 +152,6 @@
     .whatsapp-img:hover {
       transform: scale(1.1);
     }
-
-    @media (max-width: 600px) {
-      .logo-container {
-        width: 180px;
-        padding: 15px;
-      }
-
-      .logo {
-        width: 130px;
-      }
-
-      .aguarde-banner {
-        font-size: 18px;
-        padding: 12px 20px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -199,7 +185,7 @@
         <p>Engrenagens, suportes, conectores e moldes.</p>
       </div>
       <div class="bloco">
-        <h3>🎁 Brindes & Personalizados</h3>
+        <h3>🏱 Brindes & Personalizados</h3>
         <p>Chaveiros, miniaturas, logotipos em 3D e lembranças.</p>
       </div>
       <div class="bloco">
@@ -207,12 +193,13 @@
         <p>Suportes para celular, organizadores, peças sob medida.</p>
       </div>
       <div class="bloco">
-        <h3>🪴 Decoração & Vasos</h3>
+        <h3>🩴 Decoração & Vasos</h3>
         <p>Materiais decorativos, vasos de plantas e design para ambientes.</p>
       </div>
     </div>
   </div>
 
+  <!-- Balão WhatsApp -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
