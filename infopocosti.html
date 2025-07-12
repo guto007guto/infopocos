@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      padding-bottom: 40px;
+      padding-bottom: 50px;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       font-family: Arial, sans-serif;
       color: #ffffff;
@@ -21,11 +21,12 @@
     .header a {
       text-decoration: none;
       color: inherit;
+      display: inline-block;
     }
 
     .header h1 {
       color: #00e6e6;
-      font-size: 26px;
+      font-size: 28px;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 8px;
     }
@@ -33,41 +34,43 @@
     .logo-container {
       background-color: rgba(255, 255, 255, 0.12);
       border-radius: 12px;
-      padding: 15px;
-      width: 220px;
-      margin: 0 auto 15px;
+      padding: 10px;
+      width: 180px;
+      margin: 0 auto;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .logo-container:hover {
-      transform: scale(1.05);
     }
 
     .logo {
-      width: 150px;
+      width: 130px;
       height: auto;
       display: block;
       margin: 0 auto;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    .section {
-      padding: 10px 15px;
-      text-align: center;
+    .logo:hover {
+      transform: scale(1.05);
     }
 
-    .section h2 {
+    .especialidades {
+      padding: 10px 30px 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .especialidades h2 {
       color: #00e6e6;
-      margin-bottom: 6px;
-      font-size: 18px;
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: left;
     }
 
     ul {
       list-style: none;
       padding-left: 0;
-      font-size: 14px;
-      margin: 0 auto;
-      max-width: 320px;
+      margin-top: 0;
+      text-align: left;
     }
 
     li::before {
@@ -75,12 +78,22 @@
       color: #00ff88;
     }
 
+    .clientes {
+      padding: 10px 20px 60px;
+    }
+
+    .clientes h2 {
+      color: #00e6e6;
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
     .clientes-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 15px;
       justify-content: center;
-      margin-top: 6px;
     }
 
     .cliente {
@@ -88,14 +101,14 @@
     }
 
     .cliente img {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       border-radius: 10px;
       object-fit: cover;
     }
 
     .cliente p {
-      margin-top: 4px;
+      margin-top: 6px;
       font-weight: bold;
       font-size: 13px;
     }
@@ -107,15 +120,15 @@
       background: #111;
       text-align: center;
       padding: 10px;
-      font-size: 12px;
+      font-size: 13px;
       color: #ccc;
       box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
     }
 
     .whatsapp-container {
       position: fixed;
-      bottom: 65px;
-      right: 15px;
+      bottom: 70px;
+      right: 20px;
       text-align: center;
       z-index: 100;
     }
@@ -123,7 +136,7 @@
     .whatsapp-label {
       background-color: #111;
       color: #fff;
-      font-size: 11px;
+      font-size: 12px;
       padding: 4px 8px;
       border-radius: 8px 8px 0 0;
       font-weight: bold;
@@ -157,7 +170,7 @@
     </div>
   </a>
 
-  <section class="section">
+  <section class="especialidades">
     <h2>Nossas Especialidades</h2>
     <ul>
       <li>Infraestrutura de Redes (cabeada e Wi-Fi)</li>
@@ -169,7 +182,7 @@
     </ul>
   </section>
 
-  <section class="section">
+  <section class="clientes">
     <h2>Nossos Clientes</h2>
     <div class="clientes-grid">
       <div class="cliente">
@@ -195,6 +208,7 @@
     </div>
   </section>
 
+  <!-- Botão WhatsApp -->
   <div class="whatsapp-container">
     <div class="whatsapp-label">Atendimento</div>
     <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
