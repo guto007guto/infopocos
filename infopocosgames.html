@@ -18,12 +18,6 @@
       padding: 30px 20px 10px;
     }
 
-    .header a {
-      text-decoration: none;
-      color: inherit;
-      display: inline-block;
-    }
-
     .header h1 {
       color: #00e6e6;
       font-size: 32px;
@@ -35,8 +29,8 @@
       background-color: rgba(255, 255, 255, 0.12);
       border-radius: 12px;
       padding: 20px;
-      width: 260px;
-      margin: 0 auto;
+      width: fit-content;
+      margin: 0 auto 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease;
     }
@@ -62,17 +56,17 @@
     }
 
     .card {
-      background-color: rgba(255, 255, 255, 0.06);
+      background-color: rgba(255, 255, 255, 0.08);
       border-radius: 10px;
-      padding: 12px;
+      padding: 20px;
       width: 260px;
       text-align: center;
       transition: transform 0.3s ease;
-      border: 2px solid rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.2);
     }
 
     .card:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
 
     .card img {
@@ -84,15 +78,12 @@
     .card h3 {
       margin-bottom: 10px;
       color: #00ffff;
-      font-size: 18px;
     }
 
     .card a {
       text-decoration: none;
       color: #ffffff;
       font-weight: bold;
-      display: inline-block;
-      margin-top: 5px;
     }
 
     .card a:hover {
@@ -146,38 +137,33 @@
 </head>
 <body>
   <div class="header">
+    <h1>Infopoços Games</h1>
+  </div>
+
+  <div class="logo-container">
     <a href="index.html">
-      <h1>Infopoços Games</h1>
+      <img src="Logogames.png" alt="Infopoços Games" class="logo">
     </a>
   </div>
 
-  <a href="index.html">
-    <div class="logo-container">
-      <img src="Logogames.png" alt="Infopoços Games" class="logo">
-    </div>
-  </a>
-
   <section class="links-section">
     <div class="card">
-      <img src="LogoMercadoshops.png" alt="Logo Mercado Shops">
+      <img src="LogoMercadoshops.png" alt="Mercado Shops">
       <h3>🏦 Loja Online</h3>
       <a href="https://infopocos.mercadoshops.com.br/" target="_blank">Visite nossa loja</a>
     </div>
-
     <div class="card">
-      <img src="LogoGrupowhats.png" alt="Logo WhatsApp">
+      <img src="LogoGrupowhats.png" alt="Grupo WhatsApp">
       <h3>👥 Grupo WhatsApp</h3>
       <a href="https://chat.whatsapp.com/GASNa8pYl4JGpOVtiZrrPV" target="_blank">Entrar no grupo</a>
     </div>
-
     <div class="card">
-      <img src="LogoYoutube.png" alt="Logo YouTube">
+      <img src="LogoYoutube.png" alt="YouTube">
       <h3>🎥 Canal no YouTube</h3>
       <a href="https://www.youtube.com/@INFOPOCOSGames" target="_blank">Acessar o canal</a>
     </div>
-
     <div class="card">
-      <img src="LogoMercadolivre.png" alt="Logo Mercado Livre">
+      <img src="LogoMercadolivre.png" alt="Mercado Livre">
       <h3>🚚 Mercado Livre</h3>
       <a href="https://www.mercadolivre.com.br/pagina/infopocos" target="_blank">Ver ofertas</a>
     </div>
