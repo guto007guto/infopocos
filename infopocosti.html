@@ -18,24 +18,26 @@
       padding: 20px 10px 10px;
     }
 
-    .header a {
-      text-decoration: none;
-      color: inherit;
-      display: inline-block;
-    }
-
     .header h1 {
       color: #00e6e6;
       font-size: 28px;
       text-shadow: 1px 1px 3px #000;
-      margin-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    .logo-box {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.25); /* Clareamento atrás da logo */
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
     .logo {
       width: 160px;
       height: auto;
       display: block;
-      margin: 0 auto 10px;
+      margin: 0 auto;
       cursor: pointer;
       transition: transform 0.2s ease;
     }
@@ -136,8 +138,8 @@
 </head>
 <body>
   <div class="header">
-    <a href="index.html">
-      <h1>Infopoços TI</h1>
+    <h1>Infopoços TI</h1>
+    <a href="index.html" class="logo-box">
       <img src="logoti.png" alt="Infopoços TI" class="logo">
     </a>
   </div>
