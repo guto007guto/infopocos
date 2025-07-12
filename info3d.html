@@ -22,7 +22,7 @@
       padding: 20px 30px;
       border-radius: 12px;
       font-weight: bold;
-      font-size: 28px;
+      font-size: 24px;
       text-shadow: 2px 2px 6px #000;
       z-index: 1000;
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
@@ -36,7 +36,7 @@
 
     .header h1 {
       color: #00e6e6;
-      font-size: 30px;
+      font-size: 28px;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 10px;
     }
@@ -73,12 +73,10 @@
       color: #00e6e6;
       font-size: 22px;
       margin-top: 30px;
-      text-align: center;
     }
 
     p {
       line-height: 1.6;
-      text-align: center;
     }
 
     .modelos-grid {
@@ -93,10 +91,9 @@
       background-color: rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       padding: 16px;
-      flex: 1 1 220px;
-      max-width: 280px;
+      flex: 1 1 280px;
+      max-width: 300px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      text-align: center;
     }
 
     .bloco h3 {
@@ -123,27 +120,50 @@
       color: inherit;
     }
 
+    .whatsapp-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1001;
+      text-align: center;
+    }
+
+    .whatsapp-label {
+      background-color: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .whatsapp-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 2px 2px 3px #999;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .whatsapp-img:hover {
+      transform: scale(1.1);
+    }
+
     @media (max-width: 600px) {
-      .aguarde-banner {
-        font-size: 20px;
-        padding: 12px 20px;
-      }
-
-      .header h1 {
-        font-size: 24px;
-      }
-
       .logo-container {
         width: 180px;
         padding: 15px;
       }
 
       .logo {
-        width: 120px;
+        width: 130px;
       }
 
-      .bloco {
-        max-width: 90%;
+      .aguarde-banner {
+        font-size: 18px;
+        padding: 12px 20px;
       }
     }
   </style>
@@ -191,6 +211,13 @@
         <p>Materiais decorativos, vasos de plantas e design para ambientes.</p>
       </div>
     </div>
+  </div>
+
+  <div class="whatsapp-container">
+    <div class="whatsapp-label">Atendimento</div>
+    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
+      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
+    </a>
   </div>
 
   <footer>
