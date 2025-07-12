@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Info3D – Impressão 3D</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       font-family: Arial, sans-serif;
       color: #ffffff;
+      overflow-x: hidden;
     }
 
     .aguarde-banner {
@@ -22,10 +28,11 @@
       padding: 20px 30px;
       border-radius: 12px;
       font-weight: bold;
-      font-size: 28px;
+      font-size: 20px;
       text-shadow: 2px 2px 6px #000;
       z-index: 1000;
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+      text-align: center;
     }
 
     .header {
@@ -35,7 +42,7 @@
 
     .header h1 {
       color: #00e6e6;
-      font-size: 30px;
+      font-size: 28px;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 10px;
     }
@@ -76,6 +83,7 @@
 
     p {
       line-height: 1.6;
+      font-size: 15px;
     }
 
     .modelos-grid {
@@ -91,21 +99,18 @@
       border-radius: 12px;
       padding: 16px;
       width: 100%;
-      max-width: 300px;
+      max-width: 280px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      flex: 1 1 100%;
     }
 
-    @media (min-width: 600px) {
-      .bloco {
-        flex: 1 1 calc(50% - 20px);
-      }
+    .bloco h3 {
+      margin-top: 0;
+      font-size: 17px;
+      color: #ffff66;
     }
 
-    @media (min-width: 900px) {
-      .bloco {
-        flex: 1 1 calc(25% - 20px);
-      }
+    .bloco p {
+      font-size: 14px;
     }
 
     footer {
@@ -122,39 +127,41 @@
       color: inherit;
     }
 
-    .whatsapp-container {
+    /* Balão WhatsApp */
+    .whatsapp-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 1001;
-      text-align: center;
+      z-index: 999;
     }
 
-    .whatsapp-label {
-      background-color: #111;
-      color: #fff;
-      font-size: 12px;
-      padding: 5px 10px;
-      border-radius: 8px 8px 0 0;
-      font-weight: bold;
-      text-shadow: 1px 1px 2px #000;
-    }
-
-    .whatsapp-img {
+    .whatsapp-float img {
       width: 60px;
       height: 60px;
-      border-radius: 50%;
-      box-shadow: 2px 2px 3px #999;
-      cursor: pointer;
-      transition: transform 0.2s ease;
     }
 
-    .whatsapp-img:hover {
-      transform: scale(1.1);
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 22px;
+      }
+
+      .logo-container {
+        width: 180px;
+      }
+
+      .logo {
+        width: 120px;
+      }
+
+      .aguarde-banner {
+        font-size: 16px;
+        padding: 15px 20px;
+      }
     }
   </style>
 </head>
 <body>
+
   <a href="index.html">
     <div class="aguarde-banner">🚨 Em breve, aguarde! 🚨</div>
   </a>
@@ -185,7 +192,7 @@
         <p>Engrenagens, suportes, conectores e moldes.</p>
       </div>
       <div class="bloco">
-        <h3>🏱 Brindes & Personalizados</h3>
+        <h3>🎁 Brindes & Personalizados</h3>
         <p>Chaveiros, miniaturas, logotipos em 3D e lembranças.</p>
       </div>
       <div class="bloco">
@@ -193,22 +200,20 @@
         <p>Suportes para celular, organizadores, peças sob medida.</p>
       </div>
       <div class="bloco">
-        <h3>🩴 Decoração & Vasos</h3>
+        <h3>🪴 Decoração & Vasos</h3>
         <p>Materiais decorativos, vasos de plantas e design para ambientes.</p>
       </div>
     </div>
   </div>
 
-  <!-- Balão WhatsApp -->
-  <div class="whatsapp-container">
-    <div class="whatsapp-label">Atendimento</div>
-    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
-      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
-    </a>
-  </div>
-
   <footer>
     Contato: infopocosti@gmail.com
   </footer>
+
+  <!-- Balão WhatsApp -->
+  <a class="whatsapp-float" href="https://wa.me/5500000000000" target="_blank">
+    <img src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="WhatsApp">
+  </a>
+
 </body>
 </html>
