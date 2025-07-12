@@ -18,11 +18,18 @@
       padding: 30px 20px 10px;
     }
 
+    .header a {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+    }
+
     .header h1 {
       color: #00e6e6;
       font-size: 32px;
       text-shadow: 1px 1px 3px #000;
       margin-bottom: 10px;
+      cursor: pointer;
     }
 
     .logo-container {
@@ -56,13 +63,13 @@
     }
 
     .card {
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: rgba(255, 255, 255, 0.04); /* ← ainda mais suave */
       border-radius: 10px;
       padding: 20px;
       width: 260px;
       text-align: center;
       transition: transform 0.3s ease;
-      border: 2px solid rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.1);
     }
 
     .card:hover {
@@ -137,7 +144,9 @@
 </head>
 <body>
   <div class="header">
-    <h1>Infopoços Games</h1>
+    <a href="index.html">
+      <h1>Infopoços Games</h1>
+    </a>
   </div>
 
   <div class="logo-container">
