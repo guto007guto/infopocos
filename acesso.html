@@ -19,10 +19,7 @@
       width: 180px;
       margin: 0 auto 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      transition: transform 0.2s ease;
-    }
-    .logo-container:hover {
-      transform: scale(1.02);
+      cursor: pointer;
     }
     .logo {
       width: 130px;
@@ -136,6 +133,11 @@
           </div>
         `;
       }
+    }
+
+    // Limpa a URL após o login
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.pathname);
     }
   </script>
 
