@@ -19,7 +19,6 @@
       width: 180px;
       margin: 0 auto 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      cursor: pointer;
     }
     .logo {
       width: 130px;
@@ -116,10 +115,33 @@
             </ul>
           </div>
           <div class="admin-section">
-            <h3>Gestão de Usuários (em construção)</h3>
-            <p>Aqui você poderá adicionar, editar ou excluir usuários diretamente no código do arquivo <code>usuarios.js</code>.</p>
+            <h3>Gestão de Usuários</h3>
+            <p>Edite usuários abaixo. O novo conteúdo do <code>usuarios.js</code> será gerado automaticamente.</p>
+            <div id="editorUsuarios"></div>
+            <button onclick="gerarUsuariosJS()">Gerar novo usuarios.js</button>
+            <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
           </div>
         `;
+
+        let editorHTML = "";
+        for (const nome in usuarios) {
+          const { senha, pasta, tipo } = usuarios[nome];
+          editorHTML += `
+            <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+              <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
+              <label>Senha: <input class="input-senha" value="${senha}" /></label><br>
+              <label>Pasta: <input class="input-pasta" value="${pasta}" /></label><br>
+              <label>Tipo: 
+                <select class="input-tipo">
+                  <option value="cliente" ${tipo === "cliente" ? "selected" : ""}>cliente</option>
+                  <option value="admin" ${tipo === "admin" ? "selected" : ""}>admin</option>
+                </select>
+              </label>
+            </div>
+          `;
+        }
+        document.getElementById("editorUsuarios").innerHTML = editorHTML;
+
       } else {
         const pasta = dados.pasta;
         conteudo.innerHTML = `
@@ -135,9 +157,22 @@
       }
     }
 
-    // Limpa a URL após o login
-    if (window.history.replaceState) {
-      window.history.replaceState(null, null, window.location.pathname);
+    function gerarUsuariosJS() {
+      const divs = document.querySelectorAll(".usuario-edicao");
+      const usuariosAtualizados = [];
+
+      divs.forEach(div => {
+        const nome = div.querySelector(".input-nome").value.trim();
+        const senha = div.querySelector(".input-senha").value.trim();
+        const pasta = div.querySelector(".input-pasta").value.trim();
+        const tipo = div.querySelector(".input-tipo").value.trim();
+        if (nome && senha && pasta && tipo) {
+          usuariosAtualizados.push(`  "${nome}": { senha: "${senha}", pasta: "${pasta}", tipo: "${tipo}" }`);
+        }
+      });
+
+      const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
+      document.getElementById("codigoGerado").value = novoCodigo;
     }
   </script>
 
