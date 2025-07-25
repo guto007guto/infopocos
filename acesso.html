@@ -75,6 +75,9 @@
     #formNovoUsuario, #editorUsuarioSelecionado {
       display: none;
     }
+    form.upload-form {
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -99,6 +102,16 @@
     const userParam = params.get("user");
     const conteudo = document.getElementById("conteudo");
 
+    function uploadForm(pasta) {
+      return `
+        <form class='upload-form' action="upload.php" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="pasta" value="${pasta}" />
+          <input type="file" name="arquivo" required />
+          <button type="submit">Enviar Arquivo</button>
+        </form>
+      `;
+    }
+
     if (!userParam || !usuarios[userParam]) {
       conteudo.innerHTML = "<p>Usuário inválido ou não autenticado.</p>";
     } else {
@@ -108,37 +121,19 @@
         conteudo.innerHTML = `
           <h3>Bem-vindo, administrador!</h3>
           <div class="admin-section">
-            <h3>Gestão de Usuários</h3>
-            <label for="selecaoUsuario">Selecione o usuário:</label>
-            <select id="selecaoUsuario" onchange="carregarEdicao()">
-              <option value="">-- Selecione --</option>
-            </select>
-            <div id="editorUsuarioSelecionado"></div>
-
-            <button onclick="document.getElementById('formNovoUsuario').style.display='block'">Criar novo usuário</button>
-            <div id="formNovoUsuario">
-              <input type="text" id="novoNome" placeholder="Nome do usuário">
-              <input type="text" id="novoSenha" placeholder="Senha">
-              <input type="text" id="novoPasta" placeholder="Nome da pasta">
-              <select id="novoTipo">
-                <option value="cliente">cliente</option>
-                <option value="admin">admin</option>
-              </select>
-              <button onclick="adicionarUsuario()">Adicionar Usuário</button>
-            </div>
-
-            <button onclick="atualizarTextareaUsuarios()">Gerar novo usuarios.js</button>
-            <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
+            <h3>Arquivos de todos os clientes</h3>
+            ${Object.entries(usuarios).filter(([k,v])=>v.tipo!=='admin').map(([k,v])=>`
+              <div class="pasta">
+                <h3>Pasta: ${v.pasta}</h3>
+                <ul>
+                  <li><span onclick=\"window.open('pastas/${v.pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
+                  <li><span onclick=\"window.open('pastas/${v.pasta}/ips.txt', '_blank')\">IPs</span></li>
+                </ul>
+                ${uploadForm(v.pasta)}
+              </div>
+            `).join('')}
           </div>
         `;
-
-        const selecao = document.getElementById("selecaoUsuario");
-        for (const nome in usuarios) {
-          const option = document.createElement("option");
-          option.value = nome;
-          option.text = nome;
-          selecao.appendChild(option);
-        }
       } else {
         const pasta = dados.pasta;
         conteudo.innerHTML = `
@@ -149,68 +144,9 @@
               <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
               <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
             </ul>
+            ${uploadForm(pasta)}
           </div>
         `;
-      }
-    }
-
-    function carregarEdicao() {
-      const nome = document.getElementById("selecaoUsuario").value;
-      const editor = document.getElementById("editorUsuarioSelecionado");
-      if (!nome || !usuarios[nome]) {
-        editor.style.display = 'none';
-        return;
-      }
-      const dados = usuarios[nome];
-      editor.style.display = 'block';
-      editor.innerHTML = `
-        <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
-          <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
-          <label>Senha: <input class="input-senha" value="${dados.senha}" /></label><br>
-          <label>Pasta: <input class="input-pasta" value="${dados.pasta || ''}" /></label><br>
-          <label>Tipo:
-            <select class="input-tipo">
-              <option value="cliente" ${dados.tipo === "cliente" ? "selected" : ""}>cliente</option>
-              <option value="admin" ${dados.tipo === "admin" ? "selected" : ""}>admin</option>
-            </select>
-          </label>
-        </div>
-      `;
-    }
-
-    function atualizarTextareaUsuarios() {
-      const usuariosAtualizados = Object.entries(usuarios).map(([nome, dados]) => {
-        return `  "${nome}": { senha: "${dados.senha}", pasta: "${dados.pasta}", tipo: "${dados.tipo}" }`;
-      });
-      const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
-      document.getElementById("codigoGerado").value = novoCodigo;
-    }
-
-    function adicionarUsuario() {
-      const nome = document.getElementById("novoNome").value.trim();
-      const senha = document.getElementById("novoSenha").value.trim();
-      const pasta = document.getElementById("novoPasta").value.trim();
-      const tipo = document.getElementById("novoTipo").value.trim();
-
-      if (nome && senha && pasta && tipo) {
-        usuarios[nome] = { senha, pasta, tipo };
-        alert(`Usuário '${nome}' adicionado! Clique em 'Gerar novo usuarios.js' para salvar.`);
-
-        const selecao = document.getElementById("selecaoUsuario");
-        const option = document.createElement("option");
-        option.value = nome;
-        option.text = nome;
-        selecao.appendChild(option);
-
-        atualizarTextareaUsuarios();
-
-        document.getElementById("formNovoUsuario").style.display = "none";
-        document.getElementById("novoNome").value = "";
-        document.getElementById("novoSenha").value = "";
-        document.getElementById("novoPasta").value = "";
-        document.getElementById("novoTipo").value = "cliente";
-      } else {
-        alert("Preencha todos os campos para adicionar o usuário.");
       }
     }
   </script>
