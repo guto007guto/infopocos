@@ -3,87 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login – Infopoços TI</title>
+  <title>Painel – Infopoços TI</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 20px;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       font-family: Arial, sans-serif;
       color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
     }
     .logo-container {
       background-color: rgba(255, 255, 255, 0.12);
       border-radius: 12px;
       padding: 10px;
       width: 180px;
-      margin-bottom: 30px;
+      margin: 0 auto 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      cursor: pointer;
     }
     .logo {
       width: 130px;
       display: block;
       margin: 0 auto;
     }
-    .login-box {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.4);
-      width: 280px;
+    h2 {
       text-align: center;
-    }
-    .login-box h2 {
-      margin-bottom: 20px;
       color: #00e6e6;
     }
-    input[type="text"], input[type="password"] {
-      width: 90%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 5px;
-      outline: none;
+    .painel {
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
     }
-    input[type="submit"] {
-      background-color: #00e6e6;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+    .pasta {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .pasta h3 {
+      margin: 0 0 8px;
+      color: #00ff88;
+    }
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    li span {
       cursor: pointer;
-      font-weight: bold;
+      color: #00e6e6;
+      text-decoration: underline;
     }
-    input[type="submit"]:hover {
-      background-color: #00bfbf;
+    .admin-section {
+      border-top: 1px solid #00e6e6;
+      margin-top: 30px;
+      padding-top: 20px;
     }
     footer {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
       text-align: center;
-      font-size: 12px;
+      margin-top: 40px;
       color: #ccc;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
-  <div class="logo-container">
+
+  <div class="logo-container" onclick="window.location.href='index.html'">
     <img src="logoti.png" alt="Infopoços TI" class="logo">
   </div>
 
-  <div class="login-box">
-    <h2>Acesso Restrito</h2>
-    <form onsubmit="return login()">
-      <input type="text" id="usuario" placeholder="Usuário" required />
-      <input type="password" id="senha" placeholder="Senha" required />
-      <input type="submit" value="Entrar" />
-    </form>
+  <h2>Painel de Acesso</h2>
+
+  <div class="painel" id="conteudo">
+    <!-- Conteúdo será inserido via JavaScript -->
   </div>
 
   <footer>
@@ -92,18 +87,52 @@
 
   <script src="js/usuarios.js"></script>
   <script>
-    function login() {
-      const user = document.getElementById("usuario").value.trim();
-      const senha = document.getElementById("senha").value.trim();
+    const params = new URLSearchParams(window.location.search);
+    const userParam = params.get("user");
+    const conteudo = document.getElementById("conteudo");
 
-      if (usuarios[user] && usuarios[user].senha === senha) {
-        window.location.href = "acesso.html?user=" + encodeURIComponent(user);
+    if (!userParam || !usuarios[userParam]) {
+      conteudo.innerHTML = "<p>Usuário inválido ou não autenticado.</p>";
+    } else {
+      const dados = usuarios[userParam];
+
+      if (dados.tipo === "admin") {
+        conteudo.innerHTML = `
+          <h3>Bem-vindo, administrador!</h3>
+          <div class="pasta">
+            <h3>Pasta: arco-iris</h3>
+            <ul>
+              <li><span onclick=\"window.open('pastas/arco-iris/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
+              <li><span onclick=\"window.open('pastas/arco-iris/ips.txt', '_blank')\">IPs</span></li>
+            </ul>
+          </div>
+          <div class="pasta">
+            <h3>Pasta: pain</h3>
+            <ul>
+              <li><span onclick=\"window.open('pastas/pain/relatorio.pdf', '_blank')\">Relatório</span></li>
+              <li><span onclick=\"window.open('pastas/pain/dns.txt', '_blank')\">DNS</span></li>
+            </ul>
+          </div>
+          <div class="admin-section">
+            <h3>Gestão de Usuários (em construção)</h3>
+            <p>Aqui você poderá adicionar, editar ou excluir usuários diretamente no código do arquivo <code>usuarios.js</code>.</p>
+          </div>
+        `;
       } else {
-        alert("Usuário ou senha inválidos.");
+        const pasta = dados.pasta;
+        conteudo.innerHTML = `
+          <h3>Bem-vindo, ${userParam}!</h3>
+          <div class="pasta">
+            <h3>Pasta: ${pasta}</h3>
+            <ul>
+              <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
+              <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
+            </ul>
+          </div>
+        `;
       }
-
-      return false;
     }
   </script>
+
 </body>
 </html>
