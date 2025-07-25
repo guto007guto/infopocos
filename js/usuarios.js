@@ -13,8 +13,7 @@ const usuarios = {
     senha: "pain123",
     tipo: "cliente",
     pasta: "pain"
-  }
-    },
+ },
   "personne": {
     senha: "personne123",
     tipo: "cliente",
