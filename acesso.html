@@ -72,9 +72,6 @@
       padding: 5px;
       width: 100%;
     }
-    #codigoGerado {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -110,34 +107,31 @@
           <div class="admin-section">
             <h3>Gestão de Usuários</h3>
             <label for="selecaoUsuario">Selecione o usuário:</label>
-            <select id="selecaoUsuario" onchange="carregarEdicao()">
-              <option value="">-- Selecione --</option>
-            </select>
+            <select id="selecaoUsuario" onchange="carregarEdicao()"></select>
             <div id="editorUsuarioSelecionado"></div>
 
-            <button onclick="mostrarCriarUsuario()">Criar novo usuário</button>
-            <div id="formNovoUsuario" style="display:none; margin-top:10px;">
-              <input type="text" id="novoNome" placeholder="Nome do usuário">
-              <input type="text" id="novoSenha" placeholder="Senha">
-              <input type="text" id="novoPasta" placeholder="Nome da pasta">
-              <select id="novoTipo">
-                <option value="cliente">cliente</option>
-                <option value="admin">admin</option>
-              </select>
-              <button onclick="adicionarUsuario()">Adicionar Usuário</button>
-            </div>
-            <button onclick="gerarUsuariosJS()">Gerar novo usuarios.js</button>
+            <h4>Criar novo usuário</h4>
+            <input type="text" id="novoNome" placeholder="Nome do usuário">
+            <input type="text" id="novoSenha" placeholder="Senha">
+            <input type="text" id="novoPasta" placeholder="Nome da pasta">
+            <select id="novoTipo">
+              <option value="cliente">cliente</option>
+              <option value="admin">admin</option>
+            </select>
+            <button onclick="adicionarUsuario()">Adicionar Usuário</button>
             <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
           </div>
         `;
 
         const selecao = document.getElementById("selecaoUsuario");
+        selecao.innerHTML = '<option value="">-- Selecione --</option>';
         for (const nome in usuarios) {
           const option = document.createElement("option");
           option.value = nome;
           option.text = nome;
           selecao.appendChild(option);
         }
+        carregarEdicao();
       } else {
         const pasta = dados.pasta;
         conteudo.innerHTML = `
@@ -145,31 +139,27 @@
           <div class="pasta">
             <h3>Pasta: ${pasta}</h3>
             <ul>
-              <li><span onclick="window.open('pastas/${pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
-              <li><span onclick="window.open('pastas/${pasta}/ips.txt', '_blank')">IPs</span></li>
+              <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
+              <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
             </ul>
           </div>
         `;
       }
     }
 
-    function mostrarCriarUsuario() {
-      document.getElementById("formNovoUsuario").style.display = "block";
-    }
-
     function carregarEdicao() {
       const nome = document.getElementById("selecaoUsuario").value;
-      const dados = usuarios[nome];
       const editor = document.getElementById("editorUsuarioSelecionado");
       if (!nome) {
         editor.innerHTML = "";
         return;
       }
+      const dados = usuarios[nome];
       editor.innerHTML = `
         <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
           <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
           <label>Senha: <input class="input-senha" value="${dados.senha}" /></label><br>
-          <label>Pasta: <input class="input-pasta" value="${dados.pasta}" /></label><br>
+          <label>Pasta: <input class="input-pasta" value="${dados.pasta || ''}" /></label><br>
           <label>Tipo:
             <select class="input-tipo">
               <option value="cliente" ${dados.tipo === "cliente" ? "selected" : ""}>cliente</option>
@@ -180,23 +170,14 @@
       `;
     }
 
-    function gerarUsuariosJS() {
-      const inputs = document.querySelectorAll(".usuario-edicao");
-      const usuariosAtualizados = [];
-
-      inputs.forEach(div => {
-        const nome = div.querySelector(".input-nome").value.trim();
-        const senha = div.querySelector(".input-senha").value.trim();
-        const pasta = div.querySelector(".input-pasta").value.trim();
-        const tipo = div.querySelector(".input-tipo").value.trim();
-        if (nome && senha && pasta && tipo) {
-          usuariosAtualizados.push(`  "${nome}": { senha: "${senha}", pasta: "${pasta}", tipo: "${tipo}" }`);
-        }
+    function atualizarTextareaUsuarios() {
+      const usuariosAtualizados = Object.entries(usuarios).map(([nome, dados]) => {
+        return `  "${nome}": { senha: "${dados.senha}", pasta: "${dados.pasta}", tipo: "${dados.tipo}" }`;
       });
-
-      const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
+      const novoCodigo = `const usuarios = {
+${usuariosAtualizados.join(",\n")}
+};`;
       document.getElementById("codigoGerado").value = novoCodigo;
-      document.getElementById("codigoGerado").style.display = "block";
     }
 
     function adicionarUsuario() {
@@ -204,10 +185,23 @@
       const senha = document.getElementById("novoSenha").value.trim();
       const pasta = document.getElementById("novoPasta").value.trim();
       const tipo = document.getElementById("novoTipo").value.trim();
+
       if (nome && senha && pasta && tipo) {
         usuarios[nome] = { senha, pasta, tipo };
-        alert("Usuário adicionado com sucesso! Clique em 'Gerar novo usuarios.js' para salvar o novo conteúdo.");
-        location.reload();
+        alert("Usuário adicionado com sucesso! Conteúdo atualizado.");
+
+        const selecao = document.getElementById("selecaoUsuario");
+        const option = document.createElement("option");
+        option.value = nome;
+        option.text = nome;
+        selecao.appendChild(option);
+
+        atualizarTextareaUsuarios();
+
+        document.getElementById("novoNome").value = "";
+        document.getElementById("novoSenha").value = "";
+        document.getElementById("novoPasta").value = "";
+        document.getElementById("novoTipo").value = "cliente";
       } else {
         alert("Preencha todos os campos para adicionar o usuário.");
       }
