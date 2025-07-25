@@ -19,11 +19,19 @@
       width: 180px;
       margin: 0 auto 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      cursor: pointer;
     }
     .logo {
       width: 130px;
       display: block;
       margin: 0 auto;
+    }
+    .ip-info {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 13px;
+      color: #ccc;
     }
     h2 {
       text-align: center;
@@ -70,11 +78,11 @@
 </head>
 <body>
 
-  <a href="index.html" style="text-decoration: none;">
-    <div class="logo-container">
-      <img src="logoti.png" alt="Infopoços TI" class="logo">
-    </div>
-  </a>
+  <div class="logo-container" onclick="window.location.href='index.html'">
+    <img src="logoti.png" alt="Infopoços TI" class="logo">
+  </div>
+
+  <div class="ip-info" id="ipInfo">Detectando IP...</div>
 
   <h2>Painel de Acesso</h2>
 
@@ -92,6 +100,24 @@
     const userParam = params.get("user");
     const conteudo = document.getElementById("conteudo");
 
+    // Oculta os parâmetros da URL após carregar a página
+    if (window.history.replaceState) {
+      const cleanURL = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, cleanURL);
+    }
+
+    // Exibe IP do visitante
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('ipInfo').innerText = `Seu IP: ${data.ip}`;
+        if (userParam) {
+          const agora = new Date().toLocaleString();
+          const log = `Acesso de ${userParam} via IP ${data.ip} em ${agora}`;
+          console.log(log); // Apenas exibe no console (sem backend para salvar)
+        }
+      });
+
     if (!userParam || !usuarios[userParam]) {
       conteudo.innerHTML = "<p>Usuário inválido ou não autenticado.</p>";
     } else {
@@ -103,15 +129,15 @@
           <div class="pasta">
             <h3>Pasta: arco-iris</h3>
             <ul>
-              <li><span onclick="window.open('pastas/arco-iris/redbid.pdf', '_blank')">Projeto Redbid</span></li>
-              <li><span onclick="window.open('pastas/arco-iris/ips.txt', '_blank')">IPs</span></li>
+              <li><span onclick=\"window.open('pastas/arco-iris/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
+              <li><span onclick=\"window.open('pastas/arco-iris/ips.txt', '_blank')\">IPs</span></li>
             </ul>
           </div>
           <div class="pasta">
             <h3>Pasta: pain</h3>
             <ul>
-              <li><span onclick="window.open('pastas/pain/relatorio.pdf', '_blank')">Relatório</span></li>
-              <li><span onclick="window.open('pastas/pain/dns.txt', '_blank')">DNS</span></li>
+              <li><span onclick=\"window.open('pastas/pain/relatorio.pdf', '_blank')\">Relatório</span></li>
+              <li><span onclick=\"window.open('pastas/pain/dns.txt', '_blank')\">DNS</span></li>
             </ul>
           </div>
           <div class="admin-section">
@@ -149,8 +175,8 @@
           <div class="pasta">
             <h3>Pasta: ${pasta}</h3>
             <ul>
-              <li><span onclick="window.open('pastas/${pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
-              <li><span onclick="window.open('pastas/${pasta}/ips.txt', '_blank')">IPs</span></li>
+              <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
+              <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
             </ul>
           </div>
         `;
