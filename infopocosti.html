@@ -155,9 +155,33 @@
     .whatsapp-img:hover {
       transform: scale(1.1);
     }
+
+    /* Estilo do botão Acesso do Cliente */
+    .acesso-cliente {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(255,255,255,0.1);
+      color: #00e6e6;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      text-decoration: none;
+      z-index: 1000;
+      box-shadow: 1px 1px 3px #000;
+      transition: background-color 0.2s ease;
+    }
+
+    .acesso-cliente:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
   </style>
 </head>
 <body>
+
+  <!-- Botão de acesso ao cliente -->
+  <a href="login.html" class="acesso-cliente">Acesso do Cliente</a>
+
   <div class="header">
     <a href="index.html">
       <h1>Infopoços TI</h1>
