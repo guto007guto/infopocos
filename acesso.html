@@ -74,15 +74,30 @@
       color: #ccc;
       font-size: 12px;
     }
+    input, select {
+      margin: 4px 0;
+      padding: 4px;
+      border-radius: 4px;
+      border: none;
+    }
+    button {
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #00e6e6;
+      color: #000;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
+  <div class="ip-info" id="ip"></div>
+
   <div class="logo-container" onclick="window.location.href='index.html'">
     <img src="logoti.png" alt="Infopoços TI" class="logo">
   </div>
-
-  <div class="ip-info" id="ipInfo">Detectando IP...</div>
 
   <h2>Painel de Acesso</h2>
 
@@ -96,27 +111,19 @@
 
   <script src="js/usuarios.js"></script>
   <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("ip").textContent = `IP: ${data.ip}`;
+      });
+
+    if (window.location.search) {
+      history.replaceState({}, document.title, window.location.pathname);
+    }
+
     const params = new URLSearchParams(window.location.search);
     const userParam = params.get("user");
     const conteudo = document.getElementById("conteudo");
-
-    // Oculta os parâmetros da URL após carregar a página
-    if (window.history.replaceState) {
-      const cleanURL = window.location.origin + window.location.pathname;
-      window.history.replaceState({}, document.title, cleanURL);
-    }
-
-    // Exibe IP do visitante
-    fetch('https://api.ipify.org?format=json')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('ipInfo').innerText = `Seu IP: ${data.ip}`;
-        if (userParam) {
-          const agora = new Date().toLocaleString();
-          const log = `Acesso de ${userParam} via IP ${data.ip} em ${agora}`;
-          console.log(log); // Apenas exibe no console (sem backend para salvar)
-        }
-      });
 
     if (!userParam || !usuarios[userParam]) {
       conteudo.innerHTML = "<p>Usuário inválido ou não autenticado.</p>";
@@ -129,30 +136,42 @@
           <div class="pasta">
             <h3>Pasta: arco-iris</h3>
             <ul>
-              <li><span onclick=\"window.open('pastas/arco-iris/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
-              <li><span onclick=\"window.open('pastas/arco-iris/ips.txt', '_blank')\">IPs</span></li>
+              <li><span onclick="window.open('pastas/arco-iris/redbid.pdf', '_blank')">Projeto Redbid</span></li>
+              <li><span onclick="window.open('pastas/arco-iris/ips.txt', '_blank')">IPs</span></li>
             </ul>
           </div>
           <div class="pasta">
             <h3>Pasta: pain</h3>
             <ul>
-              <li><span onclick=\"window.open('pastas/pain/relatorio.pdf', '_blank')\">Relatório</span></li>
-              <li><span onclick=\"window.open('pastas/pain/dns.txt', '_blank')\">DNS</span></li>
+              <li><span onclick="window.open('pastas/pain/relatorio.pdf', '_blank')">Relatório</span></li>
+              <li><span onclick="window.open('pastas/pain/dns.txt', '_blank')">DNS</span></li>
             </ul>
           </div>
           <div class="admin-section">
             <h3>Gestão de Usuários</h3>
-            <p>Edite usuários abaixo. O novo conteúdo do <code>usuarios.js</code> será gerado automaticamente.</p>
+
+            <h4>Adicionar novo usuário</h4>
+            <div style="margin-bottom: 15px;">
+              <input type="text" id="novoNome" placeholder="Nome do usuário" />
+              <input type="text" id="novoSenha" placeholder="Senha" />
+              <input type="text" id="novoPasta" placeholder="Pasta" />
+              <select id="novoTipo">
+                <option value="cliente">cliente</option>
+                <option value="admin">admin</option>
+              </select>
+              <button onclick="adicionarUsuario()">Adicionar usuário</button>
+            </div>
+
             <div id="editorUsuarios"></div>
             <button onclick="gerarUsuariosJS()">Gerar novo usuarios.js</button>
             <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
           </div>
         `;
 
-        let editorHTML = "";
+        const editorDiv = document.getElementById("editorUsuarios");
         for (const nome in usuarios) {
           const { senha, pasta, tipo } = usuarios[nome];
-          editorHTML += `
+          editorDiv.innerHTML += `
             <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
               <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
               <label>Senha: <input class="input-senha" value="${senha}" /></label><br>
@@ -166,7 +185,6 @@
             </div>
           `;
         }
-        document.getElementById("editorUsuarios").innerHTML = editorHTML;
 
       } else {
         const pasta = dados.pasta;
@@ -175,8 +193,8 @@
           <div class="pasta">
             <h3>Pasta: ${pasta}</h3>
             <ul>
-              <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
-              <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
+              <li><span onclick="window.open('pastas/${pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
+              <li><span onclick="window.open('pastas/${pasta}/ips.txt', '_blank')">IPs</span></li>
             </ul>
           </div>
         `;
@@ -200,7 +218,34 @@
       const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
       document.getElementById("codigoGerado").value = novoCodigo;
     }
-  </script>
 
+    function adicionarUsuario() {
+      const nome = document.getElementById("novoNome").value.trim();
+      const senha = document.getElementById("novoSenha").value.trim();
+      const pasta = document.getElementById("novoPasta").value.trim();
+      const tipo = document.getElementById("novoTipo").value;
+
+      if (nome && senha && pasta) {
+        const editor = document.getElementById("editorUsuarios");
+        editor.innerHTML += `
+          <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+            <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
+            <label>Senha: <input class="input-senha" value="${senha}" /></label><br>
+            <label>Pasta: <input class="input-pasta" value="${pasta}" /></label><br>
+            <label>Tipo: 
+              <select class="input-tipo">
+                <option value="cliente" ${tipo === "cliente" ? "selected" : ""}>cliente</option>
+                <option value="admin" ${tipo === "admin" ? "selected" : ""}>admin</option>
+              </select>
+            </label>
+          </div>
+        `;
+        document.getElementById("novoNome").value = "";
+        document.getElementById("novoSenha").value = "";
+        document.getElementById("novoPasta").value = "";
+        document.getElementById("novoTipo").value = "cliente";
+      }
+    }
+  </script>
 </body>
 </html>
