@@ -72,7 +72,7 @@
       padding: 5px;
       width: 100%;
     }
-    .hidden {
+    #codigoGerado {
       display: none;
     }
   </style>
@@ -110,11 +110,13 @@
           <div class="admin-section">
             <h3>Gestão de Usuários</h3>
             <label for="selecaoUsuario">Selecione o usuário:</label>
-            <select id="selecaoUsuario" onchange="carregarEdicao()"></select>
-            <div id="editorUsuarioSelecionado" class="hidden"></div>
+            <select id="selecaoUsuario" onchange="carregarEdicao()">
+              <option value="">-- Selecione --</option>
+            </select>
+            <div id="editorUsuarioSelecionado"></div>
 
-            <button onclick="mostrarCriacaoUsuario()">Criar novo usuário</button>
-            <div id="formNovoUsuario" class="hidden">
+            <button onclick="mostrarCriarUsuario()">Criar novo usuário</button>
+            <div id="formNovoUsuario" style="display:none; margin-top:10px;">
               <input type="text" id="novoNome" placeholder="Nome do usuário">
               <input type="text" id="novoSenha" placeholder="Senha">
               <input type="text" id="novoPasta" placeholder="Nome da pasta">
@@ -124,7 +126,6 @@
               </select>
               <button onclick="adicionarUsuario()">Adicionar Usuário</button>
             </div>
-
             <button onclick="gerarUsuariosJS()">Gerar novo usuarios.js</button>
             <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
           </div>
@@ -144,24 +145,31 @@
           <div class="pasta">
             <h3>Pasta: ${pasta}</h3>
             <ul>
-              <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
-              <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
+              <li><span onclick="window.open('pastas/${pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
+              <li><span onclick="window.open('pastas/${pasta}/ips.txt', '_blank')">IPs</span></li>
             </ul>
           </div>
         `;
       }
     }
 
+    function mostrarCriarUsuario() {
+      document.getElementById("formNovoUsuario").style.display = "block";
+    }
+
     function carregarEdicao() {
       const nome = document.getElementById("selecaoUsuario").value;
       const dados = usuarios[nome];
       const editor = document.getElementById("editorUsuarioSelecionado");
-      editor.classList.remove("hidden");
+      if (!nome) {
+        editor.innerHTML = "";
+        return;
+      }
       editor.innerHTML = `
         <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
           <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
           <label>Senha: <input class="input-senha" value="${dados.senha}" /></label><br>
-          <label>Pasta: <input class="input-pasta" value="${dados.pasta || ''}" /></label><br>
+          <label>Pasta: <input class="input-pasta" value="${dados.pasta}" /></label><br>
           <label>Tipo:
             <select class="input-tipo">
               <option value="cliente" ${dados.tipo === "cliente" ? "selected" : ""}>cliente</option>
@@ -170,10 +178,6 @@
           </label>
         </div>
       `;
-    }
-
-    function mostrarCriacaoUsuario() {
-      document.getElementById("formNovoUsuario").classList.remove("hidden");
     }
 
     function gerarUsuariosJS() {
@@ -190,10 +194,9 @@
         }
       });
 
-      const novoCodigo = `const usuarios = {
-${usuariosAtualizados.join(",\n")}
-};`;
+      const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
       document.getElementById("codigoGerado").value = novoCodigo;
+      document.getElementById("codigoGerado").style.display = "block";
     }
 
     function adicionarUsuario() {
@@ -203,6 +206,7 @@ ${usuariosAtualizados.join(",\n")}
       const tipo = document.getElementById("novoTipo").value.trim();
       if (nome && senha && pasta && tipo) {
         usuarios[nome] = { senha, pasta, tipo };
+        alert("Usuário adicionado com sucesso! Clique em 'Gerar novo usuarios.js' para salvar o novo conteúdo.");
         location.reload();
       } else {
         alert("Preencha todos os campos para adicionar o usuário.");
