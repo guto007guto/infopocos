@@ -26,13 +26,6 @@
       display: block;
       margin: 0 auto;
     }
-    .ip-info {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 13px;
-      color: #ccc;
-    }
     h2 {
       text-align: center;
       color: #00e6e6;
@@ -74,26 +67,14 @@
       color: #ccc;
       font-size: 12px;
     }
-    input, select {
-      margin: 4px 0;
-      padding: 4px;
-      border-radius: 4px;
-      border: none;
-    }
-    button {
-      margin-top: 10px;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 5px;
-      background-color: #00e6e6;
-      color: #000;
-      cursor: pointer;
+    input, select, button {
+      margin: 5px 0;
+      padding: 5px;
+      width: 100%;
     }
   </style>
 </head>
 <body>
-
-  <div class="ip-info" id="ip"></div>
 
   <div class="logo-container" onclick="window.location.href='index.html'">
     <img src="logoti.png" alt="Infopoços TI" class="logo">
@@ -111,16 +92,6 @@
 
   <script src="js/usuarios.js"></script>
   <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("ip").textContent = `IP: ${data.ip}`;
-      });
-
-    if (window.location.search) {
-      history.replaceState({}, document.title, window.location.pathname);
-    }
-
     const params = new URLSearchParams(window.location.search);
     const userParam = params.get("user");
     const conteudo = document.getElementById("conteudo");
@@ -133,59 +104,34 @@
       if (dados.tipo === "admin") {
         conteudo.innerHTML = `
           <h3>Bem-vindo, administrador!</h3>
-          <div class="pasta">
-            <h3>Pasta: arco-iris</h3>
-            <ul>
-              <li><span onclick="window.open('pastas/arco-iris/redbid.pdf', '_blank')">Projeto Redbid</span></li>
-              <li><span onclick="window.open('pastas/arco-iris/ips.txt', '_blank')">IPs</span></li>
-            </ul>
-          </div>
-          <div class="pasta">
-            <h3>Pasta: pain</h3>
-            <ul>
-              <li><span onclick="window.open('pastas/pain/relatorio.pdf', '_blank')">Relatório</span></li>
-              <li><span onclick="window.open('pastas/pain/dns.txt', '_blank')">DNS</span></li>
-            </ul>
-          </div>
           <div class="admin-section">
             <h3>Gestão de Usuários</h3>
+            <label for="selecaoUsuario">Selecione o usuário:</label>
+            <select id="selecaoUsuario" onchange="carregarEdicao()"></select>
+            <div id="editorUsuarioSelecionado"></div>
 
-            <h4>Adicionar novo usuário</h4>
-            <div style="margin-bottom: 15px;">
-              <input type="text" id="novoNome" placeholder="Nome do usuário" />
-              <input type="text" id="novoSenha" placeholder="Senha" />
-              <input type="text" id="novoPasta" placeholder="Pasta" />
-              <select id="novoTipo">
-                <option value="cliente">cliente</option>
-                <option value="admin">admin</option>
-              </select>
-              <button onclick="adicionarUsuario()">Adicionar usuário</button>
-            </div>
-
-            <div id="editorUsuarios"></div>
+            <h4>Criar novo usuário</h4>
+            <input type="text" id="novoNome" placeholder="Nome do usuário">
+            <input type="text" id="novoSenha" placeholder="Senha">
+            <input type="text" id="novoPasta" placeholder="Nome da pasta">
+            <select id="novoTipo">
+              <option value="cliente">cliente</option>
+              <option value="admin">admin</option>
+            </select>
+            <button onclick="adicionarUsuario()">Adicionar Usuário</button>
             <button onclick="gerarUsuariosJS()">Gerar novo usuarios.js</button>
             <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
           </div>
         `;
 
-        const editorDiv = document.getElementById("editorUsuarios");
+        const selecao = document.getElementById("selecaoUsuario");
         for (const nome in usuarios) {
-          const { senha, pasta, tipo } = usuarios[nome];
-          editorDiv.innerHTML += `
-            <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
-              <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
-              <label>Senha: <input class="input-senha" value="${senha}" /></label><br>
-              <label>Pasta: <input class="input-pasta" value="${pasta}" /></label><br>
-              <label>Tipo: 
-                <select class="input-tipo">
-                  <option value="cliente" ${tipo === "cliente" ? "selected" : ""}>cliente</option>
-                  <option value="admin" ${tipo === "admin" ? "selected" : ""}>admin</option>
-                </select>
-              </label>
-            </div>
-          `;
+          const option = document.createElement("option");
+          option.value = nome;
+          option.text = nome;
+          selecao.appendChild(option);
         }
-
+        carregarEdicao();
       } else {
         const pasta = dados.pasta;
         conteudo.innerHTML = `
@@ -193,19 +139,38 @@
           <div class="pasta">
             <h3>Pasta: ${pasta}</h3>
             <ul>
-              <li><span onclick="window.open('pastas/${pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
-              <li><span onclick="window.open('pastas/${pasta}/ips.txt', '_blank')">IPs</span></li>
+              <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
+              <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
             </ul>
           </div>
         `;
       }
     }
 
+    function carregarEdicao() {
+      const nome = document.getElementById("selecaoUsuario").value;
+      const dados = usuarios[nome];
+      const editor = document.getElementById("editorUsuarioSelecionado");
+      editor.innerHTML = `
+        <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
+          <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
+          <label>Senha: <input class="input-senha" value="${dados.senha}" /></label><br>
+          <label>Pasta: <input class="input-pasta" value="${dados.pasta}" /></label><br>
+          <label>Tipo:
+            <select class="input-tipo">
+              <option value="cliente" ${dados.tipo === "cliente" ? "selected" : ""}>cliente</option>
+              <option value="admin" ${dados.tipo === "admin" ? "selected" : ""}>admin</option>
+            </select>
+          </label>
+        </div>
+      `;
+    }
+
     function gerarUsuariosJS() {
-      const divs = document.querySelectorAll(".usuario-edicao");
+      const inputs = document.querySelectorAll(".usuario-edicao");
       const usuariosAtualizados = [];
 
-      divs.forEach(div => {
+      inputs.forEach(div => {
         const nome = div.querySelector(".input-nome").value.trim();
         const senha = div.querySelector(".input-senha").value.trim();
         const pasta = div.querySelector(".input-pasta").value.trim();
@@ -215,7 +180,9 @@
         }
       });
 
-      const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
+      const novoCodigo = `const usuarios = {
+${usuariosAtualizados.join(",\n")}
+};`;
       document.getElementById("codigoGerado").value = novoCodigo;
     }
 
@@ -223,29 +190,15 @@
       const nome = document.getElementById("novoNome").value.trim();
       const senha = document.getElementById("novoSenha").value.trim();
       const pasta = document.getElementById("novoPasta").value.trim();
-      const tipo = document.getElementById("novoTipo").value;
-
-      if (nome && senha && pasta) {
-        const editor = document.getElementById("editorUsuarios");
-        editor.innerHTML += `
-          <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
-            <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
-            <label>Senha: <input class="input-senha" value="${senha}" /></label><br>
-            <label>Pasta: <input class="input-pasta" value="${pasta}" /></label><br>
-            <label>Tipo: 
-              <select class="input-tipo">
-                <option value="cliente" ${tipo === "cliente" ? "selected" : ""}>cliente</option>
-                <option value="admin" ${tipo === "admin" ? "selected" : ""}>admin</option>
-              </select>
-            </label>
-          </div>
-        `;
-        document.getElementById("novoNome").value = "";
-        document.getElementById("novoSenha").value = "";
-        document.getElementById("novoPasta").value = "";
-        document.getElementById("novoTipo").value = "cliente";
+      const tipo = document.getElementById("novoTipo").value.trim();
+      if (nome && senha && pasta && tipo) {
+        usuarios[nome] = { senha, pasta, tipo };
+        location.reload();
+      } else {
+        alert("Preencha todos os campos para adicionar o usuário.");
       }
     }
   </script>
+
 </body>
 </html>
