@@ -56,35 +56,14 @@
       color: #00e6e6;
       text-decoration: underline;
     }
-    .admin-section {
-      border-top: 1px solid #00e6e6;
-      margin-top: 30px;
-      padding-top: 20px;
-    }
     footer {
       text-align: center;
       margin-top: 40px;
       color: #ccc;
       font-size: 12px;
     }
-    input, select, button {
-      margin: 5px 0;
-      padding: 5px;
-      width: 100%;
-    }
-    #formNovoUsuario, #editorUsuarioSelecionado {
-      display: none;
-    }
     form.upload-form {
       margin-top: 10px;
-    }
-    .msg {
-      margin-top: 10px;
-      padding: 10px;
-      background-color: rgba(0, 255, 0, 0.2);
-      color: #0f0;
-      border-radius: 5px;
-      display: none;
     }
   </style>
 </head>
@@ -128,7 +107,7 @@
       if (dados.tipo === "admin") {
         conteudo.innerHTML = `
           <h3>Bem-vindo, administrador!</h3>
-          <div class="admin-section">
+          <div>
             <h3>Arquivos de todos os clientes</h3>
             ${Object.entries(usuarios).filter(([k,v])=>v.tipo!=='admin').map(([k,v])=>`
               <div class="pasta">
