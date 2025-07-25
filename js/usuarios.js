@@ -4,10 +4,10 @@ const usuarios = {
     senha: "admin123",
     tipo: "admin"
   },
-  "arco-iris": {
+  "arcoiris": {
     senha: "arco123",
     tipo: "cliente",
-    pasta: "arco-iris"
+    pasta: "arcoiris"
   },
   "pain": {
     senha: "pain123",
