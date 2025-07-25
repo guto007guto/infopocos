@@ -112,40 +112,12 @@
 
     function uploadForm(pasta) {
       return `
-        <form class='upload-form' onsubmit="return enviarArquivo(this, '${pasta}')">
+        <form class='upload-form' enctype="multipart/form-data" action="https://formspree.io/f/your-id" method="POST">
+          <input type="hidden" name="pasta" value="${pasta}" />
           <input type="file" name="arquivo" required />
           <button type="submit">Enviar Arquivo</button>
-          <div class="msg"></div>
         </form>
       `;
-    }
-
-    function enviarArquivo(form, pasta) {
-      const formData = new FormData();
-      const fileInput = form.querySelector('input[name="arquivo"]');
-      const msgBox = form.querySelector('.msg');
-      
-      if (!fileInput.files.length) return false;
-
-      formData.append('arquivo', fileInput.files[0]);
-      formData.append('pasta', pasta);
-
-      fetch('upload.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(res => res.text())
-      .then(msg => {
-        msgBox.innerText = msg;
-        msgBox.style.display = 'block';
-      })
-      .catch(err => {
-        msgBox.innerText = 'Erro ao enviar.';
-        msgBox.style.color = '#f66';
-        msgBox.style.display = 'block';
-      });
-
-      return false;
     }
 
     if (!userParam || !usuarios[userParam]) {
