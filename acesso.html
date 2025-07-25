@@ -72,6 +72,9 @@
       padding: 5px;
       width: 100%;
     }
+    #formNovoUsuario, #editorUsuarioSelecionado {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -107,31 +110,34 @@
           <div class="admin-section">
             <h3>Gestão de Usuários</h3>
             <label for="selecaoUsuario">Selecione o usuário:</label>
-            <select id="selecaoUsuario" onchange="carregarEdicao()"></select>
+            <select id="selecaoUsuario" onchange="carregarEdicao()">
+              <option value="">-- Selecione --</option>
+            </select>
             <div id="editorUsuarioSelecionado"></div>
 
-            <h4>Criar novo usuário</h4>
-            <input type="text" id="novoNome" placeholder="Nome do usuário">
-            <input type="text" id="novoSenha" placeholder="Senha">
-            <input type="text" id="novoPasta" placeholder="Nome da pasta">
-            <select id="novoTipo">
-              <option value="cliente">cliente</option>
-              <option value="admin">admin</option>
-            </select>
-            <button onclick="adicionarUsuario()">Adicionar Usuário</button>
+            <button onclick="document.getElementById('formNovoUsuario').style.display='block'">Criar novo usuário</button>
+            <div id="formNovoUsuario">
+              <input type="text" id="novoNome" placeholder="Nome do usuário">
+              <input type="text" id="novoSenha" placeholder="Senha">
+              <input type="text" id="novoPasta" placeholder="Nome da pasta">
+              <select id="novoTipo">
+                <option value="cliente">cliente</option>
+                <option value="admin">admin</option>
+              </select>
+              <button onclick="adicionarUsuario()">Adicionar Usuário</button>
+            </div>
+
             <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
           </div>
         `;
 
         const selecao = document.getElementById("selecaoUsuario");
-        selecao.innerHTML = '<option value="">-- Selecione --</option>';
         for (const nome in usuarios) {
           const option = document.createElement("option");
           option.value = nome;
           option.text = nome;
           selecao.appendChild(option);
         }
-        carregarEdicao();
       } else {
         const pasta = dados.pasta;
         conteudo.innerHTML = `
@@ -150,11 +156,12 @@
     function carregarEdicao() {
       const nome = document.getElementById("selecaoUsuario").value;
       const editor = document.getElementById("editorUsuarioSelecionado");
-      if (!nome) {
-        editor.innerHTML = "";
+      if (!nome || !usuarios[nome]) {
+        editor.style.display = 'none';
         return;
       }
       const dados = usuarios[nome];
+      editor.style.display = 'block';
       editor.innerHTML = `
         <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
           <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
@@ -174,9 +181,7 @@
       const usuariosAtualizados = Object.entries(usuarios).map(([nome, dados]) => {
         return `  "${nome}": { senha: "${dados.senha}", pasta: "${dados.pasta}", tipo: "${dados.tipo}" }`;
       });
-      const novoCodigo = `const usuarios = {
-${usuariosAtualizados.join(",\n")}
-};`;
+      const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
       document.getElementById("codigoGerado").value = novoCodigo;
     }
 
@@ -188,7 +193,7 @@ ${usuariosAtualizados.join(",\n")}
 
       if (nome && senha && pasta && tipo) {
         usuarios[nome] = { senha, pasta, tipo };
-        alert("Usuário adicionado com sucesso! Pasta '${pasta}' será criada no GitHub manualmente se ainda não existir. Conteúdo atualizado.");
+        alert(`Usuário '${nome}' adicionado! Clique em 'Gerar novo usuarios.js' para salvar.`);
 
         const selecao = document.getElementById("selecaoUsuario");
         const option = document.createElement("option");
@@ -198,6 +203,7 @@ ${usuariosAtualizados.join(",\n")}
 
         atualizarTextareaUsuarios();
 
+        document.getElementById("formNovoUsuario").style.display = "none";
         document.getElementById("novoNome").value = "";
         document.getElementById("novoSenha").value = "";
         document.getElementById("novoPasta").value = "";
