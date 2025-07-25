@@ -72,6 +72,11 @@
       padding: 5px;
       width: 100%;
     }
+    .upload-section {
+      margin-top: 30px;
+      border-top: 1px solid #00e6e6;
+      padding-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -121,6 +126,13 @@
             <button onclick="adicionarUsuario()">Adicionar Usuário</button>
             <button onclick="gerarUsuariosJS()">Gerar novo usuarios.js</button>
             <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
+          </div>
+
+          <div class="upload-section">
+            <h3>Upload de Arquivos</h3>
+            <p>(Função de upload ainda precisa de backend para funcionar)</p>
+            <input type="file" id="uploadArquivo">
+            <button onclick="alert('Função de upload será integrada com backend.')">Enviar para pasta do usuário</button>
           </div>
         `;
 
@@ -180,9 +192,7 @@
         }
       });
 
-      const novoCodigo = `const usuarios = {
-${usuariosAtualizados.join(",\n")}
-};`;
+      const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
       document.getElementById("codigoGerado").value = novoCodigo;
     }
 
