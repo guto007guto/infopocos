@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel – Infopoços TI</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+    }
+
+    .logo-container {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 10px;
+      width: 180px;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+      width: 130px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00e6e6;
+    }
+
+    .painel {
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .pasta {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .pasta h3 {
+      margin: 0 0 8px;
+      color: #00ff88;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .admin-section {
+      border-top: 1px solid #00e6e6;
+      margin-top: 30px;
+      padding-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #ccc;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="logoti.png" alt="Infopoços TI" class="logo">
+  </div>
+
+  <h2>Painel de Acesso</h2>
+
+  <div class="painel" id="conteudo">
+    <!-- Conteúdo será inserido via JavaScript -->
+  </div>
+
+  <footer>
+    © 2025 Infopoços TI – Todos os direitos reservados.
+  </footer>
+
+  <script src="js/usuarios.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const userParam = params.get("user");
+    const conteudo = document.getElementById("conteudo");
+
+    if (!userParam || !usuarios[userParam]) {
+      conteudo.innerHTML = "<p>Usuário inválido ou não autenticado.</p>";
+    } else {
+      const dados = usuarios[userParam];
+
+      // Se for admin, mostra todas as pastas
+      if (dados.tipo === "admin") {
+        conteudo.innerHTML = `
+          <h3>Bem-vindo, administrador!</h3>
+          <div class="pasta">
+            <h3>Pasta: arco-iris</h3>
+            <ul>
+              <li><a href="pastas/arco-iris/redbid.pdf" target="_blank">Projeto Redbid</a></li>
+              <li><a href="pastas/arco-iris/ips.txt" target="_blank">IPs</a></li>
+            </ul>
+          </div>
+          <div class="pasta">
+            <h3>Pasta: pain</h3>
+            <ul>
+              <li><a href="pastas/pain/relatorio.pdf" target="_blank">Relatório</a></li>
+              <li><a href="pastas/pain/dns.txt" target="_blank">DNS</a></li>
+            </ul>
+          </div>
+          <div class="admin-section">
+            <h3>Gestão de Usuários (em construção)</h3>
+            <p>Aqui você poderá adicionar, editar ou excluir usuários diretamente no código do arquivo <code>usuarios.js</code>.</p>
+          </div>
+        `;
+      } else {
+        // Cliente: mostra só a própria pasta
+        const pasta = dados.pasta;
+        conteudo.innerHTML = `
+          <h3>Bem-vindo, ${userParam}!</h3>
+          <div class="pasta">
+            <h3>Pasta: ${pasta}</h3>
+            <ul>
+              <li><a href="pastas/${pasta}/redbid.pdf" target="_blank">Projeto Redbid</a></li>
+              <li><a href="pastas/${pasta}/ips.txt" target="_blank">IPs</a></li>
+            </ul>
+          </div>
+        `;
+      }
+    }
+  </script>
+
+</body>
+</html>
