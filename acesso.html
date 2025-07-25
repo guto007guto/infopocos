@@ -62,9 +62,6 @@
       color: #ccc;
       font-size: 12px;
     }
-    form.upload-form {
-      margin-top: 10px;
-    }
   </style>
 </head>
 <body>
@@ -89,14 +86,8 @@
     const userParam = params.get("user");
     const conteudo = document.getElementById("conteudo");
 
-    function uploadForm(pasta) {
-      return `
-        <form class='upload-form' enctype="multipart/form-data" action="https://formspree.io/f/your-id" method="POST">
-          <input type="hidden" name="pasta" value="${pasta}" />
-          <input type="file" name="arquivo" required />
-          <button type="submit">Enviar Arquivo</button>
-        </form>
-      `;
+    if (userParam) {
+      window.history.replaceState({}, document.title, "acesso.html");
     }
 
     if (!userParam || !usuarios[userParam]) {
@@ -116,7 +107,6 @@
                   <li><span onclick=\"window.open('pastas/${v.pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
                   <li><span onclick=\"window.open('pastas/${v.pasta}/ips.txt', '_blank')\">IPs</span></li>
                 </ul>
-                ${uploadForm(v.pasta)}
               </div>
             `).join('')}
           </div>
@@ -131,7 +121,6 @@
               <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
               <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
             </ul>
-            ${uploadForm(pasta)}
           </div>
         `;
       }
