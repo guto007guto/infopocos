@@ -188,7 +188,7 @@ ${usuariosAtualizados.join(",\n")}
 
       if (nome && senha && pasta && tipo) {
         usuarios[nome] = { senha, pasta, tipo };
-        alert("Usuário adicionado com sucesso! Conteúdo atualizado.");
+        alert("Usuário adicionado com sucesso! Pasta '${pasta}' será criada no GitHub manualmente se ainda não existir. Conteúdo atualizado.");
 
         const selecao = document.getElementById("selecaoUsuario");
         const option = document.createElement("option");
