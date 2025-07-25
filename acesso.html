@@ -72,10 +72,8 @@
       padding: 5px;
       width: 100%;
     }
-    .upload-section {
-      margin-top: 30px;
-      border-top: 1px solid #00e6e6;
-      padding-top: 20px;
+    .hidden {
+      display: none;
     }
   </style>
 </head>
@@ -113,26 +111,22 @@
             <h3>Gestão de Usuários</h3>
             <label for="selecaoUsuario">Selecione o usuário:</label>
             <select id="selecaoUsuario" onchange="carregarEdicao()"></select>
-            <div id="editorUsuarioSelecionado"></div>
+            <div id="editorUsuarioSelecionado" class="hidden"></div>
 
-            <h4>Criar novo usuário</h4>
-            <input type="text" id="novoNome" placeholder="Nome do usuário">
-            <input type="text" id="novoSenha" placeholder="Senha">
-            <input type="text" id="novoPasta" placeholder="Nome da pasta">
-            <select id="novoTipo">
-              <option value="cliente">cliente</option>
-              <option value="admin">admin</option>
-            </select>
-            <button onclick="adicionarUsuario()">Adicionar Usuário</button>
+            <button onclick="mostrarCriacaoUsuario()">Criar novo usuário</button>
+            <div id="formNovoUsuario" class="hidden">
+              <input type="text" id="novoNome" placeholder="Nome do usuário">
+              <input type="text" id="novoSenha" placeholder="Senha">
+              <input type="text" id="novoPasta" placeholder="Nome da pasta">
+              <select id="novoTipo">
+                <option value="cliente">cliente</option>
+                <option value="admin">admin</option>
+              </select>
+              <button onclick="adicionarUsuario()">Adicionar Usuário</button>
+            </div>
+
             <button onclick="gerarUsuariosJS()">Gerar novo usuarios.js</button>
             <textarea id="codigoGerado" rows="10" style="width:100%;margin-top:15px;"></textarea>
-          </div>
-
-          <div class="upload-section">
-            <h3>Upload de Arquivos</h3>
-            <p>(Função de upload ainda precisa de backend para funcionar)</p>
-            <input type="file" id="uploadArquivo">
-            <button onclick="alert('Função de upload será integrada com backend.')">Enviar para pasta do usuário</button>
           </div>
         `;
 
@@ -143,7 +137,6 @@
           option.text = nome;
           selecao.appendChild(option);
         }
-        carregarEdicao();
       } else {
         const pasta = dados.pasta;
         conteudo.innerHTML = `
@@ -163,11 +156,12 @@
       const nome = document.getElementById("selecaoUsuario").value;
       const dados = usuarios[nome];
       const editor = document.getElementById("editorUsuarioSelecionado");
+      editor.classList.remove("hidden");
       editor.innerHTML = `
         <div class="usuario-edicao" style="margin-bottom: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px;">
           <label>Usuário: <input class="input-nome" value="${nome}" /></label><br>
           <label>Senha: <input class="input-senha" value="${dados.senha}" /></label><br>
-          <label>Pasta: <input class="input-pasta" value="${dados.pasta}" /></label><br>
+          <label>Pasta: <input class="input-pasta" value="${dados.pasta || ''}" /></label><br>
           <label>Tipo:
             <select class="input-tipo">
               <option value="cliente" ${dados.tipo === "cliente" ? "selected" : ""}>cliente</option>
@@ -176,6 +170,10 @@
           </label>
         </div>
       `;
+    }
+
+    function mostrarCriacaoUsuario() {
+      document.getElementById("formNovoUsuario").classList.remove("hidden");
     }
 
     function gerarUsuariosJS() {
@@ -192,7 +190,9 @@
         }
       });
 
-      const novoCodigo = `const usuarios = {\n${usuariosAtualizados.join(",\n")}\n};`;
+      const novoCodigo = `const usuarios = {
+${usuariosAtualizados.join(",\n")}
+};`;
       document.getElementById("codigoGerado").value = novoCodigo;
     }
 
