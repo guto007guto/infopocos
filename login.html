@@ -19,7 +19,10 @@
       width: 180px;
       margin: 0 auto 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .logo-container:hover {
+      transform: scale(1.02);
     }
     .logo {
       width: 130px;
@@ -71,9 +74,11 @@
 </head>
 <body>
 
-  <div class="logo-container" onclick="window.location.href='index.html'">
-    <img src="logoti.png" alt="Infopoços TI" class="logo">
-  </div>
+  <a href="index.html" style="text-decoration: none;">
+    <div class="logo-container">
+      <img src="logoti.png" alt="Infopoços TI" class="logo">
+    </div>
+  </a>
 
   <h2>Painel de Acesso</h2>
 
@@ -102,15 +107,15 @@
           <div class="pasta">
             <h3>Pasta: arco-iris</h3>
             <ul>
-              <li><span onclick=\"window.open('pastas/arco-iris/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
-              <li><span onclick=\"window.open('pastas/arco-iris/ips.txt', '_blank')\">IPs</span></li>
+              <li><span onclick="window.open('pastas/arco-iris/redbid.pdf', '_blank')">Projeto Redbid</span></li>
+              <li><span onclick="window.open('pastas/arco-iris/ips.txt', '_blank')">IPs</span></li>
             </ul>
           </div>
           <div class="pasta">
             <h3>Pasta: pain</h3>
             <ul>
-              <li><span onclick=\"window.open('pastas/pain/relatorio.pdf', '_blank')\">Relatório</span></li>
-              <li><span onclick=\"window.open('pastas/pain/dns.txt', '_blank')\">DNS</span></li>
+              <li><span onclick="window.open('pastas/pain/relatorio.pdf', '_blank')">Relatório</span></li>
+              <li><span onclick="window.open('pastas/pain/dns.txt', '_blank')">DNS</span></li>
             </ul>
           </div>
           <div class="admin-section">
@@ -125,8 +130,8 @@
           <div class="pasta">
             <h3>Pasta: ${pasta}</h3>
             <ul>
-              <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
-              <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
+              <li><span onclick="window.open('pastas/${pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
+              <li><span onclick="window.open('pastas/${pasta}/ips.txt', '_blank')">IPs</span></li>
             </ul>
           </div>
         `;
