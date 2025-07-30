@@ -104,8 +104,9 @@
               <div class="pasta">
                 <h3>Pasta: ${v.pasta}</h3>
                 <ul>
-                  <li><span onclick=\"window.open('pastas/${v.pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
-                  <li><span onclick=\"window.open('pastas/${v.pasta}/ips.txt', '_blank')\">IPs</span></li>
+                  <li><span onclick="window.open('pastas/${v.pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
+                  <li><span onclick="window.open('pastas/${v.pasta}/ips.txt', '_blank')">IPs</span></li>
+                  ${v.pasta === "arcoiris" ? `<li><span onclick="window.open('pastas/arcoiris/documentacao_rede_arcoiris.pdf', '_blank')">Documentação da Rede</span></li>` : ''}
                 </ul>
               </div>
             `).join('')}
@@ -118,8 +119,9 @@
           <div class="pasta">
             <h3>Pasta: ${pasta}</h3>
             <ul>
-              <li><span onclick=\"window.open('pastas/${pasta}/redbid.pdf', '_blank')\">Projeto Redbid</span></li>
-              <li><span onclick=\"window.open('pastas/${pasta}/ips.txt', '_blank')\">IPs</span></li>
+              <li><span onclick="window.open('pastas/${pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
+              <li><span onclick="window.open('pastas/${pasta}/ips.txt', '_blank')">IPs</span></li>
+              ${pasta === "arcoiris" ? `<li><span onclick="window.open('pastas/arcoiris/documentacao_rede_arcoiris.pdf', '_blank')">Documentação da Rede</span></li>` : ''}
             </ul>
           </div>
         `;
