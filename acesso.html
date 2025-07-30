@@ -107,7 +107,7 @@
                   <h3>Pasta: ${v.pasta}</h3>
                   <ul>
                     ${v.pasta === 'arcoiris' ? `
-                      <li><span onclick="window.open('visualizar.html', '_blank')">Documentação da Rede (.PDF)</span></li>
+                      <li><span onclick="window.open('visualizar.html?user=arcoiris', '_blank')">Documentação da Rede (.PDF)</span></li>
                     ` : `
                       <li><span>Nenhum arquivo disponível ainda</span></li>
                     `}
@@ -124,7 +124,7 @@
             <h3>Pasta: ${pasta}</h3>
             <ul>
               ${pasta === 'arcoiris' ? `
-                <li><span onclick="window.open('visualizar.html', '_blank')">Documentação da Rede (.PDF)</span></li>
+                <li><span onclick="window.open('visualizar.html?user=arcoiris', '_blank')">Documentação da Rede (.PDF)</span></li>
               ` : `
                 <li><span>Nenhum arquivo disponível ainda</span></li>
               `}
