@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <title>Documento</title>
   <script>
-    // Recupera o usuário da URL, se houver
     const params = new URLSearchParams(window.location.search);
-    const user = params.get("user") || "arcoiris"; // padrão = arcoiris
+    const user = params.get("user") || "arcoiris"; // padrão
 
     window.onload = () => {
-      // Abre o PDF
-      window.open('documentacao_rede_arcoiris.pdf', '_blank');
-      // Redireciona de volta com parâmetro ?user=arcoiris
-      window.location.href = `acesso.html?user=${user}`;
+      // Abrir o PDF na mesma aba (sem abrir nova)
+      window.location.replace("documentacao_rede_arcoiris.pdf");
+
+      // ou, se quiser que volte depois de um tempo, use isso:
+      // setTimeout(() => {
+      //   window.location.href = `acesso.html?user=${user}`;
+      // }, 5000);
     };
   </script>
 </head>
