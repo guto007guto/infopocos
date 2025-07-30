@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <title>Documento</title>
   <script>
+    // Recupera o usuário da URL, se houver
+    const params = new URLSearchParams(window.location.search);
+    const user = params.get("user") || "arcoiris"; // padrão = arcoiris
+
     window.onload = () => {
-      window.open('documentacao_rede_arcoiris.pdf', '_blank'); // abre em nova aba
-      window.location.href = 'acesso.html'; // volta pro painel
+      // Abre o PDF
+      window.open('documentacao_rede_arcoiris.pdf', '_blank');
+      // Redireciona de volta com parâmetro ?user=arcoiris
+      window.location.href = `acesso.html?user=${user}`;
     };
   </script>
 </head>
