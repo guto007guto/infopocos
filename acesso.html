@@ -31,30 +31,31 @@
       color: #00e6e6;
     }
     .painel {
-      max-width: 900px;
+      max-width: 700px;
       margin: 20px auto;
       background-color: rgba(255, 255, 255, 0.08);
-      padding: 20px;
+      padding: 25px;
       border-radius: 10px;
+      text-align: center;
     }
-    .pasta {
-      background-color: rgba(0, 0, 0, 0.2);
-      padding: 15px;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-    .pasta h3 {
-      margin: 0 0 8px;
-      color: #00ff88;
-    }
-    ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-    li span {
+    .doc-btn {
+      background-color: #00e6e6;
+      color: #000;
+      font-weight: bold;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
-      color: #00e6e6;
-      text-decoration: underline;
+      font-size: 16px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .doc-btn:hover {
+      background-color: #00cccc;
+    }
+    .icon {
+      margin-right: 8px;
     }
     footer {
       text-align: center;
@@ -94,36 +95,28 @@
       conteudo.innerHTML = "<p>Usuário inválido ou não autenticado.</p>";
     } else {
       const dados = usuarios[userParam];
+      const pasta = dados.pasta;
 
-      if (dados.tipo === "admin") {
-        conteudo.innerHTML = `
-          <h3>Bem-vindo, administrador!</h3>
-          <div>
-            <h3>Arquivos de todos os clientes</h3>
-            ${Object.entries(usuarios).filter(([k,v])=>v.tipo!=='admin').map(([k,v])=>`
-              <div class="pasta">
-                <h3>Pasta: ${v.pasta}</h3>
-                <ul>
-                  <li><span onclick="window.open('pastas/${v.pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
-                  <li><span onclick="window.open('pastas/${v.pasta}/ips.txt', '_blank')">IPs</span></li>
-                  ${v.pasta === "arcoiris" ? `<li><span onclick="window.open('pastas/arcoiris/documentacao_rede_arcoiris.pdf', '_blank')">Documentação da Rede</span></li>` : ''}
-                </ul>
-              </div>
-            `).join('')}
-          </div>
-        `;
-      } else {
-        const pasta = dados.pasta;
+      if (userParam === "arcoiris") {
         conteudo.innerHTML = `
           <h3>Bem-vindo, ${userParam}!</h3>
-          <div class="pasta">
-            <h3>Pasta: ${pasta}</h3>
-            <ul>
-              <li><span onclick="window.open('pastas/${pasta}/redbid.pdf', '_blank')">Projeto Redbid</span></li>
-              <li><span onclick="window.open('pastas/${pasta}/ips.txt', '_blank')">IPs</span></li>
-              ${pasta === "arcoiris" ? `<li><span onclick="window.open('pastas/arcoiris/documentacao_rede_arcoiris.pdf', '_blank')">Documentação da Rede</span></li>` : ''}
-            </ul>
-          </div>
+          <p>Você pode baixar a documentação digital da rede clicando no botão abaixo:</p>
+          <button class="doc-btn" onclick="window.open('pastas/arcoiris/documentacao_rede_arcoiris.rar', '_blank')">
+            📦 Documentação da Rede (.RAR)
+          </button>
+        `;
+      } else if (dados.tipo === "admin") {
+        conteudo.innerHTML = `
+          <h3>Bem-vindo, administrador!</h3>
+          <p>No momento, apenas a documentação do cliente <strong>Arco-Íris</strong> está disponível:</p>
+          <button class="doc-btn" onclick="window.open('pastas/arcoiris/documentacao_rede_arcoiris.rar', '_blank')">
+            📦 Documentação Arco-Íris (.RAR)
+          </button>
+        `;
+      } else {
+        conteudo.innerHTML = `
+          <h3>Bem-vindo, ${userParam}!</h3>
+          <p>No momento, não há arquivos disponíveis para sua conta.</p>
         `;
       }
     }
