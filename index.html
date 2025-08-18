@@ -28,11 +28,11 @@
     .container {
       display: flex;
       justify-content: center;
-      gap: 60px;
       align-items: center;
       flex-grow: 1;
       padding: 20px 40px;
       flex-wrap: wrap;
+      gap: 40px; /* Espaço entre os cards */
     }
 
     .logo-link {
@@ -47,8 +47,8 @@
       border: 2px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 20px;
-      max-width: 280px;
-      width: 100%;
+      width: 280px;     /* largura fixa */
+      height: 280px;    /* altura fixa para igualar */
       background-color: rgba(255, 255, 255, 0.25);
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
@@ -58,15 +58,16 @@
     }
 
     .logo-img {
-      max-width: 240px;
-      width: 100%;
+      max-width: 200px;
+      max-height: 160px;
+      width: auto;
       height: auto;
       background: transparent;
     }
 
     .arrow {
       font-size: 18px;
-      margin-top: 10px;
+      margin-top: 15px;
       color: #ffff66;
       font-weight: bold;
       animation: bounce 1.5s infinite;
@@ -124,12 +125,12 @@
 
   <div class="container">
     <a class="logo-link" href="infopocosti.html">
-      <img src="logoti.png" alt="Infopoços TI" class="logo-img" />
+      <img src="logoti.png" alt="Logomarca Infopoços TI" class="logo-img" />
       <div class="arrow">Acessar</div>
     </a>
     
     <a class="logo-link" href="infopocosgames.html">
-      <img src="logogames.png" alt="Infopoços Games" class="logo-img" />
+      <img src="Logogames.png" alt="Logomarca Infopoços Games" class="logo-img" />
       <div class="arrow">Acessar</div>
     </a>
   </div>
