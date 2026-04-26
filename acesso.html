@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Painel – Infopoços TI</title>
+  <link rel="icon" type="image/png" href="logoti.png">
 
   <style>
     body {
@@ -139,6 +140,10 @@
       window.history.replaceState({}, document.title, "acesso.html");
     }
 
+    function abrirVisualizacao(usuario) {
+      window.open("visualizar.html?user=" + usuario, "_blank");
+    }
+
     if (!userParam || !usuarios[userParam]) {
       conteudo.innerHTML = "<p>Usuário inválido ou não autenticado.</p>";
     } else {
@@ -156,7 +161,7 @@
                   <h3>Pasta: ${v.pasta}</h3>
                   <ul>
                     ${v.pasta === 'arcoiris' ? `
-                      <li><span onclick="window.open('visualizar.html?user=arcoiris', '_blank')">Documentação da Rede (.PDF)</span></li>
+                      <li><span onclick="abrirVisualizacao('arcoiris')">Documentação da Rede (.PDF)</span></li>
                     ` : `
                       <li><span>Nenhum arquivo disponível ainda</span></li>
                     `}
@@ -173,7 +178,7 @@
             <h3>Pasta: ${pasta}</h3>
             <ul>
               ${pasta === 'arcoiris' ? `
-                <li><span onclick="window.open('visualizar.html?user=arcoiris', '_blank')">Documentação da Rede (.PDF)</span></li>
+                <li><span onclick="abrirVisualizacao('arcoiris')">Documentação da Rede (.PDF)</span></li>
               ` : `
                 <li><span>Nenhum arquivo disponível ainda</span></li>
               `}
