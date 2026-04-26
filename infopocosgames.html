@@ -1,204 +1,220 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Infopoços Games – Grupo INFOPOÇOS</title>
-  <style>
-    body {
-      margin: 0;
-      padding-bottom: 60px;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      font-family: Arial, sans-serif;
-      color: #ffffff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Infopoços Games – Grupo INFOPOÇOS</title>
 
-    .header {
-      text-align: center;
-      padding: 30px 20px 10px;
-    }
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:#f4f7fb;
+    font-family:Arial, sans-serif;
+    color:#1f2937;
+}
 
-    .header a {
-      text-decoration: none;
-      color: inherit;
-    }
+.header{
+    text-align:center;
+    padding:30px 20px 10px;
+}
 
-    .header h1 {
-      color: #00e6e6;
-      font-size: 32px;
-      text-shadow: 1px 1px 3px #000;
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
+.header a{
+    text-decoration:none;
+    color:inherit;
+}
 
-    .logo-container {
-      background-color: rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
-      padding: 20px;
-      width: 260px;
-      margin: 0 auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
+.header h1{
+    margin:0;
+    font-size:32px;
+    color:#0f3d5e;
+}
 
-    .logo-container:hover {
-      transform: scale(1.05);
-    }
+.logo-container{
+    background:#ffffff;
+    border-radius:18px;
+    padding:20px;
+    width:280px;
+    margin:20px auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    cursor:pointer;
+    transition:0.3s;
+}
 
-    .logo {
-      width: 180px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
+.logo-container:hover{
+    transform:scale(1.04);
+}
 
-    .links-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 40px 20px 20px;
-    }
+.logo{
+    width:190px;
+    display:block;
+    margin:auto;
+}
 
-    .card {
-      background-color: rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 20px;
-      width: 260px;
-      text-align: center;
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
+.links-section{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    padding:35px 20px 30px;
+}
 
-    .card:hover {
-      transform: scale(1.05);
-    }
+.card{
+    background:#ffffff;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    transition:0.3s;
+    border:1px solid #e5e7eb;
+}
 
-    .card img {
-      width: 110px;
-      height: auto;
-      margin-bottom: 10px;
-    }
+.card:hover{
+    transform:translateY(-5px);
+}
 
-    .card h3 {
-      margin-bottom: 10px;
-      color: #00ffff;
-    }
+.card a{
+    text-decoration:none;
+    color:inherit;
+}
 
-    .card a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 5px;
-    }
+.card img{
+    width:95px;
+    height:95px;
+    object-fit:contain;
+    margin-bottom:12px;
+}
 
-    .card a:hover {
-      text-decoration: underline;
-      color: #00ffff;
-    }
+.card h3{
+    margin:10px 0 8px;
+    color:#0f3d5e;
+    font-size:20px;
+}
 
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #111;
-      text-align: center;
-      padding: 12px;
-      font-size: 14px;
-      color: #ccc;
-      box-shadow: 0 -1px 5px rgba(0,0,0,0.4);
-    }
+.card span{
+    color:#6b7280;
+    font-size:14px;
+}
 
-    .whatsapp-container {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      text-align: center;
-      z-index: 100;
-    }
+.whatsapp-container{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    text-align:center;
+    z-index:1000;
+}
 
-    .whatsapp-label {
-      background-color: #111;
-      color: #fff;
-      font-size: 12px;
-      padding: 5px 10px;
-      border-radius: 8px 8px 0 0;
-      font-weight: bold;
-      text-shadow: 1px 1px 2px #000;
-    }
+.whatsapp-label{
+    background:#0f3d5e;
+    color:#fff;
+    padding:5px 10px;
+    font-size:12px;
+    border-radius:8px 8px 0 0;
+}
 
-    .whatsapp-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 2px 2px 3px #999;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
+.whatsapp-img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    box-shadow:0 8px 20px rgba(0,0,0,0.18);
+}
 
-    .whatsapp-img:hover {
-      transform: scale(1.1);
-    }
-  </style>
+footer{
+    margin-top:30px;
+    text-align:center;
+    padding:20px;
+    font-size:13px;
+    color:#6b7280;
+    background:#ffffff;
+    border-top:1px solid #e5e7eb;
+}
+
+footer a{
+    color:#0369a1;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+@media(max-width:900px){
+.links-section{
+    grid-template-columns:1fr;
+}
+}
+
+@media(max-width:700px){
+
+.header h1{
+    font-size:26px;
+}
+
+.logo-container{
+    width:240px;
+}
+
+.logo{
+    width:170px;
+}
+
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Título como botão -->
-  <div class="header">
-    <a href="index.html">
-      <h1>Infopoços Games</h1>
-    </a>
-  </div>
+<div class="header">
+<a href="index.html">
+<h1>Infopoços Games</h1>
+</a>
+</div>
 
-  <!-- Logo com borda e botão -->
-  <div class="logo-container" onclick="window.location.href='index.html'">
-    <img src="Logogames.png" alt="Infopoços Games" class="logo">
-  </div>
+<div class="logo-container" onclick="window.location.href='index.html'">
+<img src="Logogames.png" alt="Infopoços Games" class="logo">
+</div>
 
-  <!-- Links principais -->
-  <section class="links-section">
-    <div class="card">
-      <a href="https://infopocos.mercadoshops.com.br/" target="_blank">
-        <img src="LogoMercadoshops.png" alt="Loja MercadoShops">
-        <h3>🏬 Loja Online</h3>
-        <span>Visite nossa loja</span>
-      </a>
-    </div>
-    <div class="card">
-      <a href="https://chat.whatsapp.com/GASNa8pYl4JGpOVtiZrrPV" target="_blank">
-        <img src="LogoGrupowhats.png" alt="Grupo WhatsApp">
-        <h3>👥 Grupo WhatsApp</h3>
-        <span>Entrar no grupo</span>
-      </a>
-    </div>
-    <div class="card">
-      <a href="https://www.youtube.com/@INFOPOCOSGames" target="_blank">
-        <img src="LogoYoutube.png" alt="Canal YouTube">
-        <h3>🎥 Canal no YouTube</h3>
-        <span>Acessar o canal</span>
-      </a>
-    </div>
-    <div class="card">
-      <a href="https://www.mercadolivre.com.br/pagina/infopocos" target="_blank">
-        <img src="LogoMercadolivre.png" alt="Mercado Livre">
-        <h3>🚚 Mercado Livre</h3>
-        <span>Ver ofertas</span>
-      </a>
-    </div>
-  </section>
+<section class="links-section">
 
-  <!-- WhatsApp flutuante -->
-  <div class="whatsapp-container">
-    <div class="whatsapp-label">Atendimento</div>
-    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
-      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
-    </a>
-  </div>
+<div class="card">
+<a href="https://chat.whatsapp.com/GASNa8pYl4JGpOVtiZrrPV" target="_blank">
+<img src="LogoGrupowhats.png" alt="Grupo WhatsApp">
+<h3>👥 Grupo WhatsApp</h3>
+<span>Entre no grupo</span>
+</a>
+</div>
 
-  <footer>
-    Contato: infopocosti@gmail.com
-  </footer>
+<div class="card">
+<a href="https://www.youtube.com/@INFOPOCOSGames" target="_blank">
+<img src="LogoYoutube.png" alt="YouTube">
+<h3>🎥 Canal YouTube</h3>
+<span>Assista nossos vídeos</span>
+</a>
+</div>
+
+<div class="card">
+<a href="https://www.mercadolivre.com.br/pagina/infopocos" target="_blank">
+<img src="LogoMercadolivre.png" alt="Mercado Livre">
+<h3>🚚 Mercado Livre</h3>
+<span>Veja nossas ofertas</span>
+</a>
+</div>
+
+</section>
+
+<div class="whatsapp-container">
+<div class="whatsapp-label">Atendimento</div>
+<a href="https://wa.me/5535992598939" target="_blank">
+<img src="zap.png" alt="WhatsApp" class="whatsapp-img">
+</a>
+</div>
+
+<footer>
+Contato: infopocosti@gmail.com<br>
+© 2025 Infopoços Games – Todos os direitos reservados.<br>
+Desenvolvido por 
+<a href="https://www.infopocos.com.br" target="_blank">
+www.infopocos.com.br
+</a>
+</footer>
+
 </body>
 </html>
