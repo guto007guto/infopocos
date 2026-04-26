@@ -1,7 +1,7 @@
 // Lista de usuários e permissões
 const usuarios = {
   "admin": {
-    senha: "admin123",
+    senha: "Asenhaops123#",
     tipo: "admin"
   },
   "arcoiris": {
