@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Grupo INFOPOÇOS – Soluções em TI & Games</title>
+
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      background: #f4f7fb;
       font-family: Arial, sans-serif;
-      color: #ffffff;
+      color: #1f2937;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -20,9 +21,15 @@
       text-align: center;
       font-size: 32px;
       font-weight: bold;
-      padding: 20px 0 10px;
-      color: #00e6e6;
-      text-shadow: 1px 1px 3px #000;
+      padding: 30px 20px 10px;
+      color: #0f3d5e;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 16px;
+      margin-bottom: 20px;
     }
 
     .container {
@@ -30,9 +37,9 @@
       justify-content: center;
       align-items: center;
       flex-grow: 1;
-      padding: 20px 40px;
+      padding: 30px 40px;
       flex-wrap: wrap;
-      gap: 40px; /* Espaço entre os cards */
+      gap: 40px;
     }
 
     .logo-link {
@@ -41,51 +48,55 @@
       justify-content: center;
       align-items: center;
       text-decoration: none;
-      color: white;
-      transition: transform 0.3s ease;
-      position: relative;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 20px;
-      width: 280px;     /* largura fixa */
-      height: 280px;    /* altura fixa para igualar */
-      background-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      color: #1f2937;
+      transition: 0.3s;
+      border-radius: 18px;
+      padding: 25px;
+      width: 280px;
+      height: 280px;
+      background-color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
     }
 
     .logo-link:hover {
-      transform: scale(1.05);
+      transform: scale(1.04);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.12);
     }
 
     .logo-img {
-      max-width: 200px;
-      max-height: 160px;
+      max-width: 210px;
+      max-height: 165px;
       width: auto;
       height: auto;
       background: transparent;
     }
 
     .arrow {
-      font-size: 18px;
-      margin-top: 15px;
-      color: #ffff66;
+      font-size: 16px;
+      margin-top: 18px;
+      color: #0369a1;
       font-weight: bold;
-      animation: bounce 1.5s infinite;
-      text-shadow: 1px 1px 2px #000;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
     }
 
     footer {
-      background: #111;
       text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      color: #ccc;
+      padding: 18px;
+      font-size: 13px;
+      color: #6b7280;
       margin-top: auto;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    footer a {
+      color: #0369a1;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     .whatsapp-container {
@@ -97,47 +108,69 @@
     }
 
     .whatsapp-label {
-      background-color: #111;
+      background-color: #0f3d5e;
       color: #fff;
       font-size: 12px;
       padding: 5px 10px;
       border-radius: 8px 8px 0 0;
       font-weight: bold;
-      text-shadow: 1px 1px 2px #000;
     }
 
     .whatsapp-img {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      box-shadow: 2px 2px 3px #999;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
       cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: 0.2s;
     }
 
     .whatsapp-img:hover {
       transform: scale(1.1);
     }
+
+    @media (max-width: 700px) {
+      .title {
+        font-size: 25px;
+      }
+
+      .container {
+        padding: 20px;
+        gap: 25px;
+      }
+
+      .logo-link {
+        width: 240px;
+        height: 240px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="title">Grupo INFOPOÇOS – Soluções em TI & Games</div>
+
+  <div class="title">Grupo INFOPOÇOS</div>
+  <div class="subtitle">Soluções em Tecnologia, Segurança Digital e Games</div>
 
   <div class="container">
     <a class="logo-link" href="infopocosti.html">
       <img src="logoti.png" alt="Logomarca Infopoços TI" class="logo-img" />
-      <div class="arrow">Acessar</div>
+      <div class="arrow">Acessar Infopoços TI</div>
     </a>
-    
+
     <a class="logo-link" href="infopocosgames.html">
       <img src="Logogames.png" alt="Logomarca Infopoços Games" class="logo-img" />
-      <div class="arrow">Acessar</div>
+      <div class="arrow">Acessar Infopoços Games</div>
     </a>
   </div>
 
   <footer>
-    <p>Contato: infopocosti@gmail.com | www.infopocos.com.br</p>
-    <p>© 2025 Grupo INFOPOÇOS – Todos os direitos reservados</p>
+    Contato: infopocosti@gmail.com<br>
+    © 2025 Grupo INFOPOÇOS – Todos os direitos reservados.<br>
+    Desenvolvido por 
+    <a href="https://www.infopocos.com.br" target="_blank">
+      www.infopocos.com.br
+    </a>
   </footer>
 
   <div class="whatsapp-container">
@@ -146,5 +179,6 @@
       <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
     </a>
   </div>
+
 </body>
 </html>
