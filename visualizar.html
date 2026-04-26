@@ -2,23 +2,97 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Documento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documento – Infopoços TI</title>
+  <link rel="icon" type="image/png" href="logoti.png">
+
+  <style>
+    body{
+      margin:0;
+      padding:0;
+      background:#f4f7fb;
+      font-family:Arial, sans-serif;
+      color:#1f2937;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      text-align:center;
+    }
+
+    .box{
+      background:#ffffff;
+      padding:35px;
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      width:340px;
+      border:1px solid #e5e7eb;
+    }
+
+    .box img{
+      width:120px;
+      margin-bottom:20px;
+    }
+
+    .box h2{
+      margin:0 0 10px;
+      color:#0f3d5e;
+      font-size:24px;
+    }
+
+    .box p{
+      margin:0;
+      color:#6b7280;
+      font-size:15px;
+    }
+
+    footer{
+      position:fixed;
+      bottom:12px;
+      width:100%;
+      text-align:center;
+      font-size:12px;
+      color:#6b7280;
+    }
+
+    footer a{
+      color:#0369a1;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    footer a:hover{
+      text-decoration:underline;
+    }
+  </style>
+
   <script>
     const params = new URLSearchParams(window.location.search);
-    const user = params.get("user") || "arcoiris"; // padrão
+    const user = params.get("user") || "arcoiris";
 
     window.onload = () => {
-      // Abrir o PDF na mesma aba (sem abrir nova)
-      window.location.replace("documentacao_rede_arcoiris.pdf");
-
-      // ou, se quiser que volte depois de um tempo, use isso:
-      // setTimeout(() => {
-      //   window.location.href = `acesso.html?user=${user}`;
-      // }, 5000);
+      setTimeout(() => {
+        window.location.replace("documentacao_rede_arcoiris.pdf");
+      }, 1200);
     };
   </script>
 </head>
-<body style="background:#111; color:#fff; text-align:center; padding:50px;">
-  <p>Abrindo documentação protegida...</p>
+
+<body>
+
+<div class="box">
+  <img src="logoti.png" alt="Infopoços TI">
+  <h2>Documento Protegido</h2>
+  <p>Abrindo documentação...</p>
+</div>
+
+<footer>
+© 2025 Infopoços TI – Todos os direitos reservados.<br>
+Desenvolvido por 
+<a href="https://www.infopocos.com.br" target="_blank">
+www.infopocos.com.br
+</a>
+</footer>
+
 </body>
 </html>
