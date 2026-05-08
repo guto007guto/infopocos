@@ -166,6 +166,36 @@
       text-decoration: underline;
     }
 
+    .whatsapp-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .whatsapp-label {
+      background-color: #0f3d5e;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+    }
+
+    .whatsapp-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .whatsapp-img:hover {
+      transform: scale(1.1);
+    }
+
     @media (max-width: 700px) {
       .title {
         font-size: 26px;
@@ -293,6 +323,19 @@
       www.infopocos.com.br
     </a>
   </footer>
+
+  <div class="whatsapp-container">
+    <div class="whatsapp-label">Atendimento</div>
+
+    <a href="https://wa.me/5535992598939"
+       target="_blank"
+       title="Fale conosco no WhatsApp">
+
+      <img src="zap.png"
+           alt="WhatsApp"
+           class="whatsapp-img">
+    </a>
+  </div>
 
 </body>
 </html>
