@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema para Registro e Envio de Protocolos Clínicos – INFOPOÇOS</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f4f7fb;
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f3d5e, #0369a1);
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      max-width: 950px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    .intro {
+      background: white;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+      margin-bottom: 30px;
+    }
+
+    .intro h2, .section-title {
+      color: #0f3d5e;
+    }
+
+    .intro p {
+      line-height: 1.7;
+      color: #4b5563;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 25px 0;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .feature h3 {
+      color: #0f3d5e;
+      margin-top: 0;
+    }
+
+    .feature p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+
+    .screen {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    .screen h2 {
+      color: #0f3d5e;
+      margin-top: 0;
+    }
+
+    .screen p {
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .screen img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid #d1d5db;
+      margin-top: 15px;
+      transition: 0.3s;
+      cursor: zoom-in;
+    }
+
+    .screen img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+
+    .cta {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+      margin-top: 35px;
+    }
+
+    .cta h2 {
+      color: #0f3d5e;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #16a34a;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      background: #15803d;
+    }
+
+    .back {
+      text-align: center;
+      margin: 30px;
+    }
+
+    .back a {
+      color: #0369a1;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      font-size: 13px;
+      color: #6b7280;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #0369a1;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .whatsapp-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .whatsapp-label {
+      background-color: #0f3d5e;
+      color: #fff;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+      max-width: 150px;
+    }
+
+    .whatsapp-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #25d366;
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      font-size: 34px;
+      text-decoration: none;
+      margin: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      transition: 0.2s;
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .container {
+        padding: 25px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <h1>Sistema para Registro e Envio de Protocolos Clínicos</h1>
+
+    <p>
+      Plataforma desenvolvida para clínicas médicas organizarem protocolos,
+      arquivos, mensagens internas, registros e controle de usuários
+      de forma segura, prática e integrada.
+    </p>
+  </div>
+
+  <div class="container">
+
+    <div class="intro">
+      <h2>Organização, segurança e rastreabilidade</h2>
+
+      <p>
+        O sistema foi desenvolvido para clínicas que precisam organizar
+        protocolos, documentos, arquivos e comunicação interna.
+      </p>
+
+      <p>
+        A plataforma permite registrar o envio de protocolos,
+        controlar usuários, acessar arquivos em nuvem,
+        acompanhar históricos, registrar logs e manter
+        toda a operação organizada em um único ambiente.
+      </p>
+
+      <p>
+        Tudo isso com foco em segurança, LGPD,
+        controle de permissões e facilidade de uso.
+      </p>
+    </div>
+
+    <h2 class="section-title">Principais recursos</h2>
+
+    <div class="features">
+
+      <div class="feature">
+        <h3>📂 Gestão de Protocolos</h3>
+        <p>
+          Registro, organização e acompanhamento de protocolos
+          enviados pela clínica.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>👥 Controle de Usuários</h3>
+        <p>
+          Cada usuário possui login próprio, permissões específicas
+          e acesso individualizado.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>💬 Comunicação Interna</h3>
+        <p>
+          Sistema de mensagens internas e envio de arquivos
+          entre usuários e setores.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>📁 Arquivos em Nuvem</h3>
+        <p>
+          Compartilhamento organizado de documentos
+          e pastas com acesso controlado.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>🔐 Segurança e LGPD</h3>
+        <p>
+          Controle de acesso, logs de ações,
+          permissões e segurança dos dados.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>💾 Backup Automatizado</h3>
+        <p>
+          Sistema preparado para backups automáticos
+          e preservação das informações importantes.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="screen">
+      <h2>1. Tela de Login Seguro</h2>
+
+      <p>
+        A plataforma possui autenticação individual por usuário,
+        permitindo controlar exatamente quem acessa cada setor,
+        arquivo ou funcionalidade do sistema.
+      </p>
+
+      <img src="01_login_acesso_protocolo_clinica.png" alt="Login do sistema clínico">
+    </div>
+
+    <div class="screen">
+      <h2>2. Dashboard Principal</h2>
+
+      <p>
+        O painel principal centraliza informações importantes da clínica,
+        protocolos recentes, notificações, usuários conectados,
+        movimentações e atalhos rápidos.
+      </p>
+
+      <img src="02_dashboard_protocolo_clinica.png" alt="Dashboard do sistema clínico">
+    </div>
+
+    <div class="screen">
+      <h2>3. Sistema de Mensagens e Protocolos</h2>
+
+      <p>
+        O sistema permite enviar mensagens internas,
+        compartilhar protocolos e registrar movimentações
+        entre setores da clínica.
+      </p>
+
+      <p>
+        Isso reduz perda de informações e melhora a comunicação interna.
+      </p>
+
+      <img src="03_mensagens_envio_protocolos_clinica.png" alt="Mensagens internas e protocolos">
+    </div>
+
+    <div class="screen">
+      <h2>4. Transferência de Arquivos</h2>
+
+      <p>
+        Usuários podem compartilhar arquivos,
+        documentos e protocolos dentro do sistema,
+        mantendo tudo organizado e centralizado.
+      </p>
+
+      <img src="04_arquivos_transferencia_protocolo_clinica.png" alt="Transferência de arquivos">
+    </div>
+
+    <div class="screen">
+      <h2>5. Administração de Usuários e Permissões</h2>
+
+      <p>
+        O administrador consegue criar usuários,
+        definir permissões, bloquear acessos,
+        controlar setores e acompanhar atividades.
+      </p>
+
+      <img src="05_administracao_usuarios_permissoes_clinica.png" alt="Usuários e permissões">
+    </div>
+
+    <div class="screen">
+      <h2>6. Logs e Auditoria</h2>
+
+      <p>
+        Todas as ações importantes podem ser registradas,
+        permitindo auditoria, rastreabilidade e histórico
+        de movimentações dentro do sistema.
+      </p>
+
+      <img src="06_logs_auditoria_protocolos_clinica.png" alt="Logs e auditoria">
+    </div>
+
+    <div class="screen">
+      <h2>7. Perfil, Senha e Avatar</h2>
+
+      <p>
+        Cada usuário possui perfil individual,
+        podendo alterar senha, foto e informações pessoais.
+      </p>
+
+      <img src="07_perfil_senha_avatar_clinica.png" alt="Perfil do usuário">
+    </div>
+
+    <div class="screen">
+      <h2>8. Backup Automatizado</h2>
+
+      <p>
+        O sistema possui recursos para backup automático,
+        aumentando a segurança e proteção das informações.
+      </p>
+
+      <img src="08_backup_sistema_protocolo_clinica.png" alt="Backup automatizado">
+    </div>
+
+    <div class="screen">
+      <h2>9. Integração com Arquivos Windows</h2>
+
+      <p>
+        O sistema pode trabalhar integrado ao ambiente Windows,
+        facilitando acesso a pastas compartilhadas,
+        arquivos e documentos da clínica.
+      </p>
+
+      <img src="09_acesso_pasta_arquivos_windows_clinica.png" alt="Integração arquivos Windows">
+    </div>
+
+    <div class="screen">
+      <h2>10. Fluxo de Registro de Protocolos</h2>
+
+      <p>
+        A plataforma organiza todo o fluxo de envio,
+        recebimento e acompanhamento dos protocolos,
+        permitindo rastrear cada movimentação realizada.
+      </p>
+
+      <img src="10_fluxo_registro_envio_protocolos_clinica.png" alt="Fluxo de protocolos">
+    </div>
+
+    <div class="cta">
+      <h2>Quer modernizar a gestão da sua clínica?</h2>
+
+      <p>
+        Solicite uma demonstração e veja como a INFOPOÇOS
+        pode adaptar esta solução para sua clínica médica.
+      </p>
+
+      <a class="btn"
+         href="https://wa.me/5535992598939?text=Olá! Tenho interesse no sistema de registro e envio de protocolos clínicos."
+         target="_blank">
+        Solicitar orçamento pelo WhatsApp
+      </a>
+    </div>
+
+  </div>
+
+  <div class="back">
+    <a href="sistemas.html">← Voltar para Sistemas INFOPOÇOS</a>
+  </div>
+
+  <footer>
+    Contato: infopocosti@gmail.com<br>
+    © 2025 Grupo INFOPOÇOS – Todos os direitos reservados.<br>
+    Desenvolvido por 
+    <a href="https://www.infopocos.com.br" target="_blank">
+      www.infopocos.com.br
+    </a>
+  </footer>
+
+  <div class="whatsapp-container">
+    <div class="whatsapp-label">Dúvidas ou orçamento?</div>
+
+    <a class="whatsapp-button"
+       href="https://wa.me/5535992598939?text=Olá! Tenho interesse no sistema para clínicas médicas."
+       target="_blank">
+      ☎
+    </a>
+  </div>
+
+</body>
+</html>
