@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema para Laboratório de Prótese Dentária – INFOPOÇOS</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f4f7fb;
+      font-family: Arial, sans-serif;
+      color: #1f2937;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f3d5e, #0369a1);
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    .intro {
+      background: white;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+      margin-bottom: 30px;
+    }
+
+    .intro h2, .section-title {
+      color: #0f3d5e;
+    }
+
+    .intro p {
+      line-height: 1.7;
+      color: #4b5563;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 25px 0;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .feature h3 {
+      color: #0f3d5e;
+      margin-top: 0;
+    }
+
+    .feature p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+
+    .screen {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    .screen h2 {
+      color: #0f3d5e;
+      margin-top: 0;
+    }
+
+    .screen p {
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .screen img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid #d1d5db;
+      margin-top: 15px;
+      transition: 0.3s;
+      cursor: zoom-in;
+    }
+
+    .screen img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+
+    .cta {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+      margin-top: 35px;
+    }
+
+    .cta h2 {
+      color: #0f3d5e;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #16a34a;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      background: #15803d;
+    }
+
+    .back {
+      text-align: center;
+      margin: 30px;
+    }
+
+    .back a {
+      color: #0369a1;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      font-size: 13px;
+      color: #6b7280;
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #0369a1;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .whatsapp-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .whatsapp-label {
+      background-color: #0f3d5e;
+      color: #fff;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 8px 8px 0 0;
+      font-weight: bold;
+      max-width: 150px;
+    }
+
+    .whatsapp-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #25d366;
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      font-size: 34px;
+      text-decoration: none;
+      margin: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      transition: 0.2s;
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .container {
+        padding: 25px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <h1>Sistema para Laboratório de Prótese Dentária</h1>
+    <p>
+      Controle completo da produção, financeiro, pedidos, clientes, funcionários, etapas,
+      relatórios e notificações. Uma solução desenvolvida para organizar o laboratório,
+      reduzir falhas e acompanhar cada serviço do início ao fim.
+    </p>
+  </div>
+
+  <div class="container">
+
+    <div class="intro">
+      <h2>Uma solução completa para gestão de laboratórios</h2>
+      <p>
+        Este sistema foi desenvolvido para laboratórios de prótese dentária que desejam
+        ter mais controle, organização e agilidade no dia a dia. Ele permite registrar
+        cada novo serviço, acompanhar a produção por etapas, controlar valores,
+        gerar relatórios, acompanhar funcionários e manter todo o histórico preservado.
+      </p>
+      <p>
+        Na prática, o laboratório deixa de depender apenas de anotações manuais,
+        planilhas soltas ou mensagens perdidas. Tudo passa a ficar centralizado em
+        uma plataforma web, acessível por computador, tablet ou celular.
+      </p>
+    </div>
+
+    <h2 class="section-title">Principais recursos do sistema</h2>
+
+    <div class="features">
+      <div class="feature">
+        <h3>📦 Controle de Produção</h3>
+        <p>Cadastro de pedidos, número da caixa, paciente, dentista, serviço, etapa atual, previsão de entrega e situação da produção.</p>
+      </div>
+
+      <div class="feature">
+        <h3>💰 Financeiro Completo</h3>
+        <p>Controle de valores, recebimentos, contas, fluxo financeiro, formas de pagamento e relatórios para acompanhamento da saúde do laboratório.</p>
+      </div>
+
+      <div class="feature">
+        <h3>📲 Integração com Telegram</h3>
+        <p>Notificações automáticas, avisos de produção, acompanhamento de etapas e comunicação rápida com os responsáveis.</p>
+      </div>
+
+      <div class="feature">
+        <h3>📱 Painel para Tablet</h3>
+        <p>Funcionários podem atualizar etapas diretamente em tablets nos setores, sem precisar usar celular pessoal.</p>
+      </div>
+
+      <div class="feature">
+        <h3>📊 Relatórios Gerenciais</h3>
+        <p>Relatórios de produção, financeiro, produtividade, pedidos finalizados, pendências e acompanhamento por período.</p>
+      </div>
+
+      <div class="feature">
+        <h3>🔐 Segurança e Histórico</h3>
+        <p>Controle de usuários, permissões, registros de ações, preservação de histórico e organização dos dados importantes.</p>
+      </div>
+    </div>
+
+    <div class="screen">
+      <h2>1. Tela de Login e Acesso Seguro</h2>
+      <p>
+        O sistema possui tela de acesso com usuário e senha, permitindo que cada pessoa
+        entre apenas nas áreas autorizadas. Isso ajuda a proteger as informações internas
+        do laboratório e separa o acesso de administradores, gerência, funcionários e clientes.
+      </p>
+      <img src="01_login_acesso_laboratorio.png" alt="Tela de login do sistema para laboratório de prótese">
+    </div>
+
+    <div class="screen">
+      <h2>2. Dashboard Principal</h2>
+      <p>
+        O painel principal apresenta uma visão rápida da operação: pedidos em aberto,
+        serviços em produção, entregas, indicadores financeiros, gráficos e atalhos
+        para as principais áreas do sistema.
+      </p>
+      <img src="02_dashboard_laboratorio.png" alt="Dashboard do sistema para laboratório de prótese">
+    </div>
+
+    <div class="screen">
+      <h2>3. Cadastro de Nova Produção</h2>
+      <p>
+        Ao lançar um novo serviço, o laboratório pode registrar dentista, paciente,
+        número da caixa, tipo de serviço, valor, previsão, observações e etapas da produção.
+        Isso cria um controle claro desde o início até a entrega final.
+      </p>
+      <img src="03_nova_producao_laboratorio.png" alt="Cadastro de nova produção">
+    </div>
+
+    <div class="screen">
+      <h2>4. Painel de Produção para Tablet</h2>
+      <p>
+        Pensado para o uso dentro do laboratório, o painel de tablet permite que cada
+        setor atualize o andamento do serviço. O funcionário seleciona seu nome,
+        informa a caixa ou pedido e registra a etapa concluída.
+      </p>
+      <p>
+        Isso reduz erros, evita perda de informação e permite saber exatamente onde
+        cada trabalho está dentro da produção.
+      </p>
+      <img src="04_tablet_producao_laboratorio.png" alt="Painel tablet de produção">
+    </div>
+
+    <div class="screen">
+      <h2>5. Busca por Paciente, Pedido ou Caixa</h2>
+      <p>
+        A busca facilita localizar rapidamente qualquer serviço usando nome do paciente,
+        número do pedido, número da caixa ou dentista. Ideal para atendimento rápido
+        quando o cliente solicita uma posição sobre determinado trabalho.
+      </p>
+      <img src="05_busca_paciente_pedido_laboratorio.png" alt="Busca por paciente, pedido ou caixa">
+    </div>
+
+    <div class="screen">
+      <h2>6. Lista de Preços</h2>
+      <p>
+        O sistema permite manter uma lista organizada de serviços e valores.
+        Isso padroniza cobranças, evita divergências e agiliza o lançamento de novos pedidos.
+      </p>
+      <img src="06_lista_precos_laboratorio.png" alt="Lista de preços do laboratório">
+    </div>
+
+    <div class="screen">
+      <h2>7. Controle Financeiro</h2>
+      <p>
+        O módulo financeiro ajuda o laboratório a acompanhar entradas, saídas,
+        valores a receber, valores pagos, pendências e resultados do período.
+        Com isso, a gestão deixa de ser feita no escuro e passa a ter dados reais
+        para tomada de decisão.
+      </p>
+      <img src="07_financeiro_laboratorio.png" alt="Controle financeiro do laboratório">
+    </div>
+
+    <div class="screen">
+      <h2>8. Relatórios e Indicadores</h2>
+      <p>
+        Os relatórios permitem acompanhar a produtividade, quantidade de serviços,
+        situação dos pedidos, valores movimentados e desempenho por período.
+        É uma ferramenta essencial para entender o crescimento e os gargalos do laboratório.
+      </p>
+      <img src="08_relatorios_laboratorio.png" alt="Relatórios do sistema de laboratório">
+    </div>
+
+    <div class="screen">
+      <h2>9. Integração com Telegram</h2>
+      <p>
+        A integração com Telegram permite receber notificações automáticas sobre
+        movimentações importantes do sistema, como atualização de etapas, novos pedidos,
+        finalizações, avisos internos e acompanhamento da produção.
+      </p>
+      <p>
+        Isso facilita a comunicação entre administração, produção e responsáveis,
+        deixando todos informados em tempo real.
+      </p>
+      <img src="09_integracao_telegram_laboratorio.png" alt="Integração Telegram do sistema de laboratório">
+    </div>
+
+    <div class="screen">
+      <h2>10. Comprovante de Entrega</h2>
+      <p>
+        Ao finalizar o processo, o sistema pode gerar comprovantes de entrega com
+        informações importantes do serviço, como pedido, dentista, paciente, data,
+        valor e campo de assinatura.
+      </p>
+      <img src="10_comprovante_entrega_laboratorio.png" alt="Comprovante de entrega do laboratório">
+    </div>
+
+    <div class="cta">
+      <h2>Quer um sistema assim para o seu laboratório?</h2>
+      <p>
+        Solicite uma demonstração e veja como a INFOPOÇOS pode adaptar essa solução
+        para a realidade do seu laboratório de prótese dentária.
+      </p>
+      <a class="btn" href="https://wa.me/5535992598939?text=Olá! Tenho interesse no sistema para laboratório de prótese dentária e gostaria de solicitar uma demonstração." target="_blank">
+        Solicitar orçamento pelo WhatsApp
+      </a>
+    </div>
+
+  </div>
+
+  <div class="back">
+    <a href="sistemas.html">← Voltar para Sistemas INFOPOÇOS</a>
+  </div>
+
+  <footer>
+    Contato: infopocosti@gmail.com<br>
+    © 2025 Grupo INFOPOÇOS – Todos os direitos reservados.<br>
+    Desenvolvido por 
+    <a href="https://www.infopocos.com.br" target="_blank">
+      www.infopocos.com.br
+    </a>
+  </footer>
+
+  <div class="whatsapp-container">
+    <div class="whatsapp-label">Dúvidas ou orçamento?</div>
+    <a class="whatsapp-button"
+       href="https://wa.me/5535992598939?text=Olá! Tenho interesse no sistema para laboratório de prótese dentária."
+       target="_blank"
+       title="Fale conosco no WhatsApp">
+      ☎
+    </a>
+  </div>
+
+</body>
+</html>
