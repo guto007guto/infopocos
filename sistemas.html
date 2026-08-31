@@ -39,13 +39,10 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 28px;
-
       width: calc(100% - 80px);
       max-width: 1200px;
-
       margin: 0 auto;
       padding: 20px 0 30px;
-
       align-items: stretch;
     }
 
@@ -53,15 +50,11 @@
       background: #ffffff;
       border-radius: 18px;
       padding: 28px 25px;
-
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       border: 1px solid #e5e7eb;
-
       transition: 0.3s;
-
       display: flex;
       flex-direction: column;
-
       height: 100%;
       min-height: 515px;
     }
@@ -75,9 +68,7 @@
       font-size: 65px;
       text-align: center;
       margin-bottom: 15px;
-
       height: 75px;
-
       display: flex;
       align-items: center;
       justify-content: center;
@@ -86,14 +77,10 @@
     .card h2 {
       color: #0f3d5e;
       text-align: center;
-
       font-size: 23px;
       line-height: 1.2;
-
       margin: 0 0 16px;
-
       min-height: 83px;
-
       display: flex;
       align-items: center;
       justify-content: center;
@@ -103,41 +90,29 @@
       font-size: 14px;
       line-height: 1.7;
       color: #4b5563;
-
       margin: 0 0 12px;
-
       min-height: 95px;
     }
 
     .card ul {
       font-size: 14px;
       color: #374151;
-
       line-height: 1.8;
-
       padding-left: 20px;
       margin: 8px 0 20px;
-
       flex-grow: 1;
     }
 
     .button {
       display: block;
-
       text-align: center;
-
       margin-top: auto;
-
       background: #0369a1;
       color: #ffffff;
-
       padding: 13px 15px;
-
       border-radius: 10px;
-
       text-decoration: none;
       font-weight: bold;
-
       transition: 0.2s;
     }
 
@@ -145,20 +120,73 @@
       background: #0f3d5e;
     }
 
+    /* CLIENTES */
+
+    .clientes-section {
+      max-width: 1200px;
+      margin: 35px auto 45px;
+      padding: 0 20px;
+    }
+
+    .clientes-section h2 {
+      color: #0f3d5e;
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    .clientes-grid-central {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .cliente {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #e5e7eb;
+      transition: 0.3s;
+    }
+
+    .cliente:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .cliente a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cliente img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #ffffff;
+      padding: 5px;
+    }
+
+    .cliente p {
+      margin-top: 10px;
+      margin-bottom: 0;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* SISTEMAS PERSONALIZADOS */
+
     .custom-system {
       max-width: 1000px;
-
       margin: 45px auto;
-
       background: white;
-
       border-radius: 18px;
       padding: 35px;
-
       text-align: center;
-
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-
       border: 1px solid #e5e7eb;
     }
 
@@ -171,24 +199,17 @@
       font-size: 15px;
       line-height: 1.8;
       color: #4b5563;
-
       max-width: 850px;
-
       margin: 10px auto;
     }
 
     .whatsapp-btn {
       display: inline-block;
-
       margin-top: 25px;
-
       background: #16a34a;
       color: white;
-
       padding: 14px 25px;
-
       border-radius: 10px;
-
       text-decoration: none;
       font-weight: bold;
     }
@@ -210,16 +231,11 @@
 
     footer {
       text-align: center;
-
       padding: 18px;
-
       font-size: 13px;
       color: #6b7280;
-
       margin-top: 40px;
-
       background: #ffffff;
-
       border-top: 1px solid #e5e7eb;
     }
 
@@ -235,39 +251,27 @@
 
     .whatsapp-container {
       position: fixed;
-
       bottom: 20px;
       right: 20px;
-
       text-align: center;
-
       z-index: 100;
     }
 
     .whatsapp-label {
       background-color: #0f3d5e;
-
       color: #fff;
-
       font-size: 12px;
-
       padding: 5px 10px;
-
       border-radius: 8px 8px 0 0;
-
       font-weight: bold;
     }
 
     .whatsapp-img {
       width: 60px;
       height: 60px;
-
       border-radius: 50%;
-
       box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-
       cursor: pointer;
-
       transition: 0.2s;
     }
 
@@ -275,9 +279,6 @@
       transform: scale(1.1);
     }
 
-    /*
-      TABLETS E TELAS MÉDIAS
-    */
     @media (max-width: 1000px) {
 
       .container {
@@ -291,9 +292,6 @@
       }
     }
 
-    /*
-      CELULAR
-    */
     @media (max-width: 650px) {
 
       .title {
@@ -302,10 +300,8 @@
 
       .container {
         grid-template-columns: 1fr;
-
         width: 100%;
         max-width: 420px;
-
         padding: 15px 20px;
       }
 
@@ -320,6 +316,14 @@
 
       .card p {
         min-height: auto;
+      }
+
+      .clientes-section h2 {
+        font-size: 24px;
+      }
+
+      .clientes-grid-central {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .custom-system {
@@ -340,12 +344,9 @@
     Soluções inteligentes desenvolvidas para sua empresa, atendendo suas necessidades!
   </div>
 
-
   <div class="container">
 
-    <!-- =========================================
-         SISTEMA PARA LABORATÓRIOS
-    ========================================== -->
+    <!-- SISTEMA PARA LABORATÓRIOS -->
 
     <div class="card">
 
@@ -372,19 +373,13 @@
         <li>Controle de usuários</li>
       </ul>
 
-      <a
-        class="button"
-        href="laboratorio-protese.html"
-      >
+      <a class="button" href="laboratorio-protese.html">
         Ver detalhes do sistema
       </a>
 
     </div>
 
-
-    <!-- =========================================
-         SISTEMA DE PROTOCOLOS
-    ========================================== -->
+    <!-- SISTEMA DE PROTOCOLOS -->
 
     <div class="card">
 
@@ -411,19 +406,13 @@
         <li>Controle de permissões</li>
       </ul>
 
-      <a
-        class="button"
-        href="protocolo-clinica.html"
-      >
+      <a class="button" href="protocolo-clinica.html">
         Ver detalhes do sistema
       </a>
 
     </div>
 
-
-    <!-- =========================================
-         INFOZAP
-    ========================================== -->
+    <!-- INFOZAP -->
 
     <div class="card">
 
@@ -451,10 +440,7 @@
         <li>Histórico e notificações</li>
       </ul>
 
-      <a
-        class="button"
-        href="infozap.html"
-      >
+      <a class="button" href="infozap.html">
         Ver detalhes do InfoZap
       </a>
 
@@ -463,9 +449,20 @@
   </div>
 
 
-  <!-- =========================================
-       SISTEMAS PERSONALIZADOS
-  ========================================== -->
+  <!-- NOSSOS CLIENTES -->
+
+  <section class="clientes-section">
+
+    <h2>
+      Nossos Clientes
+    </h2>
+
+    <div class="clientes-grid-central"></div>
+
+  </section>
+
+
+  <!-- SISTEMAS PERSONALIZADOS -->
 
   <div class="custom-system">
 
@@ -557,6 +554,10 @@
     </a>
 
   </div>
+
+
+  <!-- LISTA CENTRALIZADA DE CLIENTES -->
+  <script src="clientes.js"></script>
 
 </body>
 </html>
