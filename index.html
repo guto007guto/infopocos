@@ -6,6 +6,10 @@
   <title>Grupo INFOPOÇOS – Soluções em TI & Games</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -33,13 +37,18 @@
     }
 
     .container {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       align-items: center;
+      gap: 32px;
+
+      width: calc(100% - 80px);
+      max-width: 1260px;
+
+      margin: 0 auto;
+      padding: 35px 0 45px;
+
       flex-grow: 1;
-      padding: 30px 40px;
-      flex-wrap: wrap;
-      gap: 40px;
     }
 
     .logo-link {
@@ -47,33 +56,40 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       text-decoration: none;
       color: #1f2937;
+
       transition: 0.3s;
       border-radius: 18px;
-      padding: 25px;
-      width: 280px;
-      height: 280px;
+
+      width: 100%;
+      height: 265px;
+
+      padding: 22px;
+
       background-color: #ffffff;
+
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
       border: 1px solid #e5e7eb;
     }
 
     .logo-link:hover {
-      transform: scale(1.04);
+      transform: translateY(-5px);
       box-shadow: 0 14px 35px rgba(0,0,0,0.12);
     }
 
     .logo-img {
-      max-width: 210px;
-      max-height: 165px;
+      max-width: 190px;
+      max-height: 145px;
       width: auto;
       height: auto;
       background: transparent;
     }
 
     .system-icon {
-      font-size: 85px;
+      font-size: 78px;
       margin-bottom: 10px;
     }
 
@@ -135,23 +151,61 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 700px) {
+    /*
+      TELAS MÉDIAS:
+      2 CARDS POR LINHA
+    */
+    @media (max-width: 1050px) {
+
+      .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 700px;
+        width: calc(100% - 50px);
+      }
+
+      .logo-link {
+        height: 250px;
+      }
+    }
+
+    /*
+      CELULAR:
+      1 CARD POR LINHA
+    */
+    @media (max-width: 600px) {
+
       .title {
         font-size: 25px;
       }
 
+      .subtitle {
+        padding: 0 20px;
+      }
+
       .container {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 360px;
         padding: 20px;
         gap: 25px;
       }
 
       .logo-link {
-        width: 240px;
-        height: 240px;
+        height: 235px;
+        padding: 20px;
+      }
+
+      .logo-img {
+        max-width: 180px;
+        max-height: 130px;
       }
 
       .system-icon {
         font-size: 70px;
+      }
+
+      .arrow {
+        font-size: 15px;
       }
     }
   </style>
@@ -159,51 +213,124 @@
 
 <body>
 
-  <div class="title">Grupo INFOPOÇOS</div>
-  <div class="subtitle">Soluções em Tecnologia, Segurança Digital, Sistemas e Games</div>
+  <div class="title">
+    Grupo INFOPOÇOS
+  </div>
+
+  <div class="subtitle">
+    Soluções em Tecnologia, Segurança Digital, Sistemas e Games
+  </div>
 
   <div class="container">
 
     <!-- INFOPOÇOS TI -->
     <a class="logo-link" href="infopocosti.html">
-      <img src="logoti.png" alt="Logomarca Infopoços TI" class="logo-img" />
-      <div class="arrow">Infopoços TI Infraestrutura</div>
+
+      <img
+        src="logoti.png"
+        alt="Logomarca Infopoços TI"
+        class="logo-img"
+      />
+
+      <div class="arrow">
+        Infopoços TI Infraestrutura
+      </div>
+
     </a>
+
 
     <!-- INFOPOÇOS GAMES -->
     <a class="logo-link" href="infopocosgames.html">
-      <img src="Logogames.png" alt="Logomarca Infopoços Games" class="logo-img" />
-      <div class="arrow">Infopoços Games</div>
+
+      <img
+        src="Logogames.png"
+        alt="Logomarca Infopoços Games"
+        class="logo-img"
+      />
+
+      <div class="arrow">
+        Infopoços Games
+      </div>
+
     </a>
+
 
     <!-- SISTEMAS -->
     <a class="logo-link" href="sistemas.html">
-      <div class="system-icon">💻</div>
-      <div class="arrow">Desenvolvimento de Sistemas INFOPOÇOS</div>
+
+      <div class="system-icon">
+        💻
+      </div>
+
+      <div class="arrow">
+        Desenvolvimento de Sistemas INFOPOÇOS
+      </div>
+
     </a>
 
+
     <!-- OFERTAS -->
-    <a class="logo-link" href="https://ofertas.infopocos.com.br" target="_blank">
-      <img src="logoofertas.png" alt="Infopoços Ofertas" class="logo-img" />
-      <div class="arrow">Infopoços Ofertas</div>
+    <a
+      class="logo-link"
+      href="https://ofertas.infopocos.com.br"
+      target="_blank"
+    >
+
+      <img
+        src="logoofertas.png"
+        alt="Infopoços Ofertas"
+        class="logo-img"
+      />
+
+      <div class="arrow">
+        Infopoços Ofertas
+      </div>
+
     </a>
 
   </div>
 
+
   <footer>
-    Contato: infopocosti@gmail.com<br>
-    © 2026 Grupo INFOPOÇOS – Todos os direitos reservados.<br>
+
+    Contato: infopocosti@gmail.com
+    <br>
+
+    © 2026 Grupo INFOPOÇOS – Todos os direitos reservados.
+    <br>
+
     Desenvolvido por
-    <a href="https://www.infopocos.com.br" target="_blank">
+
+    <a
+      href="https://www.infopocos.com.br"
+      target="_blank"
+    >
       www.infopocos.com.br
     </a>
+
   </footer>
 
+
   <div class="whatsapp-container">
-    <div class="whatsapp-label">Atendimento</div>
-    <a href="https://wa.me/5535992598939" target="_blank" title="Fale conosco no WhatsApp">
-      <img src="zap.png" alt="WhatsApp" class="whatsapp-img">
+
+    <div class="whatsapp-label">
+      Atendimento
+    </div>
+
+    <a
+      href="https://wa.me/5535992598939"
+      target="_blank"
+      title="Fale conosco no WhatsApp"
+    >
+
+      <img
+        src="zap.png"
+        alt="WhatsApp"
+        class="whatsapp-img"
+      >
+
     </a>
+
   </div>
 
 </body>
