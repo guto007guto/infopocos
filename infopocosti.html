@@ -100,7 +100,7 @@ section h2{
     font-weight:bold;
 }
 
-.clientes-grid{
+.clientes-grid-central{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
     gap:20px;
@@ -119,6 +119,11 @@ section h2{
     transform:translateY(-4px);
 }
 
+.cliente a{
+    text-decoration:none;
+    color:inherit;
+}
+
 .cliente img{
     width:100px;
     height:100px;
@@ -130,6 +135,7 @@ section h2{
 
 .cliente p{
     margin-top:10px;
+    margin-bottom:0;
     font-weight:bold;
     font-size:14px;
 }
@@ -206,7 +212,7 @@ footer a:hover{
     left:auto;
 }
 
-.clientes-grid{
+.clientes-grid-central{
     grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
 }
 
@@ -216,7 +222,9 @@ footer a:hover{
 
 <body>
 
-<a href="login.html" class="acesso-cliente">Acesso do Cliente</a>
+<a href="login.html" class="acesso-cliente">
+Acesso do Cliente
+</a>
 
 <div class="header">
 <a href="index.html">
@@ -231,6 +239,7 @@ footer a:hover{
 </a>
 
 <section class="especialidades">
+
 <h2>Nossas Especialidades</h2>
 
 <ul>
@@ -242,88 +251,55 @@ footer a:hover{
 <li>Parcerias em soluções web e apps</li>
 <li>LGPD e Segurança Digital</li>
 </ul>
+
 </section>
 
 <section class="clientes">
+
 <h2>Nossos Clientes</h2>
 
-<div class="clientes-grid">
+<div class="clientes-grid-central"></div>
 
-<div class="cliente">
-<a href="https://www.instagram.com/postopain/" target="_blank">
-<img src="pain1img.png" alt="Pain 1">
-</a>
-<p>Pain 1</p>
-</div>
-
-<div class="cliente">
-<a href="https://www.instagram.com/postopain/" target="_blank">
-<img src="pain2img.png" alt="Pain 2">
-</a>
-<p>Pain 2</p>
-</div>
-
-<div class="cliente">
-<a href="https://www.instagram.com/postopain/" target="_blank">
-<img src="pain3img.jpg" alt="Pain 3">
-</a>
-<p>Pain 3</p>
-</div>
-
-<div class="cliente">
-<a href="https://www.instagram.com/arcoiris.supermercados/" target="_blank">
-<img src="arcoiris1img.jpeg" alt="Arco-Íris 1">
-</a>
-<p>Arco-Íris 1</p>
-</div>
-
-<div class="cliente">
-<a href="https://www.instagram.com/arcoiris.supermercados/" target="_blank">
-<img src="arcoiris2img.jpeg" alt="Arco-Íris 2">
-</a>
-<p>Arco-Íris 2</p>
-</div>
-
-<div class="cliente">
-<a href="https://www.clinicapersonne.com.br" target="_blank">
-<img src="personnelogo.jpeg" alt="Clínica Personne">
-</a>
-<p>Clínica Personne</p>
-</div>
-
-<div class="cliente">
-<a href="https://www.instagram.com/laborcamposlopes/" target="_blank">
-<img src="laborcampos.png" alt="Labor Campos Lopes">
-</a>
-<p>Labor Campos Lopes</p>
-</div>
-
-<div class="cliente">
-<a href="https://www.instagram.com/_postosantafe/" target="_blank">
-<img src="postosantafe.jpg" alt="Posto Santa Fé">
-</a>
-<p>Posto Santa Fé</p>
-</div>
-
-</div>
 </section>
 
 <div class="whatsapp-container">
-<div class="whatsapp-label">Atendimento</div>
 
-<a href="https://wa.me/5535992598939" target="_blank">
-<img src="zap.png" alt="WhatsApp" class="whatsapp-img">
+<div class="whatsapp-label">
+Atendimento
+</div>
+
+<a href="https://wa.me/5535992598939"
+   target="_blank"
+   title="Fale conosco no WhatsApp">
+
+<img src="zap.png"
+     alt="WhatsApp"
+     class="whatsapp-img">
+
 </a>
+
 </div>
 
 <footer>
+
 Contato: infopocosti@gmail.com<br>
-© 2025 Infopoços TI – Todos os direitos reservados.<br>
-Desenvolvido por 
-<a href="https://www.infopocos.com.br" target="_blank">
+
+© 2026 Infopoços TI – Todos os direitos reservados.<br>
+
+Desenvolvido por
+
+<a href="https://www.infopocos.com.br"
+   target="_blank">
+
 www.infopocos.com.br
+
 </a>
+
 </footer>
+
+
+<!-- LISTA CENTRALIZADA DE CLIENTES -->
+<script src="clientes.js"></script>
 
 </body>
 </html>
