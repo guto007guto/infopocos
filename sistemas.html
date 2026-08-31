@@ -6,6 +6,10 @@
   <title>Sistemas INFOPOÇOS</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -27,29 +31,43 @@
       text-align: center;
       color: #6b7280;
       font-size: 17px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
+      padding: 0 20px;
     }
 
     .container {
-      display: flex;
-      justify-content: center;
-      padding: 30px 40px;
-      flex-wrap: wrap;
-      gap: 35px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+
+      width: calc(100% - 80px);
+      max-width: 1200px;
+
+      margin: 0 auto;
+      padding: 20px 0 30px;
+
+      align-items: stretch;
     }
 
     .card {
-      width: 360px;
       background: #ffffff;
       border-radius: 18px;
-      padding: 28px;
+      padding: 28px 25px;
+
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       border: 1px solid #e5e7eb;
+
       transition: 0.3s;
+
+      display: flex;
+      flex-direction: column;
+
+      height: 100%;
+      min-height: 515px;
     }
 
     .card:hover {
-      transform: scale(1.03);
+      transform: translateY(-5px);
       box-shadow: 0 14px 35px rgba(0,0,0,0.12);
     }
 
@@ -57,38 +75,69 @@
       font-size: 65px;
       text-align: center;
       margin-bottom: 15px;
+
+      height: 75px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    h2 {
+    .card h2 {
       color: #0f3d5e;
       text-align: center;
-      margin-bottom: 12px;
+
+      font-size: 23px;
+      line-height: 1.2;
+
+      margin: 0 0 16px;
+
+      min-height: 83px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    p {
+    .card p {
       font-size: 14px;
       line-height: 1.7;
       color: #4b5563;
+
+      margin: 0 0 12px;
+
+      min-height: 95px;
     }
 
-    ul {
+    .card ul {
       font-size: 14px;
       color: #374151;
+
       line-height: 1.8;
+
       padding-left: 20px;
-      margin-top: 15px;
+      margin: 8px 0 20px;
+
+      flex-grow: 1;
     }
 
     .button {
       display: block;
+
       text-align: center;
-      margin-top: 22px;
+
+      margin-top: auto;
+
       background: #0369a1;
       color: #ffffff;
-      padding: 13px;
+
+      padding: 13px 15px;
+
       border-radius: 10px;
+
       text-decoration: none;
       font-weight: bold;
+
       transition: 0.2s;
     }
 
@@ -98,12 +147,18 @@
 
     .custom-system {
       max-width: 1000px;
-      margin: 40px auto;
+
+      margin: 45px auto;
+
       background: white;
+
       border-radius: 18px;
       padding: 35px;
+
       text-align: center;
+
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
       border: 1px solid #e5e7eb;
     }
 
@@ -116,17 +171,24 @@
       font-size: 15px;
       line-height: 1.8;
       color: #4b5563;
+
       max-width: 850px;
-      margin: auto;
+
+      margin: 10px auto;
     }
 
     .whatsapp-btn {
       display: inline-block;
+
       margin-top: 25px;
+
       background: #16a34a;
       color: white;
+
       padding: 14px 25px;
+
       border-radius: 10px;
+
       text-decoration: none;
       font-weight: bold;
     }
@@ -148,11 +210,16 @@
 
     footer {
       text-align: center;
+
       padding: 18px;
+
       font-size: 13px;
       color: #6b7280;
+
       margin-top: 40px;
+
       background: #ffffff;
+
       border-top: 1px solid #e5e7eb;
     }
 
@@ -168,27 +235,39 @@
 
     .whatsapp-container {
       position: fixed;
+
       bottom: 20px;
       right: 20px;
+
       text-align: center;
+
       z-index: 100;
     }
 
     .whatsapp-label {
       background-color: #0f3d5e;
+
       color: #fff;
+
       font-size: 12px;
+
       padding: 5px 10px;
+
       border-radius: 8px 8px 0 0;
+
       font-weight: bold;
     }
 
     .whatsapp-img {
       width: 60px;
       height: 60px;
+
       border-radius: 50%;
+
       box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+
       cursor: pointer;
+
       transition: 0.2s;
     }
 
@@ -196,21 +275,55 @@
       transform: scale(1.1);
     }
 
-    @media (max-width: 700px) {
+    /*
+      TABLETS E TELAS MÉDIAS
+    */
+    @media (max-width: 1000px) {
+
+      .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 760px;
+        width: calc(100% - 40px);
+      }
+
+      .card {
+        min-height: 500px;
+      }
+    }
+
+    /*
+      CELULAR
+    */
+    @media (max-width: 650px) {
+
       .title {
         font-size: 26px;
       }
 
       .container {
-        padding: 20px;
+        grid-template-columns: 1fr;
+
+        width: 100%;
+        max-width: 420px;
+
+        padding: 15px 20px;
       }
 
       .card {
         width: 100%;
+        min-height: auto;
+      }
+
+      .card h2 {
+        min-height: auto;
+      }
+
+      .card p {
+        min-height: auto;
       }
 
       .custom-system {
-        margin: 20px;
+        margin: 25px 20px;
         padding: 25px;
       }
     }
@@ -219,19 +332,30 @@
 
 <body>
 
-  <div class="title">Sistemas INFOPOÇOS</div>
+  <div class="title">
+    Sistemas INFOPOÇOS
+  </div>
 
   <div class="subtitle">
     Soluções inteligentes desenvolvidas para sua empresa, atendendo suas necessidades!
   </div>
 
+
   <div class="container">
 
-    <!-- SISTEMA LABORATÓRIO -->
-    <div class="card">
-      <div class="icon">🦷</div>
+    <!-- =========================================
+         SISTEMA PARA LABORATÓRIOS
+    ========================================== -->
 
-      <h2>Sistema para Laboratórios de Prótese Dentária</h2>
+    <div class="card">
+
+      <div class="icon">
+        🦷
+      </div>
+
+      <h2>
+        Sistema para Laboratórios de Prótese Dentária
+      </h2>
 
       <p>
         Plataforma completa para controle de produção,
@@ -248,16 +372,29 @@
         <li>Controle de usuários</li>
       </ul>
 
-      <a class="button" href="laboratorio-protese.html">
+      <a
+        class="button"
+        href="laboratorio-protese.html"
+      >
         Ver detalhes do sistema
       </a>
+
     </div>
 
-    <!-- SISTEMA PROTOCOLOS -->
-    <div class="card">
-      <div class="icon">🏥</div>
 
-      <h2>Sistema para Registro e Envio de Protocolos Clínicos</h2>
+    <!-- =========================================
+         SISTEMA DE PROTOCOLOS
+    ========================================== -->
+
+    <div class="card">
+
+      <div class="icon">
+        🏥
+      </div>
+
+      <h2>
+        Sistema para Registro e Envio de Protocolos Clínicos
+      </h2>
 
       <p>
         Sistema seguro para clínicas organizarem protocolos,
@@ -274,16 +411,29 @@
         <li>Controle de permissões</li>
       </ul>
 
-      <a class="button" href="protocolo-clinica.html">
+      <a
+        class="button"
+        href="protocolo-clinica.html"
+      >
         Ver detalhes do sistema
       </a>
+
     </div>
 
-    <!-- INFOZAP -->
-    <div class="card">
-      <div class="icon">📲</div>
 
-      <h2>InfoZap – Sistema de Disparos Inteligentes</h2>
+    <!-- =========================================
+         INFOZAP
+    ========================================== -->
+
+    <div class="card">
+
+      <div class="icon">
+        📲
+      </div>
+
+      <h2>
+        InfoZap – Sistema de Disparos Inteligentes
+      </h2>
 
       <p>
         Plataforma para gerenciamento de campanhas,
@@ -301,16 +451,27 @@
         <li>Histórico e notificações</li>
       </ul>
 
-      <a class="button" href="infozap.html">
+      <a
+        class="button"
+        href="infozap.html"
+      >
         Ver detalhes do InfoZap
       </a>
+
     </div>
 
   </div>
 
+
+  <!-- =========================================
+       SISTEMAS PERSONALIZADOS
+  ========================================== -->
+
   <div class="custom-system">
 
-    <h2>💻 Sistemas desenvolvidos sob demanda</h2>
+    <h2>
+      💻 Sistemas desenvolvidos sob demanda
+    </h2>
 
     <p>
       A INFOPOÇOS também desenvolve sistemas personalizados
@@ -318,11 +479,12 @@
     </p>
 
     <p>
-      Desenvolvemos soluções web para clínicas, laboratórios,
-      empresas, controle financeiro, produção,
-      gerenciamento de usuários, automações,
-      integrações com Telegram, WhatsApp,
-      relatórios inteligentes, sistemas em nuvem e muito mais.
+      Desenvolvemos soluções web para clínicas,
+      laboratórios, empresas, controle financeiro,
+      produção, gerenciamento de usuários,
+      automações, integrações com Telegram,
+      WhatsApp, relatórios inteligentes,
+      sistemas em nuvem e muito mais.
     </p>
 
     <p>
@@ -332,38 +494,68 @@
       e aumentar a produtividade da empresa.
     </p>
 
-    <a class="whatsapp-btn"
-       href="https://wa.me/5535992598939?text=Olá! Gostaria de desenvolver um sistema personalizado para minha empresa."
-       target="_blank">
-       Solicitar orçamento personalizado
+    <a
+      class="whatsapp-btn"
+      href="https://wa.me/5535992598939?text=Olá! Gostaria de desenvolver um sistema personalizado para minha empresa."
+      target="_blank"
+    >
+      Solicitar orçamento personalizado
     </a>
 
   </div>
+
 
   <div class="back">
-    <a href="index.html">← Voltar para página inicial</a>
+
+    <a href="index.html">
+      ← Voltar para página inicial
+    </a>
+
   </div>
 
+
   <footer>
-    Contato: infopocosti@gmail.com<br>
-    © 2025 Grupo INFOPOÇOS – Todos os direitos reservados.<br>
-    Desenvolvido por 
-    <a href="https://www.infopocos.com.br" target="_blank">
+
+    Contato: infopocosti@gmail.com
+    <br>
+
+    © 2026 Grupo INFOPOÇOS – Todos os direitos reservados.
+    <br>
+
+    Desenvolvido por
+
+    <a
+      href="https://www.infopocos.com.br"
+      target="_blank"
+    >
       www.infopocos.com.br
     </a>
+
   </footer>
 
+
+  <!-- WHATSAPP -->
+
   <div class="whatsapp-container">
-    <div class="whatsapp-label">Atendimento</div>
 
-    <a href="https://wa.me/5535992598939"
-       target="_blank"
-       title="Fale conosco no WhatsApp">
+    <div class="whatsapp-label">
+      Atendimento
+    </div>
 
-      <img src="zap.png"
-           alt="WhatsApp"
-           class="whatsapp-img">
+    <a
+      href="https://wa.me/5535992598939"
+      target="_blank"
+      title="Fale conosco no WhatsApp"
+    >
+
+      <img
+        src="zap.png"
+        alt="WhatsApp"
+        class="whatsapp-img"
+      >
+
     </a>
+
   </div>
 
 </body>
