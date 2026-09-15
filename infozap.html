@@ -1,590 +1,955 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>InfoZap – Sistema de Disparos Inteligentes para WhatsApp</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>InfoZap | Disparos, Campanhas e Agendamentos no WhatsApp</title>
+  <meta name="description" content="Conheça o InfoZap: organize disparos no WhatsApp, crie campanhas, programe horários, gerencie grupos e contatos, acompanhe a fila e mantenha o histórico centralizado. Teste sem custo.">
+  <link rel="canonical" href="https://www.infopocos.com.br/infozap.html">
+
+  <meta property="og:title" content="InfoZap | Gestão de disparos no WhatsApp">
+  <meta property="og:description" content="Campanhas, agendamentos, grupos, contatos, fila de disparos e histórico em um único painel.">
+  <meta property="og:url" content="https://www.infopocos.com.br/infozap.html">
+  <meta property="og:type" content="website">
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #f4f7fb;
-      font-family: Arial, sans-serif;
-      color: #1f2937;
+    :root {
+      --navy:#08243a;
+      --navy-2:#0c3650;
+      --blue:#0d6ea5;
+      --green:#18c96e;
+      --green-dark:#0e9c52;
+      --green-soft:#eafbf2;
+      --text:#172033;
+      --muted:#667085;
+      --line:#e3e8ee;
+      --soft:#f5f8fb;
+      --white:#fff;
     }
 
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      background:var(--soft);
+      color:var(--text);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a { color:inherit; }
+
+    .site-header {
+      background:#ffffff;
+      border-bottom:1px solid #e7edf2;
+    }
+
+    .site-header-inner {
+      max-width:1180px;
+      margin:auto;
+      padding:15px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#0b2940;
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:-1px;
+    }
+
+    .brand-mark {
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(145deg,#28df83,#11a95d);
+      color:white;
+      font-size:22px;
+      box-shadow:0 8px 20px rgba(24,201,110,.22);
+    }
+
+    .brand span { color:var(--green-dark); }
+
+    .header-test {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 18px;
+      border-radius:999px;
+      text-decoration:none;
+      background:linear-gradient(90deg,var(--green),#31db80);
+      color:#07311d;
+      font-weight:900;
+      box-shadow:0 8px 22px rgba(24,201,110,.23);
+      transition:.18s ease;
+    }
+
+    .header-test:hover { transform:translateY(-1px); }
+
     .hero {
-      background: linear-gradient(135deg, #0f3d5e, #0369a1);
-      color: white;
-      text-align: center;
-      padding: 45px 20px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 82% 20%,rgba(34,222,130,.20),transparent 25%),
+        radial-gradient(circle at 15% 90%,rgba(13,110,165,.27),transparent 30%),
+        linear-gradient(135deg,#071f34 0%,#0a3c4a 52%,#086047 100%);
+      color:white;
+    }
+
+    .hero-inner {
+      max-width:1180px;
+      margin:auto;
+      padding:66px 22px 58px;
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);
+      align-items:center;
+      gap:42px;
+    }
+
+    .eyebrow {
+      margin:0 0 15px;
+      color:#7cf0b2;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
     }
 
     .hero h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
+      margin:0;
+      max-width:680px;
+      font-size:clamp(40px,5vw,68px);
+      line-height:1.02;
+      letter-spacing:-2.2px;
     }
 
-    .hero p {
-      font-size: 17px;
-      max-width: 900px;
-      margin: auto;
-      line-height: 1.7;
+    .hero h1 em {
+      font-style:normal;
+      color:#37e88a;
+    }
+
+    .hero-copy {
+      max-width:650px;
+      margin:22px 0 0;
+      color:#d7e4ea;
+      font-size:18px;
+      line-height:1.65;
+    }
+
+    .hero-actions {
+      margin-top:28px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:52px;
+      padding:0 22px;
+      border-radius:13px;
+      text-decoration:none;
+      font-weight:900;
+      transition:.18s ease;
+    }
+
+    .btn-primary {
+      background:linear-gradient(90deg,#21db78,#40e895);
+      color:#06351f;
+      box-shadow:0 12px 30px rgba(33,219,120,.25);
+    }
+
+    .btn-secondary {
+      border:1px solid rgba(255,255,255,.35);
+      color:#fff;
+      background:rgba(255,255,255,.07);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform:translateY(-1px);
+    }
+
+    .hero-note {
+      margin:12px 0 0;
+      font-size:13px;
+      color:#bdd1d9;
+    }
+
+    .phone-stage {
+      position:relative;
+      min-height:440px;
+      display:grid;
+      place-items:center;
+    }
+
+    .phone-glow {
+      position:absolute;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(56,232,137,.28),rgba(56,232,137,0) 68%);
+    }
+
+    .phone {
+      position:relative;
+      width:270px;
+      height:520px;
+      padding:12px;
+      border-radius:38px;
+      background:#111822;
+      border:3px solid #b8c3cc;
+      box-shadow:0 26px 55px rgba(0,0,0,.33);
+      transform:rotate(2deg);
+    }
+
+    .phone::before {
+      content:"";
+      position:absolute;
+      width:92px;
+      height:22px;
+      border-radius:0 0 14px 14px;
+      top:10px;
+      left:50%;
+      transform:translateX(-50%);
+      background:#111822;
+      z-index:3;
+    }
+
+    .phone-screen {
+      height:100%;
+      border-radius:29px;
+      overflow:hidden;
+      background:#efeae2;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .phone-head {
+      background:#0f786b;
+      color:white;
+      padding:31px 15px 13px;
+      font-size:14px;
+      font-weight:900;
+    }
+
+    .phone-head small {
+      display:block;
+      margin-top:2px;
+      color:#d7fff7;
+      font-size:10px;
+      font-weight:400;
+    }
+
+    .chat {
+      flex:1;
+      padding:18px 12px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      background:
+        linear-gradient(rgba(255,255,255,.42),rgba(255,255,255,.42)),
+        #efeae2;
+    }
+
+    .bubble {
+      max-width:83%;
+      padding:10px 12px;
+      border-radius:11px;
+      font-size:12px;
+      line-height:1.42;
+      box-shadow:0 2px 6px rgba(0,0,0,.07);
+    }
+
+    .bubble.in {
+      align-self:flex-start;
+      background:white;
+      border-top-left-radius:4px;
+    }
+
+    .bubble.out {
+      align-self:flex-end;
+      background:#d7ffc9;
+      border-top-right-radius:4px;
+    }
+
+    .phone-input {
+      margin:0 9px 11px;
+      padding:10px 13px;
+      border-radius:20px;
+      background:white;
+      color:#9aa3ab;
+      font-size:11px;
+    }
+
+    .phone-badge {
+      position:absolute;
+      right:-74px;
+      top:92px;
+      width:155px;
+      padding:13px 15px;
+      border-radius:14px;
+      color:#0d3a24;
+      background:#ecfff4;
+      border:1px solid rgba(57,220,132,.45);
+      font-weight:900;
+      font-size:13px;
+      box-shadow:0 10px 28px rgba(0,0,0,.13);
+    }
+
+    .phone-badge.second {
+      top:auto;
+      bottom:72px;
+      right:-92px;
     }
 
     .container {
-      max-width: 1150px;
-      margin: auto;
-      padding: 35px 20px;
+      max-width:1150px;
+      margin:auto;
+      padding:42px 20px;
     }
 
     .intro {
-      background: white;
-      padding: 28px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      border: 1px solid #e5e7eb;
-      margin-bottom: 30px;
+      background:white;
+      padding:30px;
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+      border:1px solid var(--line);
+      margin-bottom:34px;
     }
 
     .intro h2,
     .section-title {
-      color: #0f3d5e;
+      color:#0f3d5e;
+    }
+
+    .intro h2 {
+      margin-top:0;
+      font-size:27px;
     }
 
     .intro p {
-      line-height: 1.7;
-      color: #4b5563;
+      line-height:1.72;
+      color:#4b5563;
+      font-size:16px;
+    }
+
+    .section-title {
+      margin:0 0 18px;
+      font-size:28px;
     }
 
     .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin: 25px 0 35px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin:0 0 42px;
     }
 
     .feature {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      background:white;
+      border-radius:16px;
+      padding:21px;
+      border:1px solid var(--line);
+      box-shadow:0 8px 24px rgba(0,0,0,.045);
     }
 
     .feature h3 {
-      color: #0f3d5e;
-      margin-top: 0;
+      color:#0f3d5e;
+      margin:0 0 9px;
+      font-size:17px;
     }
 
     .feature p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #4b5563;
+      margin:0;
+      font-size:14px;
+      line-height:1.6;
+      color:#4b5563;
+    }
+
+    .screens-title {
+      margin:52px 0 20px;
+      color:#0f3d5e;
+      font-size:28px;
     }
 
     .screen {
-      background: white;
-      border-radius: 18px;
-      padding: 25px;
-      margin-bottom: 28px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      border: 1px solid #e5e7eb;
+      background:white;
+      border-radius:18px;
+      padding:25px;
+      margin-bottom:28px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+      border:1px solid var(--line);
     }
 
     .screen h2 {
-      color: #0f3d5e;
-      margin-top: 0;
+      color:#0f3d5e;
+      margin-top:0;
     }
 
     .screen p {
-      color: #4b5563;
-      line-height: 1.7;
+      color:#4b5563;
+      line-height:1.7;
     }
 
     .screen img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 14px;
-      border: 1px solid #d1d5db;
-      margin-top: 15px;
-      transition: 0.3s;
-      cursor: zoom-in;
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
+      border:1px solid #d1d5db;
+      margin-top:15px;
+      transition:.25s ease;
+      cursor:zoom-in;
     }
 
     .screen img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+      transform:scale(1.008);
+      box-shadow:0 12px 30px rgba(0,0,0,.11);
     }
 
     .cta {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      border: 1px solid #e5e7eb;
-      margin-top: 35px;
+      margin-top:38px;
+      padding:34px 28px;
+      border-radius:20px;
+      text-align:center;
+      background:linear-gradient(135deg,#0b3550,#0b654b);
+      color:white;
+      box-shadow:0 14px 35px rgba(8,55,72,.14);
     }
 
     .cta h2 {
-      color: #0f3d5e;
+      margin:0 0 10px;
+      font-size:30px;
     }
 
     .cta p {
-      line-height: 1.7;
-      color: #4b5563;
+      max-width:760px;
+      margin:0 auto;
+      line-height:1.7;
+      color:#d8e7ea;
     }
 
-    .btn {
-      display: inline-block;
-      background: #16a34a;
-      color: white;
-      padding: 14px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-
-    .btn:hover {
-      background: #15803d;
-    }
+    .cta .btn-primary { margin-top:20px; }
 
     .back {
-      text-align: center;
-      margin: 30px;
+      text-align:center;
+      margin:30px;
     }
 
     .back a {
-      color: #0369a1;
-      font-weight: bold;
-      text-decoration: none;
+      color:#0369a1;
+      font-weight:bold;
+      text-decoration:none;
     }
 
     footer {
-      text-align: center;
-      padding: 18px;
-      font-size: 13px;
-      color: #6b7280;
-      background: #ffffff;
-      border-top: 1px solid #e5e7eb;
-      margin-top: 40px;
+      text-align:center;
+      padding:22px 18px 95px;
+      font-size:13px;
+      color:#6b7280;
+      background:#ffffff;
+      border-top:1px solid #e5e7eb;
+      margin-top:40px;
     }
 
     footer a {
-      color: #0369a1;
-      font-weight: bold;
-      text-decoration: none;
+      color:#0369a1;
+      font-weight:bold;
+      text-decoration:none;
     }
 
-    .whatsapp-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      text-align: center;
-      z-index: 100;
+    .floating-test {
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:235px;
+      padding:13px 16px;
+      border-radius:18px;
+      text-decoration:none;
+      background:linear-gradient(90deg,#16bd61,#25dc73);
+      color:white;
+      box-shadow:0 14px 36px rgba(8,94,49,.32);
+      border:1px solid rgba(255,255,255,.36);
+      transition:.18s ease;
     }
 
-    .whatsapp-label {
-      background-color: #0f3d5e;
-      color: #fff;
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: 8px 8px 0 0;
-      font-weight: bold;
-      max-width: 150px;
+    .floating-test:hover {
+      transform:translateY(-2px);
+      box-shadow:0 18px 42px rgba(8,94,49,.36);
     }
 
-    .whatsapp-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #25d366;
-      color: white;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      font-size: 34px;
-      text-decoration: none;
-      margin: auto;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-      transition: 0.2s;
+    .floating-test-icon {
+      width:42px;
+      height:42px;
+      flex:0 0 42px;
+      border-radius:13px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.17);
+      font-size:22px;
     }
 
-    .whatsapp-button:hover {
-      transform: scale(1.1);
+    .floating-test strong {
+      display:block;
+      font-size:14px;
+      line-height:1.15;
     }
 
-    @media (max-width: 700px) {
+    .floating-test small {
+      display:block;
+      margin-top:3px;
+      color:#edfff4;
+      font-size:11px;
+    }
+
+    .floating-test-arrow {
+      margin-left:auto;
+      font-size:22px;
+      font-weight:900;
+    }
+
+    @media (max-width:900px) {
+      .hero-inner {
+        grid-template-columns:1fr;
+        padding-top:50px;
+      }
+
+      .phone-stage {
+        min-height:390px;
+      }
+
+      .phone {
+        width:235px;
+        height:450px;
+      }
+
+      .phone-badge {
+        right:-44px;
+      }
+
+      .phone-badge.second {
+        right:-55px;
+      }
+
+      .features {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width:650px) {
+      .site-header-inner {
+        padding:12px 15px;
+      }
+
+      .brand {
+        font-size:23px;
+      }
+
+      .brand-mark {
+        width:34px;
+        height:34px;
+      }
+
+      .header-test {
+        padding:9px 12px;
+        font-size:12px;
+      }
+
+      .hero-inner {
+        padding:44px 17px 40px;
+      }
+
       .hero h1 {
-        font-size: 28px;
+        font-size:41px;
+        letter-spacing:-1.5px;
+      }
+
+      .hero-copy {
+        font-size:16px;
+      }
+
+      .phone-stage {
+        min-height:360px;
+      }
+
+      .phone-badge {
+        display:none;
+      }
+
+      .features {
+        grid-template-columns:1fr;
       }
 
       .container {
-        padding: 25px 15px;
+        padding:30px 14px;
+      }
+
+      .intro,
+      .screen {
+        padding:20px;
+      }
+
+      .floating-test {
+        left:12px;
+        right:12px;
+        bottom:12px;
+        min-width:0;
       }
     }
   </style>
 </head>
 
 <body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="#inicio" aria-label="InfoZap">
+        <span class="brand-mark">✆</span>
+        Info<span>Zap</span>
+      </a>
 
-  <div class="hero">
-    <h1>InfoZap</h1>
-
-    <p>
-      Sistema de disparos inteligentes para WhatsApp com campanhas,
-      grupos, contatos, monitoramento da fila, limites de envio,
-      horários programados, histórico completo, notificações
-      e controle centralizado.
-    </p>
-  </div>
-
-  <div class="container">
-
-    <div class="intro">
-      <h2>Uma solução profissional para organização de disparos no WhatsApp</h2>
-
-      <p>
-        O InfoZap foi desenvolvido para empresas que precisam organizar
-        envios em massa de forma mais segura, controlada e eficiente.
-      </p>
-
-      <p>
-        A plataforma permite conectar o WhatsApp, cadastrar grupos e contatos,
-        criar campanhas, programar horários, acompanhar cada envio em tempo real
-        e manter todo o histórico centralizado em um único sistema.
-      </p>
-
-      <p>
-        Com controles de intervalo, limites de envio, fila inteligente
-        e monitoramento automático, o sistema ajuda a reduzir erros operacionais
-        e melhora o controle das campanhas realizadas pela empresa.
-      </p>
+      <a class="header-test" href="https://infozap.infopocos.com.br/teste-gratis">
+        Teste o InfoZap agora →
+      </a>
     </div>
+  </header>
 
-    <h2 class="section-title">Principais recursos do InfoZap</h2>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">GESTÃO DE DISPAROS PELO WHATSAPP</p>
 
-    <div class="features">
+          <h1>
+            Disparos inteligentes no WhatsApp,
+            com <em>mais controle</em> para o seu negócio.
+          </h1>
 
-      <div class="feature">
-        <h3>📲 Conexão com WhatsApp</h3>
-        <p>
-          Conecte sua conta através de QR Code e acompanhe
-          o status da sessão diretamente pelo painel.
-        </p>
+          <p class="hero-copy">
+            Organize campanhas, grupos e contatos, programe horários,
+            acompanhe a fila de envios e mantenha o histórico da operação
+            centralizado em um único painel.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn-primary" href="https://infozap.infopocos.com.br/teste-gratis">
+              🚀 Teste grátis agora →
+            </a>
+
+            <a class="btn-secondary" href="#recursos">
+              Ver os recursos ↓
+            </a>
+          </div>
+
+          <p class="hero-note">
+            Experimente sem custo e conheça o sistema na prática.
+          </p>
+        </div>
+
+        <div class="phone-stage" aria-label="Exemplo visual de conversa pelo WhatsApp">
+          <div class="phone-glow"></div>
+
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-head">
+                Sua Empresa
+                <small>online</small>
+              </div>
+
+              <div class="chat">
+                <div class="bubble in">
+                  Olá! 👋 Temos uma novidade para você.
+                </div>
+
+                <div class="bubble out">
+                  Que legal! Quero saber mais.
+                </div>
+
+                <div class="bubble in">
+                  Perfeito! Em instantes envio todos os detalhes. 😊
+                </div>
+              </div>
+
+              <div class="phone-input">Digite uma mensagem...</div>
+            </div>
+
+            <div class="phone-badge">
+              👥 Organize contatos e grupos
+            </div>
+
+            <div class="phone-badge second">
+              📊 Acompanhe os envios
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="feature">
-        <h3>🚀 Campanhas de Disparo</h3>
+    <div class="container">
+      <section class="intro">
+        <h2>Um painel para organizar sua operação no WhatsApp</h2>
+
         <p>
-          Crie campanhas para contatos ou grupos,
-          com envio imediato ou programado.
+          O InfoZap foi criado para empresas e revendedores que precisam
+          organizar disparos, campanhas e agendamentos com mais clareza,
+          sem espalhar o controle por várias ferramentas.
         </p>
-      </div>
 
-      <div class="feature">
-        <h3>👥 Gestão de Grupos</h3>
         <p>
-          Organize grupos, participantes e destinos
-          utilizados nas campanhas.
+          Pelo painel, você pode conectar o WhatsApp, cadastrar grupos e contatos,
+          criar campanhas, definir dias e horários, acompanhar a fila de disparos
+          e consultar o histórico de cada operação.
         </p>
-      </div>
 
-      <div class="feature">
-        <h3>⏱️ Limites e Intervalos</h3>
         <p>
-          Configure limites por hora, limites diários,
-          intervalos entre mensagens e pausas automáticas.
+          Limites, intervalos, notificações e controles de acesso ajudam a manter
+          a rotina organizada e dão uma visão mais completa do que está acontecendo.
         </p>
-      </div>
+      </section>
 
-      <div class="feature">
-        <h3>📊 Monitor da Fila</h3>
-        <p>
-          Acompanhe mensagens pendentes, processando,
-          enviadas e falhas em tempo real.
-        </p>
-      </div>
+      <section id="recursos">
+        <h2 class="section-title">Principais recursos do InfoZap</h2>
 
-      <div class="feature">
-        <h3>🔔 Notificações</h3>
-        <p>
-          Receba informações importantes sobre campanhas,
-          falhas, conclusões e funcionamento do sistema.
-        </p>
-      </div>
+        <div class="features">
+          <div class="feature">
+            <h3>📲 Conexão com WhatsApp</h3>
+            <p>Conecte sua conta por QR Code e acompanhe o status da sessão diretamente no painel.</p>
+          </div>
 
-    </div>
+          <div class="feature">
+            <h3>🚀 Campanhas e envio imediato</h3>
+            <p>Envie para contatos ou grupos de forma imediata ou com programação definida.</p>
+          </div>
 
-    <div class="screen">
-      <h2>1. Dashboard Geral</h2>
+          <div class="feature">
+            <h3>👥 Grupos e contatos</h3>
+            <p>Organize destinos, grupos e contatos utilizados nos seus disparos.</p>
+          </div>
 
-      <p>
+          <div class="feature">
+            <h3>⏱️ Dias, horários e intervalos</h3>
+            <p>Defina períodos de envio, limites e pausas de acordo com a sua operação.</p>
+          </div>
+
+          <div class="feature">
+            <h3>📊 Monitor da fila</h3>
+            <p>Acompanhe pendências, mensagens em processamento, envios concluídos e falhas.</p>
+          </div>
+
+          <div class="feature">
+            <h3>🔔 Histórico e notificações</h3>
+            <p>Consulte o que já foi enviado e acompanhe os principais eventos do sistema.</p>
+          </div>
+        </div>
+      </section>
+
+      <h2 class="screens-title">Veja o InfoZap por dentro</h2>
+
+      <div class="screen">
+<h2>1. Dashboard Geral</h2>
+<p>
         O dashboard apresenta uma visão rápida da operação,
         mostrando campanhas em andamento, mensagens enviadas,
         pendências, falhas e informações importantes do sistema.
       </p>
-
-      <img src="01_dashboard_infozap.png?v=2"
-           alt="Dashboard do InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>2. Conexão Segura com WhatsApp</h2>
-
-      <p>
+<img alt="Dashboard do InfoZap" src="01_dashboard_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>2. Conexão Segura com WhatsApp</h2>
+<p>
         O InfoZap permite conectar a conta do WhatsApp através
         da leitura de QR Code, mantendo o status da sessão visível
         diretamente no painel.
       </p>
-
-      <p>
+<p>
         O usuário pode acompanhar se a conta está conectada
         e pronta para realizar os disparos.
       </p>
-
-      <img src="02_conectar_whatsapp_infozap.png?v=2"
-           alt="Conectar WhatsApp InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>3. Envio Imediato</h2>
-
-      <p>
+<img alt="Conectar WhatsApp InfoZap" src="02_conectar_whatsapp_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>3. Envio Imediato</h2>
+<p>
         O sistema permite realizar disparos rápidos
         para números, contatos, listas ou grupos cadastrados.
       </p>
-
-      <p>
+<p>
         É possível preparar a mensagem,
         selecionar o destino e acompanhar o processamento
         diretamente pela plataforma.
       </p>
-
-      <img src="03_envio_imediato_infozap.png?v=2"
-           alt="Envio imediato InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>4. Criação de Campanhas</h2>
-
-      <p>
+<img alt="Envio imediato InfoZap" src="03_envio_imediato_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>4. Criação de Campanhas</h2>
+<p>
         As campanhas permitem organizar disparos maiores
         para grupos ou contatos selecionados.
       </p>
-
-      <p>
+<p>
         O usuário pode definir nome da campanha,
         mensagem, destino, programação e demais configurações
         antes de iniciar o envio.
       </p>
-
-      <img src="04_criar_campanha_infozap.png?v=2"
-           alt="Criar campanha InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>5. Gestão de Grupos</h2>
-
-      <p>
+<img alt="Criar campanha InfoZap" src="04_criar_campanha_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>5. Gestão de Grupos</h2>
+<p>
         O painel de grupos permite visualizar e organizar
         os grupos utilizados nos disparos.
       </p>
-
-      <p>
+<p>
         Isso facilita a seleção dos destinos
         e mantém toda a estrutura das campanhas centralizada.
       </p>
-
-      <img src="05_grupos_infozap.png?v=2"
-           alt="Grupos InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>6. Monitor da Fila de Disparos</h2>
-
-      <p>
+<img alt="Grupos InfoZap" src="05_grupos_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>6. Monitor da Fila de Disparos</h2>
+<p>
         Uma das principais ferramentas do InfoZap é o Monitor da Fila.
       </p>
-
-      <p>
+<p>
         Nele é possível acompanhar mensagens pendentes,
         em processamento, enviadas, falhas e situação atual
         da campanha.
       </p>
-
-      <p>
+<p>
         O sistema também informa pausas automáticas,
         limites de segurança e previsão de retomada quando necessário.
       </p>
-
-      <img src="06_monitor_fila_infozap.png?v=2"
-           alt="Monitor da fila InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>7. Histórico de Disparos</h2>
-
-      <p>
+<img alt="Monitor da fila InfoZap" src="06_monitor_fila_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>7. Histórico de Disparos</h2>
+<p>
         Todos os disparos ficam registrados para consulta.
       </p>
-
-      <p>
+<p>
         O histórico facilita verificar campanhas realizadas,
         quantidade de mensagens enviadas, falhas,
         situação dos envios e informações de cada operação.
       </p>
-
-      <img src="07_historico_disparos_infozap.png?v=2"
-           alt="Histórico de disparos InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>8. Financeiro e Créditos</h2>
-
-      <p>
+<img alt="Histórico de disparos InfoZap" src="07_historico_disparos_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>8. Financeiro e Créditos</h2>
+<p>
         O sistema pode trabalhar com controle de créditos,
         planos e informações financeiras relacionadas
         à utilização da plataforma.
       </p>
-
-      <p>
+<p>
         Isso facilita o acompanhamento administrativo
         e o gerenciamento de usuários e revendas.
       </p>
-
-      <img src="08_financeiro_creditos_infozap.png?v=2"
-           alt="Financeiro e créditos InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>9. Central de Notificações</h2>
-
-      <p>
+<img alt="Financeiro e créditos InfoZap" src="08_financeiro_creditos_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>9. Central de Notificações</h2>
+<p>
         A central de notificações mantém o usuário informado
         sobre eventos importantes do sistema.
       </p>
-
-      <p>
+<p>
         Entre eles estão início e conclusão de campanhas,
         falhas de envio, avisos operacionais e outras informações
         relevantes para o funcionamento da plataforma.
       </p>
-
-      <img src="09_notificacoes_infozap.png?v=2"
-           alt="Notificações InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>10. Configuração de Limites</h2>
-
-      <p>
+<img alt="Notificações InfoZap" src="09_notificacoes_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>10. Configuração de Limites</h2>
+<p>
         O InfoZap permite configurar regras de segurança
         para os disparos.
       </p>
-
-      <p>
+<p>
         É possível definir limites por hora,
         limites diários, intervalo entre mensagens
         e pausas automáticas.
       </p>
-
-      <p>
+<p>
         Essas configurações ajudam a manter os envios
         organizados e dentro da estratégia definida pela empresa.
       </p>
-
-      <img src="10_configuracoes_limites_infozap.png?v=2"
-           alt="Configurações de limites InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>11. Configuração de Dias e Horários</h2>
-
-      <p>
+<img alt="Configurações de limites InfoZap" src="10_configuracoes_limites_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>11. Configuração de Dias e Horários</h2>
+<p>
         O administrador pode definir os dias da semana
         e os horários permitidos para realização dos disparos.
       </p>
-
-      <p>
+<p>
         Fora do período configurado,
         o sistema pode pausar automaticamente a fila
         e retomar os envios no próximo horário permitido.
       </p>
-
-      <img src="11_configuracoes_horarios_infozap.png?v=2"
-           alt="Configurações de horários InfoZap">
-    </div>
-
-    <div class="screen">
-      <h2>12. Usuários e Permissões</h2>
-
-      <p>
+<img alt="Configurações de horários InfoZap" src="11_configuracoes_horarios_infozap.png?v=2"/>
+</div><div class="screen">
+<h2>12. Usuários e Permissões</h2>
+<p>
         O sistema possui controle de usuários
         e diferentes níveis de acesso.
       </p>
-
-      <p>
+<p>
         Administradores, revendas e clientes
         podem utilizar a plataforma de acordo
         com as permissões definidas para cada perfil.
       </p>
+<img alt="Usuários e permissões InfoZap" src="12_usuarios_permissoes_infozap.png?v=2"/>
+</div>
 
-      <img src="12_usuarios_permissoes_infozap.png?v=2"
-           alt="Usuários e permissões InfoZap">
+      <section class="cta">
+        <h2>Quer conhecer o InfoZap na prática?</h2>
+        <p>
+          Faça seu teste agora, conheça o painel e veja como os recursos
+          podem ajudar a organizar seus disparos e campanhas pelo WhatsApp.
+        </p>
+
+        <a class="btn-primary" href="https://infozap.infopocos.com.br/teste-gratis">
+          🚀 Teste o InfoZap agora →
+        </a>
+      </section>
     </div>
 
-    <div class="cta">
-      <h2>Quer utilizar o InfoZap na sua empresa?</h2>
-
-      <p>
-        Solicite uma demonstração e conheça uma solução
-        desenvolvida para organizar campanhas,
-        automatizar processos e facilitar o gerenciamento
-        dos seus disparos pelo WhatsApp.
-      </p>
-
-      <a class="btn"
-         href="https://wa.me/5535992598939?text=Olá! Tenho interesse no InfoZap e gostaria de solicitar uma demonstração."
-         target="_blank">
-        Solicitar demonstração pelo WhatsApp
-      </a>
+    <div class="back">
+      <a href="sistemas.html">← Voltar para Sistemas INFOPOÇOS</a>
     </div>
-
-  </div>
-
-  <div class="back">
-    <a href="sistemas.html">← Voltar para Sistemas INFOPOÇOS</a>
-  </div>
+  </main>
 
   <footer>
     Contato: infopocosti@gmail.com<br>
     © 2026 Grupo INFOPOÇOS – Todos os direitos reservados.<br>
-
     Desenvolvido por
-    <a href="https://www.infopocos.com.br" target="_blank">
+    <a href="https://www.infopocos.com.br" target="_blank" rel="noopener noreferrer">
       www.infopocos.com.br
     </a>
   </footer>
 
-  <div class="whatsapp-container">
+  <a class="floating-test"
+     href="https://infozap.infopocos.com.br/teste-gratis"
+     aria-label="Teste o InfoZap agora">
+    <span class="floating-test-icon">🚀</span>
 
-    <div class="whatsapp-label">
-      Dúvidas ou demonstração?
-    </div>
+    <span>
+      <strong>Teste o InfoZap agora</strong>
+      <small>Experimente sem custo</small>
+    </span>
 
-    <a class="whatsapp-button"
-       href="https://wa.me/5535992598939?text=Olá! Tenho interesse no InfoZap."
-       target="_blank"
-       title="Fale conosco no WhatsApp">
-      ☎
-    </a>
-
-  </div>
-
+    <span class="floating-test-arrow">→</span>
+  </a>
 </body>
 </html>
