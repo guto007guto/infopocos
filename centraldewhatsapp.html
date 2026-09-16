@@ -17,27 +17,30 @@
       --primary-dark:#068d52;
       --primary-soft:#dff9ec;
       --accent:#109e8d;
-      --shadow:0 18px 50px rgba(13, 85, 54, 0.10);
-      --radius:22px;
+      --shadow:0 18px 50px rgba(13,85,54,.10);
+      --shadow-strong:0 16px 34px rgba(10,110,67,.22);
       --max:1180px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Arial, Helvetica, sans-serif;color:var(--text);background:linear-gradient(180deg,#f8fcfa 0%, #eef8f4 100%)}
-    a{text-decoration:none;color:inherit} img{max-width:100%;display:block}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:linear-gradient(180deg,#f8fcfa 0%,#eef8f4 100%)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 22px}
-    .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(248,252,250,.88);border-bottom:1px solid rgba(215,235,226,.85)}
-    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:27px;letter-spacing:-1px}
+
+    .topbar{position:sticky;top:0;z-index:60;backdrop-filter:blur(10px);background:rgba(248,252,250,.88);border-bottom:1px solid rgba(215,235,226,.85)}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:78px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:22px;letter-spacing:-.5px}
     .brand-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:24px;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:0 12px 28px rgba(11,191,106,.28)}
-    .brand small{display:block;font-size:11px;letter-spacing:1.4px;color:var(--muted);font-weight:700;margin-top:2px}
+    .brand small{display:block;font-size:12px;letter-spacing:1.8px;color:var(--muted);font-weight:700;margin-top:4px;text-transform:uppercase}
     .nav-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
     .pill-btn,.ghost-btn,.primary-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:0 18px;border-radius:999px;font-weight:800;transition:.2s ease}
     .pill-btn{background:#fff;border:1px solid var(--line);color:var(--text)}
-    .ghost-btn{background:transparent;border:1px solid rgba(6,141,82,.25);color:var(--primary-dark)}
+    .ghost-btn{background:transparent;border:1px solid rgba(6,141,82,.22);color:var(--primary-dark)}
     .primary-btn{background:linear-gradient(135deg,var(--primary),#37d788);color:#063720;box-shadow:0 12px 28px rgba(11,191,106,.25)}
     .pill-btn:hover,.ghost-btn:hover,.primary-btn:hover{transform:translateY(-1px)}
-    .hero{padding:54px 0 30px;background:radial-gradient(circle at 15% 20%, rgba(16,158,141,.10), transparent 24%),radial-gradient(circle at 85% 15%, rgba(11,191,106,.12), transparent 24%),linear-gradient(180deg, #f7fcf9 0%, #eff9f5 100%)}
+
+    .hero{padding:54px 0 30px;background:radial-gradient(circle at 15% 20%, rgba(16,158,141,.10), transparent 24%),radial-gradient(circle at 85% 15%, rgba(11,191,106,.12), transparent 24%),linear-gradient(180deg,#f7fcf9 0%,#eff9f5 100%)}
     .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:34px;align-items:center}
     .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;color:var(--primary-dark);padding:10px 14px;border-radius:999px;background:var(--primary-soft)}
     h1{margin:18px 0 18px;font-size:clamp(40px,6vw,72px);line-height:.97;letter-spacing:-2.6px}
@@ -46,17 +49,63 @@
     .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
     .mini-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
     .tag{padding:12px 15px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:800;color:#2b5f51}
-    .hero-card{background:linear-gradient(135deg,#ffffff 0%, #f4fcf8 100%);border:1px solid #e1f0ea;border-radius:30px;padding:18px;box-shadow:var(--shadow)}
-    .section{padding:34px 0}.section-head{max-width:760px;margin:0 auto 24px;text-align:center}.section-head h2{margin:0 0 12px;font-size:clamp(32px,4vw,48px);letter-spacing:-1.8px}.section-head p{margin:0;color:var(--muted);font-size:18px;line-height:1.7}
+    .hero-card{background:linear-gradient(135deg,#ffffff 0%,#f4fcf8 100%);border:1px solid #e1f0ea;border-radius:30px;padding:18px;box-shadow:var(--shadow)}
+
+    .section{padding:34px 0}
+    .section-head{max-width:760px;margin:0 auto 24px;text-align:center}
+    .section-head h2{margin:0 0 12px;font-size:clamp(32px,4vw,48px);letter-spacing:-1.8px}
+    .section-head p{margin:0;color:var(--muted);font-size:18px;line-height:1.7}
     .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
     .feature{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 10px 24px rgba(17,49,41,.04)}
-    .feature .icon{width:52px;height:52px;border-radius:16px;background:var(--primary-soft);display:grid;place-items:center;font-size:24px;margin-bottom:14px}.feature h3{margin:0 0 8px;font-size:21px}.feature p{margin:0;color:var(--muted);line-height:1.65}
-    .showcase{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.showcase .panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:18px;box-shadow:var(--shadow)}.showcase .panel h3{margin:0 0 8px;font-size:28px;letter-spacing:-1px}.showcase .panel p{margin:0 0 16px;color:var(--muted);line-height:1.7}
-    .full-bleed{margin-top:26px}.full-bleed img{width:100%;border-radius:28px;border:1px solid #ddebe4;box-shadow:var(--shadow)}
-    .cta{padding:38px 0 60px}.cta-box{background:linear-gradient(135deg,#0b8e67 0%, #11bf78 100%);color:#fff;border-radius:32px;padding:34px;box-shadow:0 26px 60px rgba(11,191,106,.22)}.cta-box h2{margin:0 0 12px;font-size:clamp(30px,4.3vw,48px);letter-spacing:-1.7px}.cta-box p{margin:0 0 22px;color:#eafdf5;font-size:18px;line-height:1.7;max-width:750px}.cta-buttons{display:flex;flex-wrap:wrap;gap:12px}.cta .ghost-btn{color:#fff;border-color:rgba(255,255,255,.4)}
-    footer{border-top:1px solid var(--line);padding:26px 0 34px;background:#f8fcfa}.footer-grid{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}.footer-copy{color:var(--muted);line-height:1.6}.footer-links{display:flex;gap:10px;flex-wrap:wrap}
-    @media (max-width:980px){.hero-grid,.showcase,.features{grid-template-columns:1fr}.section{padding:28px 0}.topbar-inner{padding:10px 0}.nav-actions{justify-content:flex-start}}
-    @media (max-width:680px){.container{padding:0 16px}.brand{font-size:24px}.brand-mark{width:40px;height:40px;font-size:22px}.hero{padding-top:34px}h1{font-size:44px}.lead{font-size:17px}.hero-actions,.cta-buttons{flex-direction:column;align-items:stretch}.pill-btn,.ghost-btn,.primary-btn{width:100%}.hero-card,.showcase .panel,.feature,.cta-box{border-radius:22px}}
+    .feature .icon{width:52px;height:52px;border-radius:16px;background:var(--primary-soft);display:grid;place-items:center;font-size:24px;margin-bottom:14px}
+    .feature h3{margin:0 0 8px;font-size:21px}
+    .feature p{margin:0;color:var(--muted);line-height:1.65}
+    .showcase{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+    .showcase .panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:18px;box-shadow:var(--shadow)}
+    .showcase .panel h3{margin:0 0 8px;font-size:28px;letter-spacing:-1px}
+    .showcase .panel p{margin:0 0 16px;color:var(--muted);line-height:1.7}
+    .full-bleed{margin-top:26px}
+    .full-bleed img{width:100%;border-radius:28px;border:1px solid #ddebe4;box-shadow:var(--shadow)}
+
+    .cta{padding:38px 0 60px}
+    .cta-box{background:linear-gradient(135deg,#0b8e67 0%,#11bf78 100%);color:#fff;border-radius:32px;padding:34px;box-shadow:0 26px 60px rgba(11,191,106,.22)}
+    .cta-box h2{margin:0 0 12px;font-size:clamp(30px,4.3vw,48px);letter-spacing:-1.7px}
+    .cta-box p{margin:0 0 22px;color:#eafdf5;font-size:18px;line-height:1.7;max-width:750px}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:12px}
+    .cta .ghost-btn{color:#fff;border-color:rgba(255,255,255,.4)}
+
+    footer{border-top:1px solid var(--line);padding:26px 0 34px;background:#f8fcfa}
+    .footer-grid{display:flex;flex-direction:column;justify-content:center;gap:18px;align-items:center;text-align:center}
+    .footer-copy{color:var(--muted);line-height:1.7}
+    .footer-back{font-size:14px;font-weight:700;color:#0a5fa5}
+    .footer-contact{color:#4f6a61;font-size:14px;line-height:1.5}
+
+    .floating-cta{position:fixed;right:18px;bottom:22px;z-index:70;background:linear-gradient(135deg,#18d66d,#2edc87);color:#063720;border-radius:18px;box-shadow:var(--shadow-strong);padding:14px 18px;display:flex;align-items:center;gap:14px;min-width:260px;max-width:320px}
+    .floating-cta .icon{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:22px;flex:0 0 auto}
+    .floating-cta .text strong{display:block;font-size:15px;line-height:1.2}
+    .floating-cta .text span{display:block;font-size:13px;opacity:.9;margin-top:2px}
+    .floating-cta .arrow{margin-left:auto;font-size:24px;line-height:1;font-weight:900}
+
+    @media (max-width:980px){
+      .hero-grid,.showcase,.features{grid-template-columns:1fr}
+      .section{padding:28px 0}
+      .topbar-inner{padding:10px 0}
+      .nav-actions{justify-content:flex-start}
+    }
+    @media (max-width:680px){
+      .container{padding:0 16px}
+      .brand{font-size:18px}
+      .brand-mark{width:40px;height:40px;font-size:22px}
+      .hero{padding-top:34px}
+      h1{font-size:44px}
+      .lead{font-size:17px}
+      .hero-actions,.cta-buttons{flex-direction:column;align-items:stretch}
+      .pill-btn,.ghost-btn,.primary-btn{width:100%}
+      .hero-card,.showcase .panel,.feature,.cta-box{border-radius:22px}
+      .floating-cta{left:12px;right:12px;bottom:12px;max-width:none;min-width:0;padding:12px 14px}
+      .floating-cta .text strong{font-size:14px}
+      .floating-cta .text span{font-size:12px}
+    }
   </style>
 </head>
 <body>
@@ -64,14 +113,14 @@
     <div class="container topbar-inner">
       <a class="brand" href="#topo" aria-label="Teste a Central de WhatsApp">
         <div class="brand-mark">🎁</div>
-        <div>Teste a Central<small>ATENDIMENTO MULTICANAL</small></div>
+        <div>Teste a Central de WhatsApp<small>ATENDIMENTO MULTICANAL</small></div>
       </a>
       <nav class="nav-actions">
-        <a class="ghost-btn" href="#recursos">Ver recursos</a>
-        <a class="primary-btn" href="https://centraldewhatsapp.infopocos.com.br/teste-gratis" target="_blank" rel="noopener">🎁 Gerar meu teste grátis</a>
+        <a class="pill-btn" href="https://www.infopocos.com.br/sistemas.html">▦ Conheça nossos sistemas →</a>
       </nav>
     </div>
   </header>
+
   <main id="topo">
     <section class="hero">
       <div class="container hero-grid">
@@ -80,16 +129,22 @@
           <h1>Teste a Central de WhatsApp.<br><em>Uma central. Vários setores. Uma conversa só.</em></h1>
           <p class="lead">Organize sua equipe por setores, responda pela Web e pelo Telegram, transfira conversas com histórico e acompanhe tudo em um só lugar.</p>
           <div class="hero-actions">
-            <a class="primary-btn" href="https://centraldewhatsapp.infopocos.com.br/teste-gratis" target="_blank" rel="noopener">🎁 Teste grátis</a>
-            <a class="ghost-btn" href="#recursos">Mais detalhes sobre a Central</a>
+            <a class="primary-btn" href="https://centraldewhatsapp.infopocos.com.br/teste-gratis" target="_blank" rel="noopener">🚀 Teste grátis agora →</a>
+            <a class="ghost-btn" href="#recursos">Ver os recursos ↓</a>
           </div>
           <div class="mini-list">
-            <span class="tag">Recepção</span><span class="tag">Financeiro</span><span class="tag">Suporte</span><span class="tag">Transferências</span>
+            <span class="tag">Recepção</span>
+            <span class="tag">Financeiro</span>
+            <span class="tag">Suporte</span>
+            <span class="tag">Transferências</span>
           </div>
         </div>
-        <div class="hero-card"><img src="central-whatsapp-hero.png" alt="Visão geral da Central de WhatsApp com login e atendimento web sincronizado"></div>
+        <div class="hero-card">
+          <img src="central-whatsapp-hero.png" alt="Visão geral da Central de WhatsApp com login e atendimento web sincronizado">
+        </div>
       </div>
     </section>
+
     <section class="section" id="recursos">
       <div class="container">
         <div class="section-head">
@@ -103,15 +158,49 @@
         </div>
       </div>
     </section>
-    <section class="section"><div class="container showcase">
-      <article class="panel"><h3>Tudo em um único painel</h3><p>Tenha uma visão clara do que está acontecendo: atendimentos em andamento, setores ativos, clientes cadastrados, canais online e últimas atividades.</p><img src="central-whatsapp-painel.png" alt="Painel principal da Central de WhatsApp com visão geral da operação"></article>
-      <article class="panel"><h3>Um único WhatsApp, vários lugares</h3><p>Atenda pelo painel Web e pelo Telegram com total sincronização. Ideal para equipes que precisam mobilidade sem perder organização.</p><img src="central-whatsapp-web-telegram.png" alt="Atendimento sincronizado da Central de WhatsApp na Web e no Telegram"></article>
-    </div></section>
+
+    <section class="section">
+      <div class="container showcase">
+        <article class="panel"><h3>Tudo em um único painel</h3><p>Tenha uma visão clara do que está acontecendo: atendimentos em andamento, setores ativos, clientes cadastrados, canais online e últimas atividades.</p><img src="central-whatsapp-painel.png" alt="Painel principal da Central de WhatsApp com visão geral da operação"></article>
+        <article class="panel"><h3>Um único WhatsApp, vários lugares</h3><p>Atenda pelo painel Web e pelo Telegram com total sincronização. Ideal para equipes que precisam mobilidade sem perder organização.</p><img src="central-whatsapp-web-telegram.png" alt="Atendimento sincronizado da Central de WhatsApp na Web e no Telegram"></article>
+      </div>
+    </section>
+
     <section class="section"><div class="container"><div class="section-head"><h2>Automação, distribuição e organização</h2><p>Leve cada cliente para o setor, pessoa ou submenu certo, com uma experiência mais rápida para quem chama e mais controle para quem atende.</p></div><div class="full-bleed"><img src="central-whatsapp-menu-automatico.png" alt="Menu automático da Central de WhatsApp com setores, submenus e direcionamento inteligente"></div></div></section>
     <section class="section"><div class="container"><div class="section-head"><h2>Equipe, clientes e transferências</h2><p>Monte sua operação com funcionários, clientes identificados, setores personalizados e transferências entre colegas com o histórico sempre mantido.</p></div><div class="full-bleed"><img src="central-whatsapp-equipe-transferencias.png" alt="Equipe conectada, clientes identificados e transferências organizadas na Central de WhatsApp"></div></div></section>
     <section class="section"><div class="container"><div class="section-head"><h2>Financeiro, renovações e relatórios</h2><p>Acompanhe pagamentos, tarifa do Mercado Pago, valor líquido, históricos e renovação de clientes sem precisar sair da própria Central.</p></div><div class="full-bleed"><img src="central-whatsapp-financeiro.png" alt="Módulo financeiro da Central de WhatsApp com relatórios, pagamentos e renovações"></div></div></section>
-    <section class="cta"><div class="container"><div class="cta-box"><h2>Quer conhecer a Central de WhatsApp na prática?</h2><p>Gere seu teste grátis, veja como o sistema funciona por dentro e descubra como a sua equipe pode atender melhor, com mais organização, rapidez e controle.</p><div class="cta-buttons"><a class="primary-btn" href="https://centraldewhatsapp.infopocos.com.br/teste-gratis" target="_blank" rel="noopener">🎁 Gerar meu teste grátis</a></div></div></div></section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Quer conhecer a Central de WhatsApp na prática?</h2>
+          <p>Gere seu teste grátis, veja como o sistema funciona por dentro e descubra como a sua equipe pode atender melhor, com mais organização, rapidez e controle.</p>
+          <div class="cta-buttons">
+            <a class="primary-btn" href="https://centraldewhatsapp.infopocos.com.br/teste-gratis" target="_blank" rel="noopener">🎁 Gerar meu teste grátis</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer><div class="container footer-grid"><div class="footer-copy"><strong>Teste a Central de WhatsApp</strong><br>WhatsApp, Web e Telegram integrados para o seu atendimento.</div><div class="footer-links"><a class="pill-btn" href="https://centraldewhatsapp.infopocos.com.br/teste-gratis" target="_blank" rel="noopener">Teste grátis</a></div></div></footer>
+
+  <footer>
+    <div class="container footer-grid">
+      <a class="footer-back" href="https://www.infopocos.com.br/sistemas.html">← Voltar para Sistemas INFOPOÇOS</a>
+      <div class="footer-contact">
+        Contato: infopocosti@gmail.com<br>
+        © 2026 Grupo INFOPOÇOS – Todos os direitos reservados.<br>
+        Desenvolvido por <strong>www.infopocos.com.br</strong>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-cta" href="https://centraldewhatsapp.infopocos.com.br/teste-gratis" target="_blank" rel="noopener" aria-label="Teste agora Central de WhatsApp">
+    <div class="icon">🚀</div>
+    <div class="text">
+      <strong>Teste agora Central de WhatsApp</strong>
+      <span>Experimente sem custo</span>
+    </div>
+    <div class="arrow">→</div>
+  </a>
 </body>
 </html>
