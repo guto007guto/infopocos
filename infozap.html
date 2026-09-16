@@ -81,6 +81,15 @@
 
     .brand span { color:var(--green-dark); }
 
+    .header-actions {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .header-systems,
     .header-test {
       display:inline-flex;
       align-items:center;
@@ -88,11 +97,26 @@
       padding:11px 18px;
       border-radius:999px;
       text-decoration:none;
+      font-weight:900;
+      transition:.18s ease;
+    }
+
+    .header-systems {
+      background:#eaf4fb;
+      color:#0b5f94;
+      border:1px solid #b9daef;
+      box-shadow:0 7px 18px rgba(13,110,165,.10);
+    }
+
+    .header-systems:hover {
+      background:#dceef9;
+      transform:translateY(-1px);
+    }
+
+    .header-test {
       background:linear-gradient(90deg,var(--green),#31db80);
       color:#07311d;
-      font-weight:900;
       box-shadow:0 8px 22px rgba(24,201,110,.23);
-      transition:.18s ease;
     }
 
     .header-test:hover { transform:translateY(-1px); }
@@ -571,6 +595,11 @@
         height:34px;
       }
 
+      .header-actions {
+        gap:7px;
+      }
+
+      .header-systems,
       .header-test {
         padding:9px 12px;
         font-size:12px;
@@ -628,9 +657,15 @@
         Info<span>Zap</span>
       </a>
 
-      <a class="header-test" href="https://infozap.infopocos.com.br/teste-gratis">
-        Teste o InfoZap agora →
-      </a>
+      <div class="header-actions">
+        <a class="header-systems" href="sistemas.html">
+          ◫ Conheça nossos sistemas →
+        </a>
+
+        <a class="header-test" href="https://infozap.infopocos.com.br/teste-gratis">
+          Teste o InfoZap agora →
+        </a>
+      </div>
     </div>
   </header>
 
